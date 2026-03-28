@@ -204,6 +204,41 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 
 @media(max-width:1100px){.defi-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.matrix{grid-template-columns:repeat(2,1fr)}.obj-grid{grid-template-columns:1fr}.biais-grid{grid-template-columns:1fr}}
+
+/* ── Affaires redesign ── */
+.affaire2{background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:20px}
+.affaire2-hdr{background:linear-gradient(135deg,#991B1B,#DC2626);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.affaire2-hdr-left{display:flex;align-items:center;gap:10px;min-width:0}
+.affaire2-ico{font-size:20px;flex-shrink:0}
+.affaire2-title{font-size:13.5px;font-weight:700;color:#fff}
+.affaire2-inv{background:rgba(255,255,255,.2);color:#fff;border-radius:20px;padding:4px 12px;font-size:11px;font-weight:700;flex-shrink:0}
+.affaire2-body{padding:16px;display:flex;flex-direction:column;gap:14px}
+.affaire2-ia-block{background:#FFF5F5;border-left:3px solid #DC2626;border-radius:0 8px 8px 0;padding:12px 14px}
+.affaire2-ia-label{font-size:10px;font-weight:800;color:#DC2626;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.affaire2-ia-text{font-style:italic;color:#374151;font-size:13px;line-height:1.65;margin:0}
+.affaire2-hint-wrap{display:flex;flex-direction:column;gap:8px}
+.affaire2-hint-btn{background:transparent;border:1.5px dashed #D97706;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;color:#D97706;cursor:pointer;align-self:flex-start;transition:all .15s}
+.affaire2-hint-btn.open{background:#FFFBEB}
+.affaire2-hints{background:#FFFBEB;border-radius:10px;padding:12px 14px;border:1px solid #FDE68A}
+.affaire2-hints-ttl{font-size:12px;font-weight:700;color:#D97706;margin-bottom:8px}
+.affaire2-hints ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.affaire2-hints li{font-size:12.5px;color:#374151;line-height:1.5}
+.affaire2-hints a{color:#2563EB;font-weight:600;text-decoration:underline}
+.affaire2-note{background:#FEF3C7;border:1px solid #FDE68A;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.affaire2-note-ttl{font-size:11px;font-weight:800;color:#92400E;margin-bottom:4px}
+.affaire2-note p{font-size:12px;color:#374151;margin:0;line-height:1.5}
+.affaire2-note code{background:#fff;padding:1px 5px;border-radius:3px;font-size:11px;font-family:monospace;border:1px solid #E5E7EB}
+.affaire2-ans-label{font-size:12px;font-weight:700;color:#374151}
+.affaire2-textarea{width:100%;min-height:80px;border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.5;resize:vertical;font-family:inherit;color:#374151;box-sizing:border-box;transition:border-color .15s}
+.affaire2-textarea:focus{outline:none;border-color:#DC2626;box-shadow:0 0 0 2px rgba(220,38,38,.12)}
+.affaire2-analyze-btn{background:linear-gradient(135deg,#991B1B,#DC2626);color:#fff;border:none;border-radius:20px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;align-self:flex-start;transition:background .15s}
+.affaire2-analyze-btn.done{background:linear-gradient(135deg,#14532D,#16A34A)}
+.affaire2-correction{background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:14px 16px}
+.affaire2-corr-ttl{font-size:12px;font-weight:800;color:#15803D;margin-bottom:10px}
+.affaire2-corr-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.affaire2-corr-badge{background:#DC2626;color:#fff;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:800;flex-shrink:0;margin-top:2px}
+.affaire2-corr-text{font-size:12.5px;color:#374151;line-height:1.5}
+.affaire2-corr-text strong{color:#15803D}
 </style>
 </head>
 <body>
@@ -386,72 +421,141 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
       <div class="sec-title">📋 Les 4 affaires à investiguer</div>
       <div class="hint">Ces textes ont été générés par une IA. Chacun contient des erreurs. Reproduisez la démarche avec vos élèves.</div>
 
-      <div class="affaire-card">
-        <div class="affaire-hdr">
-          <span style="font-size:18px">📚</span>
-          <span class="affaire-num">Affaire #1</span>
-          <strong style="font-size:13px;flex:1;margin-left:8px">Citation scientifique</strong>
-          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">2 erreurs</span>
+      <div class="affaire2">
+        <div class="affaire2-hdr">
+          <div class="affaire2-hdr-left"><span class="affaire2-ico">📚</span><span class="affaire2-title">Affaire #1 — Citation scientifique</span></div>
+          <span class="affaire2-inv">🔍 À investiguer</span>
         </div>
-        <div class="affaire-body">
-          <div class="affaire-ia">"Selon Martin, L. (2021). Effets du numérique sur l'autonomie des élèves en cycle 2. Revue Française de Pédagogie, 212, 23–41. doi:10.4000/rfp.8854…"</div>
-          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
-          <div class="tip">Vérifier la validité du DOI sur doi.org</div>
-          <div class="tip">Consulter la Revue Française de Pédagogie (journals.openedition.org/rfp)</div>
-          <div class="tip">Valider la statistique citée via Google Scholar</div>
-          <div class="affaire-err">DOI invalide — l'article n'existe pas</div>
-          <div class="affaire-err">Statistique 34 % entièrement fabriquée par l'IA</div>
-        </div>
-      </div>
-
-      <div class="affaire-card">
-        <div class="affaire-hdr">
-          <span style="font-size:18px">👤</span>
-          <span class="affaire-num">Affaire #2</span>
-          <strong style="font-size:13px;flex:1;margin-left:8px">Biographie — Ovide Decroly</strong>
-          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">2 erreurs</span>
-        </div>
-        <div class="affaire-body">
-          <div class="affaire-ia">"Ovide Decroly (1871–1932)… fonde l'École de l'Ermitage… publie L'École active en 1922… reçoit le prix Francqui en 1928…"</div>
-          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
-          <div class="tip">Fiche Wikipedia Ovide Decroly</div>
-          <div class="tip">Vérifier le livre "L'École active" — qui l'a vraiment écrit ?</div>
-          <div class="tip">Liste des lauréats du prix Francqui (francquifoundation.be)</div>
-          <div class="affaire-err">"L'École active" a été écrit par Adolphe Ferrière, pas par Decroly</div>
-          <div class="affaire-err">Decroly est absent de la liste des lauréats du prix Francqui 1928</div>
-        </div>
-      </div>
-
-      <div class="affaire-card">
-        <div class="affaire-hdr">
-          <span style="font-size:18px">🔢</span>
-          <span class="affaire-num">Affaire #3</span>
-          <strong style="font-size:13px;flex:1;margin-left:8px">Calcul</strong>
-          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">1 erreur</span>
-        </div>
-        <div class="affaire-body">
-          <div class="affaire-ia">"4 tickets × 2,50 € = 10 €/enfant. 120 élèves = 1 200 €. Après 350 € de frais, bénéfice = 900 €."</div>
-          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
-          <div class="tip">Vérifier : 4 × 2,50 = ? — correct</div>
-          <div class="tip">120 × 10 = ? — correct</div>
-          <div class="tip">1 200 − 350 = ? — à recalculer</div>
-          <div class="affaire-err">Le bénéfice est 850 €, pas 900 € — l'IA a fait une erreur de soustraction</div>
+        <div class="affaire2-body">
+          <div class="affaire2-ia-block">
+            <div class="affaire2-ia-label">🤖 Texte généré par l'IA</div>
+            <p class="affaire2-ia-text">« Selon Martin, L. (2021). Effets du numérique sur l'autonomie des élèves en cycle 2. <em>Revue Française de Pédagogie</em>, 212, 23–41. doi:10.4000/rfp.8854 — l'auteure conclut que l'usage régulier d'outils numériques favorise l'autorégulation cognitive chez les élèves de 6 à 8 ans. L'étude a suivi 312 élèves sur deux ans dans 18 écoles françaises. Une analyse complémentaire révèle que ces élèves obtiendraient des scores de compréhension supérieurs de 34 % aux groupes témoins. »</p>
+          </div>
+          <div class="affaire2-hint-wrap">
+            <button class="affaire2-hint-btn" id="hbtn-hint-a1" onclick="toggleHint('hint-a1')">💡 Besoin d'une piste ? ▼</button>
+            <div class="affaire2-hints" id="hint-a1" style="display:none">
+              <div class="affaire2-hints-ttl">🧭 Pistes d'enquête</div>
+              <div class="affaire2-note">
+                <div class="affaire2-note-ttl">📌 DOI — Digital Object Identifier</div>
+                <p>C'est un identifiant unique et permanent attribué à une publication scientifique. Une URL de la forme <code>https://doi.org/10.xxxx/xxxxx</code> doit toujours pointer vers l'article réel. Si le DOI n'existe pas ou renvoie vers un autre article, c'est une hallucination.</p>
+              </div>
+              <ul>
+                <li>La <em>Revue Française de Pédagogie</em> existe-t-elle ? → <a href="https://journals.openedition.org/rfp/" target="_blank">Site officiel de la RFP</a></li>
+                <li>L'article est-il bien dans cette revue ? → <a href="https://doi.org/10.4000/rfp.8854" target="_blank">Vérifier le DOI</a> ou <a href="https://journals.openedition.org/rfp/" target="_blank">chercher dans la revue</a></li>
+                <li>La statistique de 34 % vous semble-t-elle crédible ? → <a href="https://scholar.google.fr/scholar?q=num%C3%A9rique+%C3%A9l%C3%A8ves+autorégulation+m%C3%A9ta-analyse" target="_blank">Chercher des méta-analyses comparables</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="affaire2-ans-label">✏️ Ce que j'ai trouvé (erreurs, preuves, sources vérifiées…)</div>
+            <textarea class="affaire2-textarea" placeholder="Décrivez les erreurs que vous avez trouvées et comment vous les avez vérifiées…"></textarea>
+          </div>
+          <button class="affaire2-analyze-btn" onclick="analyzeAffaire('a1', this)">🤖 Analyser ma réponse</button>
+          <div class="affaire2-correction" style="display:none">
+            <div class="affaire2-corr-ttl">✅ Les 2 erreurs à trouver étaient :</div>
+            <div class="affaire2-corr-item"><span class="affaire2-corr-badge">ERREUR 1</span><span class="affaire2-corr-text"><strong>DOI invalide</strong> — Le DOI 10.4000/rfp.8854 ne correspond à aucun article réel. La <em>Revue Française de Pédagogie</em> existe bien, mais cet article précis n'y figure pas.</span></div>
+            <div class="affaire2-corr-item"><span class="affaire2-corr-badge">ERREUR 2</span><span class="affaire2-corr-text"><strong>Statistique fabriquée</strong> — Le chiffre de 34 % est une invention de l'IA. Aucune étude comparable ne produit ce résultat. Les méta-analyses sur le numérique à l'école montrent des effets beaucoup plus modestes et variables.</span></div>
+          </div>
         </div>
       </div>
 
-      <div class="affaire-card">
-        <div class="affaire-hdr">
-          <span style="font-size:18px">🗣️</span>
-          <span class="affaire-num">Affaire #4</span>
-          <strong style="font-size:13px;flex:1;margin-left:8px">Traduction bretonne</strong>
-          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">1 erreur</span>
+      <div class="affaire2">
+        <div class="affaire2-hdr">
+          <div class="affaire2-hdr-left"><span class="affaire2-ico">👤</span><span class="affaire2-title">Affaire #2 — Biographie (Ovide Decroly)</span></div>
+          <span class="affaire2-inv">🔍 À investiguer</span>
         </div>
-        <div class="affaire-body">
-          <div class="affaire-ia">"Phrase bretonne : Demat, mont a ra mat ganit ? = 'Bonjour, comment ça va ?'. Le breton compte environ 1,2 million de locuteurs…"</div>
-          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
-          <div class="tip">Wiktionnaire : rechercher "demat" et "breton"</div>
-          <div class="tip">Article Wikipédia sur la langue bretonne</div>
-          <div class="affaire-err">"1,2 million de locuteurs" — la réalité est ≈ 200 000–250 000 locuteurs</div>
+        <div class="affaire2-body">
+          <div class="affaire2-ia-block">
+            <div class="affaire2-ia-label">🤖 Texte généré par l'IA</div>
+            <p class="affaire2-ia-text">« Ovide Decroly (1871–1932) est un pédagogue belge né à Renaix. En 1907, il fonde à Bruxelles l'École de l'Ermitage, où il développe sa méthode globale de lecture. Il publie <em>L'École active</em> en 1922, ouvrage fondateur de la pédagogie nouvelle. En 1928, il reçoit le prix Francqui, la plus haute distinction scientifique belge. »</p>
+          </div>
+          <div class="affaire2-hint-wrap">
+            <button class="affaire2-hint-btn" id="hbtn-hint-a2" onclick="toggleHint('hint-a2')">💡 Besoin d'une piste ? ▼</button>
+            <div class="affaire2-hints" id="hint-a2" style="display:none">
+              <div class="affaire2-hints-ttl">🧭 Pistes d'enquête</div>
+              <ul>
+                <li>Biographie complète → <a href="https://fr.wikipedia.org/wiki/Ovide_Decroly" target="_blank">Fiche Wikipedia Decroly</a></li>
+                <li>Qui a écrit <em>L'École active</em> ? → <a href="https://fr.wikipedia.org/wiki/Adolphe_Ferri%C3%A8re" target="_blank">Chercher Adolphe Ferrière</a></li>
+                <li>Le prix Francqui : Decroly figure-t-il parmi les lauréats ? → <a href="https://www.francquifoundation.be/fr/laureats" target="_blank">Liste des lauréats</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="affaire2-ans-label">✏️ Ce que j'ai trouvé</div>
+            <textarea class="affaire2-textarea" placeholder="Décrivez les erreurs que vous avez trouvées et comment vous les avez vérifiées…"></textarea>
+          </div>
+          <button class="affaire2-analyze-btn" onclick="analyzeAffaire('a2', this)">🤖 Analyser ma réponse</button>
+          <div class="affaire2-correction" style="display:none">
+            <div class="affaire2-corr-ttl">✅ Les 2 erreurs à trouver étaient :</div>
+            <div class="affaire2-corr-item"><span class="affaire2-corr-badge">ERREUR 1</span><span class="affaire2-corr-text"><strong><em>L'École active</em> n'a pas été écrit par Decroly</strong> — Cet ouvrage est d'Adolphe Ferrière (1922). Decroly a écrit <em>Vers l'école rénovée</em> (1921) et <em>La fonction de globalisation</em> (1929).</span></div>
+            <div class="affaire2-corr-item"><span class="affaire2-corr-badge">ERREUR 2</span><span class="affaire2-corr-text"><strong>Decroly n'a pas reçu le prix Francqui</strong> — Son nom n'apparaît pas dans la liste officielle des lauréats de cette distinction. L'IA a inventé cette information de toutes pièces.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="affaire2">
+        <div class="affaire2-hdr">
+          <div class="affaire2-hdr-left"><span class="affaire2-ico">🔢</span><span class="affaire2-title">Affaire #3 — Calcul</span></div>
+          <span class="affaire2-inv">🔍 À investiguer</span>
+        </div>
+        <div class="affaire2-body">
+          <div class="affaire2-ia-block">
+            <div class="affaire2-ia-label">🤖 Texte généré par l'IA</div>
+            <p class="affaire2-ia-text">« Pour la kermesse de l'école, chaque enfant achète 4 tickets à 2,50 € pièce, soit 10 € par enfant. L'école a vendu des tickets à 120 élèves, ce qui représente 1 200 € de recettes. Après déduction de 350 € de frais d'organisation, le bénéfice de la kermesse est de 900 €. »</p>
+          </div>
+          <div class="affaire2-hint-wrap">
+            <button class="affaire2-hint-btn" id="hbtn-hint-a3" onclick="toggleHint('hint-a3')">💡 Besoin d'une piste ? ▼</button>
+            <div class="affaire2-hints" id="hint-a3" style="display:none">
+              <div class="affaire2-hints-ttl">🧭 Pistes d'enquête</div>
+              <ul>
+                <li>Vérifiez : 4 × 2,50 = ? et 120 × 10 = ?</li>
+                <li>Si les recettes sont 1 200 €, quel est le bénéfice après 350 € de frais ?</li>
+                <li>Utilisez votre calculatrice ou faites le calcul mentalement.</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="affaire2-ans-label">✏️ Ce que j'ai trouvé</div>
+            <textarea class="affaire2-textarea" placeholder="Décrivez les erreurs que vous avez trouvées et comment vous les avez vérifiées…"></textarea>
+          </div>
+          <button class="affaire2-analyze-btn" onclick="analyzeAffaire('a3', this)">🤖 Analyser ma réponse</button>
+          <div class="affaire2-correction" style="display:none">
+            <div class="affaire2-corr-ttl">✅ L'erreur à trouver était :</div>
+            <div class="affaire2-corr-item"><span class="affaire2-corr-badge">ERREUR</span><span class="affaire2-corr-text"><strong>Le bénéfice est 850 €, pas 900 €</strong> — 1 200 € − 350 € = 850 €. L'IA a commis une erreur de soustraction élémentaire, tout en présentant le résultat avec une confiance totale. Les deux premières opérations (4 × 2,50 et 120 × 10) étaient correctes.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="affaire2">
+        <div class="affaire2-hdr">
+          <div class="affaire2-hdr-left"><span class="affaire2-ico">🗣️</span><span class="affaire2-title">Affaire #4 — Traduction bretonne</span></div>
+          <span class="affaire2-inv">🔍 À investiguer</span>
+        </div>
+        <div class="affaire2-body">
+          <div class="affaire2-ia-block">
+            <div class="affaire2-ia-label">🤖 Texte généré par l'IA</div>
+            <p class="affaire2-ia-text">« La phrase bretonne <em>Demat, mont a ra mat ganit ?</em> signifie "Bonjour, comment ça va ?". Le breton est une langue celtique parlée principalement dans le Finistère et les Côtes-d'Armor. Il appartient au groupe brittonique, avec le gallois et le cornique. Le breton compte aujourd'hui environ 1,2 million de locuteurs, et la loi Deixonne de 1951 a autorisé son enseignement dans les écoles. »</p>
+          </div>
+          <div class="affaire2-hint-wrap">
+            <button class="affaire2-hint-btn" id="hbtn-hint-a4" onclick="toggleHint('hint-a4')">💡 Besoin d'une piste ? ▼</button>
+            <div class="affaire2-hints" id="hint-a4" style="display:none">
+              <div class="affaire2-hints-ttl">🧭 Pistes d'enquête</div>
+              <ul>
+                <li>La traduction est-elle correcte ? → <a href="https://fr.wiktionary.org/wiki/demat" target="_blank">Wiktionnaire : demat</a> et <a href="https://www.devri.bzh/" target="_blank">dictionnaire breton-français</a></li>
+                <li>Le breton est-il bien de la famille brittonique ? → <a href="https://fr.wikipedia.org/wiki/Langues_celtiques" target="_blank">Langues celtiques (Wikipedia)</a></li>
+                <li>Combien de locuteurs le breton a-t-il aujourd'hui ? → <a href="https://fr.wikipedia.org/wiki/Breton_(langue)" target="_blank">Article Wikipedia sur le breton</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="affaire2-ans-label">✏️ Ce que j'ai trouvé</div>
+            <textarea class="affaire2-textarea" placeholder="Décrivez les erreurs que vous avez trouvées et comment vous les avez vérifiées…"></textarea>
+          </div>
+          <button class="affaire2-analyze-btn" onclick="analyzeAffaire('a4', this)">🤖 Analyser ma réponse</button>
+          <div class="affaire2-correction" style="display:none">
+            <div class="affaire2-corr-ttl">✅ L'erreur à trouver était :</div>
+            <div class="affaire2-corr-item"><span class="affaire2-corr-badge">ERREUR</span><span class="affaire2-corr-text"><strong>1,2 million de locuteurs est faux</strong> — Le breton compte environ 200 000 à 250 000 locuteurs selon les sources (enquête Ofis publik ar brezhoneg, 2018). L'IA a multiplié le chiffre réel par 5 environ. La traduction, la famille linguistique et la loi Deixonne sont, elles, correctes.</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1693,6 +1797,35 @@ function go(id, btn) {
 }
 
 // ── PROMPT DE DÉPART TOGGLE ──
+
+function toggleHint(id) {
+  const panel = document.getElementById(id);
+  const btn = document.getElementById('hbtn-' + id);
+  const isHidden = panel.style.display === 'none';
+  panel.style.display = isHidden ? 'block' : 'none';
+  if (btn) {
+    btn.textContent = isHidden ? '💡 Masquer les pistes ▲' : '💡 Besoin d\'une piste ? ▼';
+    btn.classList.toggle('open', isHidden);
+  }
+}
+function analyzeAffaire(id, btn) {
+  const card = btn.closest('.affaire2');
+  const textarea = card.querySelector('.affaire2-textarea');
+  const correction = card.querySelector('.affaire2-correction');
+  if (!textarea.value.trim()) {
+    textarea.style.borderColor = '#DC2626';
+    textarea.focus();
+    textarea.placeholder = 'Écrivez d\'abord votre réponse...';
+    return;
+  }
+  textarea.style.borderColor = '#16A34A';
+  correction.style.display = 'block';
+  btn.textContent = '✓ Voir la correction ↓';
+  btn.classList.add('done');
+  btn.disabled = true;
+  correction.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
 function togglePD(id) {
   const zone = document.getElementById(id);
   const btn = document.getElementById('btn-' + id);
