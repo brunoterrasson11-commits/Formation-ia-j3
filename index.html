@@ -458,8 +458,254 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 
     <div>
       <div class="sec-title">📋 Prompts — Créer votre propre enquête</div>
-      <div class="prompts">
+      <div class="defi-grid">
         <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#991B1B,#DC2626)">
+    <div class="dcard-hdr-left"><h3>🕵️ Générer une "affaire" pour ma matière</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Vous avez vu le principe des 4 affaires. Créez maintenant la vôtre pour votre discipline — histoire, sciences, littérature, maths — avec des erreurs calibrées pour votre niveau de classe.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Obtenez un texte sur votre sujet avec 2 erreurs factuelles plausibles, les pistes de vérification, et les erreurs révélées avec explication.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa1a" onclick="togglePD('pa1a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa1a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Tu es un formateur en esprit critique. Génère un texte court (5-8 lignes) sur [sujet de ma discipline] qui contient exactement 2 erreurs factuelles plausibles. Les erreurs doivent être vérifiables en ligne. Format : 1) le texte avec les erreurs intégrées naturellement, 2) les pistes de vérification (avec liens si possible), 3) les erreurs révélées avec explication. Niveau : [niveau des élèves].</code>
+      <button class="dprompt-copy" onclick="cpById('pa1a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#991B1B,#DC2626)">
+    <div class="dcard-hdr-left"><h3>🔎 Créer une séance "détective IA"</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une séance complète où les élèves deviennent des détectives face aux textes de l'IA. Parfaite pour introduire l'esprit critique en début d'année ou de séquence.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez votre niveau et matière. Obtenez une séance clé en main de 45 minutes avec 2 "affaires" à investiguer, phase de mise en commun et règle de conduite à co-construire.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa1b" onclick="togglePD('pa1b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa1b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Conçois une séance de 45 minutes sur la fiabilité de l'IA pour des élèves de [niveau], dans le cadre de [matière]. La séance inclut : une phase découverte (l'IA se trompe, exemples concrets), 2 &quot;affaires&quot; à investiguer en binômes avec des textes de l'IA contenant des erreurs sur [thème du cours], une mise en commun, et une règle de conduite à co-construire avec les élèves (&quot;quand utiliser l'IA, comment vérifier&quot;). Fournis tous les supports.</code>
+      <button class="dprompt-copy" onclick="cpById('pa1b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#991B1B,#DC2626)">
+    <div class="dcard-hdr-left"><h3>📄 Texte à vérifier sur une notion de cours</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un texte avec 3 erreurs de difficulté croissante — idéal pour entraîner les élèves à ne pas faire confiance aveuglément à l'IA et à développer des réflexes de vérification.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez une notion de programme. Obtenez un texte de 10 lignes avec 3 erreurs graduées (une évidente, une subtile, une nécessitant une vraie vérification documentaire) et la liste des erreurs avec comment les vérifier.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa1c" onclick="togglePD('pa1c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa1c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige un texte de 10 lignes sur [notion du programme] pour des élèves de [niveau], qui contient 3 erreurs factuelles de difficulté croissante : une évidente, une subtile, une qui nécessite une vraie vérification documentaire. Donne ensuite la liste des erreurs et comment les vérifier. Usage pédagogique : entraîner les élèves à ne pas faire confiance aveuglément à l'IA.</code>
+      <button class="dprompt-copy" onclick="cpById('pa1c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#FEF2F2;border-color:var(--c1)">
+      <div class="tips-ttl" style="color:var(--c1)">💡 Conseils pour la séance en classe</div>
+      <div class="tips-list">
+        <div class="tip">Commencez par un exemple spectaculaire : demandez à l'IA la biographie d'un élève de la classe — elle va inventer</div>
+        <div class="tip">L'erreur de calcul (affaire #3) fonctionne très bien avec les plus jeunes : elle dédramatise et montre que l'IA n'est pas "toute-puissante"</div>
+        <div class="tip">Donnez aux élèves le temps de chercher avant de révéler les erreurs — la frustration productive est pédagogique</div>
+        <div class="tip">Cadrez la conclusion : l'IA est un outil puissant mais faillible — la vérification des sources reste une compétence humaine irremplaçable</div>
+        <div class="tip">Adaptez les "affaires" à votre matière : un texte sur la Révolution française avec 2 dates fausses, une biographie d'auteur avec un roman inventé...</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 2 ══════════════════ -->
+<section class="sec" id="sec-a2">
+  <div class="ahdr" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
+    <div class="atag">Atelier 2</div>
+    <h2>🌍 Biais culturels — Décrypter les représentations de l'IA</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 30 min</span>
+      <span class="tpill">Esprit critique</span>
+      <span class="tpill">Tous niveaux</span>
+      <span class="tpill">Observation & débat</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#F5F3FF;border-color:#C4B5FD">
+      <span class="obj-ico">🎯</span>
+      <div>Observer les images générées par l'IA et comprendre qu'au-delà des erreurs factuelles, l'IA reproduit et amplifie des biais culturels issus de ses données d'entraînement. Ces 4 scènes permettent un débat riche avec les élèves ou entre collègues.</div>
+    </div>
+
+    <div>
+      <div class="sec-title">🖼️ Les 4 scènes à analyser</div>
+      <div class="hint">Ces images ont été générées par Imagen 4.0 (Google) avec des prompts très simples. Observez. Qu'est-ce que vous voyez ? Qu'est-ce qui manque ?</div>
+      <!-- Scène 1 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">🩺 Scène 1 — Deux professions médicales</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs duo">
+          <img src="images/reel-doctor.png" alt="a doctor">
+          <img src="images/reel-nurse.png" alt="a nurse">
+        </div>
+        <div class="scene-footer"><strong>Prompt de gauche :</strong> "a doctor" &nbsp;·&nbsp; <strong>Prompt de droite :</strong> "a nurse"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">L'IA génère systématiquement un médecin masculin (stéthoscope, posture d'autorité) et une infirmière féminine (uniforme, posture d'aide). Ce n'est pas intentionnel — c'est le reflet statistique des données d'entraînement.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Que remarque-t-on sur le genre des personnages ?</div>
+          <div class="tip" style="font-size:11.5px">Est-ce que cela reflète la réalité des professions aujourd'hui ?</div>
+          <div class="tip" style="font-size:11.5px">Quel impact si des élèves utilisent ces images dans un exposé ?</div>
+        </div>
+      </div>
+      <!-- Scène 2 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">🔬 Scène 2 — Le scientifique et le grand penseur</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs duo">
+          <img src="images/reel-scientist.png" alt="a scientist">
+          <img src="images/reel-great_thinker.png" alt="a great thinker">
+        </div>
+        <div class="scene-footer"><strong>Prompt de gauche :</strong> "a scientist" &nbsp;·&nbsp; <strong>Prompt de droite :</strong> "a great thinker"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">L'IA génère de façon quasi-systématique des scientifiques et penseurs masculins, blancs, matures, d'apparence européenne. Les femmes scientifiques et les penseurs non-occidentaux sont invisibles dans les données.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Quels grands penseurs ou scientifiques n'apparaissent jamais ?</div>
+          <div class="tip" style="font-size:11.5px">Que dit cela de l'histoire des sciences telle qu'elle a été documentée ?</div>
+        </div>
+      </div>
+      <!-- Scène 3 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">💼 Scène 3 — Le chef d'entreprise</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs">
+          <img src="images/reel-ceo.png" alt="a business executive">
+        </div>
+        <div class="scene-footer"><strong>Prompt :</strong> "a business executive"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">Le "dirigeant d'entreprise" généré par l'IA est presque toujours un homme, en costume sombre, dans un bureau occidental moderne. Le succès s'associe à un profil très précis.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Quel message cette image envoie-t-elle à nos élèves sur le pouvoir ?</div>
+          <div class="tip" style="font-size:11.5px">Comment cela influence-t-il leurs représentations de l'avenir ?</div>
+        </div>
+      </div>
+      <!-- Scène 4 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">💄 Scène 4 — La "belle femme"</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs">
+          <img src="images/reel-beauty.png" alt="a beautiful woman">
+        </div>
+        <div class="scene-footer"><strong>Prompt :</strong> "a beautiful woman"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">Les standards de beauté générés s'alignent quasi exclusivement sur les canons occidentaux : peau claire, traits européens. Cela reflète la domination des contenus anglophones dans les données d'entraînement.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Quels canons de beauté sont absents ? Pourquoi ?</div>
+          <div class="tip" style="font-size:11.5px">Quel impact sur l'estime de soi des élèves qui ne se voient jamais représentés ?</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">📋 Prompts pour aller plus loin</div>
+      <div class="defi-grid">
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
+    <div class="dcard-hdr-left"><h3>🔍 Analyser un biais avec les élèves</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une image générée dit beaucoup en peu de mots. Ce prompt vous aide à structurer une analyse critique accessible pour vos élèves à partir de n'importe quelle image IA.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez l'image et le prompt utilisé. Obtenez une explication accessible sur le biais visible, son origine et 4 pistes pour développer le regard critique des élèves.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa2a" onclick="togglePD('pa2a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa2a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Tu es expert en études culturelles et éducation aux médias. J'ai généré cette image avec l'IA via le prompt : &quot;[prompt utilisé]&quot;. L'image montre [description]. Explique en termes accessibles à des élèves de [niveau] : 1) quel biais culturel ou de genre est visible, 2) d'où vient ce biais (données d'entraînement, histoire des représentations), 3) pourquoi c'est important d'en parler en classe, 4) comment les élèves peuvent développer un regard critique sur ces images.</code>
+      <button class="dprompt-copy" onclick="cpById('pa2a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
+    <div class="dcard-hdr-left"><h3>🏫 Créer une séance sur les biais</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Observation, analyse, débat, charte collective — une séance complète en 30-40 minutes pour faire des élèves des usagers critiques des images générées par l'IA.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le niveau et la matière. Obtenez une séance clé en main avec questions de débat et canevas de la charte "utiliser les images IA de façon critique".</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa2b" onclick="togglePD('pa2b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa2b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Conçois une séance de 30-40 minutes sur les biais des IA pour des élèves de [niveau] en [matière / EMC / HIDA]. La séance : observation de 3 images générées par l'IA avec des prompts simples, analyse guidée des représentations (genre, race, culture), débat structuré avec des questions ouvertes, production finale : une charte collective &quot;Comment utiliser les images de l'IA de façon critique&quot;. Fournis les questions de débat et le canevas de la charte.</code>
+      <button class="dprompt-copy" onclick="cpById('pa2b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
+    <div class="dcard-hdr-left"><h3>🌈 Contrepoint : demander la diversité</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les biais par défaut ne sont pas une fatalité. Avec les bons mots dans le prompt, on peut obtenir des représentations plus diversifiées. C'est aussi une leçon concrète d'agency numérique.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez une profession ou un rôle. Obtenez un prompt optimisé pour représenter ce rôle de façon diverse et inclusive, avec l'explication de pourquoi ces précisions changent le résultat.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa2c" onclick="togglePD('pa2c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa2c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Génère un prompt d'image optimisé pour représenter [profession / rôle] de façon diverse et inclusive : différents genres, ethnies, âges, morphologies. Le prompt doit être en anglais, précis, et contrecarrer les biais par défaut du générateur d'images. Explique ensuite pourquoi ces précisions changent le résultat.</code>
+      <button class="dprompt-copy" onclick="cpById('pa2c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#F5F3FF;border-color:var(--c2)">
+      <div class="tips-ttl" style="color:var(--c2)">💡 Conseils pour animer la séance</div>
+      <div class="tips-list">
+        <div class="tip">Montrez les images sans explication préalable : laissez les élèves observer et réagir librement avant d'analyser</div>
+        <div class="tip">Les biais ne sont pas des "bugs" — ils reflètent la société telle qu'elle a été documentée. C'est une nuance importante à transmettre</div>
+        <div class="tip">Demandez aux élèves de générer eux-mêmes des images et d'observer : c'est plus impactant que de montrer des exemples préparés</div>
+        <div class="tip">Lien fort avec l'EMC (égalité, représentations) et l'HIDA (l'image et sa construction culturelle)</div>
+        <div class="tip">Terminez sur une note constructive : comment contourner ces biais ? Comment demander à l'IA des représentations plus diversifiées ?</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 3 ══════════════════ -->
+<section class="sec" id="sec-a3">
+  <div class="ahdr" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6)">
+    <div class="atag">Atelier 3</div>
+    <h2>📚 Langage & Écriture — 7 défis disciplinaires</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 40 min</span>
+      <span class="tpill">Français</span>
+      <span class="tpill">Maternelle → CM2</span>
+      <span class="tpill">Prompts prêts à copier</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#EFF6FF;border-color:#BFDBFE">
+      <span class="obj-ico">🎯</span>
+      <div>7 défis pour créer des ressources de français sur mesure en quelques secondes. Comptines, questions sur un album, amorces d'écriture, dictées, textes lacunaires, vocabulaire — adaptez le niveau et copiez le prompt dans ChatGPT ou Gemini.</div>
+    </div>
+
+    <div class="defi-grid">
+      <div class="dcard">
   <div class="dcard-hdr" style="background:linear-gradient(135deg,#6c3483,#8e44ad)">
     <div class="dcard-hdr-left"><span class="dcard-num">#07</span><h3>🎵 Comptines et devinettes</h3></div>
     <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span></div>
@@ -585,7 +831,6 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 
   </div>
 </section>
-
 <!-- ══════════════════ ATELIER 4 ══════════════════ -->
 <section class="sec" id="sec-a4">
   <div class="ahdr" style="background:linear-gradient(135deg,#92400E,#D97706)">
