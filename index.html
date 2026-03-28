@@ -7,7 +7,7 @@
 <style>
 :root {
   --bg:#F1F5F9;--surface:#fff;--surface2:#F8FAFC;--text:#0F172A;--text-sec:#475569;--text-muted:#94A3B8;--border:#E2E8F0;
-  --sb:#064E3B;--sb-text:rgba(255,255,255,.85);--sb-muted:rgba(255,255,255,.4);--sb-hover:rgba(255,255,255,.07);--sb-active:rgba(255,255,255,.13);
+  --sb:#3B0764;--sb-text:rgba(255,255,255,.85);--sb-muted:rgba(255,255,255,.4);--sb-hover:rgba(255,255,255,.07);--sb-active:rgba(255,255,255,.13);
   --c1:#DC2626;--c2:#9333EA;--c3:#2563EB;--c4:#D97706;--c5:#059669;
   --c1l:#FEF2F2;--c2l:#F5F3FF;--c3l:#EFF6FF;--c4l:#FFFBEB;--c5l:#ECFDF5;
   --ok:#22C55E;--r:10px;--sh:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shm:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
@@ -46,7 +46,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .sec{display:none}
 .sec.active{display:block}
 
-.hero{background:linear-gradient(135deg,#064E3B 0%,#0F766E 100%);padding:36px 36px 28px;color:#fff}
+.hero{background:linear-gradient(135deg,#3B0764 0%,#6D28D9 100%);padding:36px 36px 28px;color:#fff}
 .hero .htag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:7px}
 .hero h2{font-size:24px;font-weight:800;line-height:1.2;margin-bottom:7px}
 .hero .hsub{font-size:13.5px;color:rgba(255,255,255,.65);max-width:520px}
@@ -302,11 +302,11 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
         <div style="flex:1;min-width:220px">
           <p style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px">Impossible de choisir votre atelier ?</p>
           <p style="font-size:13px;color:var(--text-sec);line-height:1.65;margin-bottom:18px">Donnez un coup de roue et laissez le hasard décider. Chaque atelier est une bonne porte d'entrée — l'essentiel est de commencer !</p>
-          <button onclick="spinWheel()" id="spin-btn" style="background:#064E3B;color:#fff;border:none;padding:11px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;width:100%" onmouseover="this.style.background='#065F46'" onmouseout="this.style.background='#064E3B'">🎲 Tourner la roue !</button>
+          <button onclick="spinWheel()" id="spin-btn" style="background:#3B0764;color:#fff;border:none;padding:11px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;width:100%" onmouseover="this.style.background='#4C1D95'" onmouseout="this.style.background='#3B0764'">🎲 Tourner la roue !</button>
           <div id="wheel-result" style="display:none;margin-top:14px;padding:14px 16px;background:var(--surface2);border:2px solid #E2E8F0;border-radius:12px;text-align:center"></div>
         </div>
         <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center">
-          <div style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:22px solid #064E3B;margin-bottom:-2px;z-index:2;position:relative"></div>
+          <div style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:22px solid #3B0764;margin-bottom:-2px;z-index:2;position:relative"></div>
           <canvas id="wheel-canvas" width="260" height="260" style="border-radius:50%;cursor:pointer;display:block;box-shadow:0 4px 20px rgba(0,0,0,.15)" onclick="spinWheel()"></canvas>
         </div>
       </div>
@@ -655,7 +655,7 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 
 <!-- ══════════════════ ATELIER 5 ══════════════════ -->
 <section class="sec" id="sec-a5">
-  <div class="ahdr" style="background:linear-gradient(135deg,#064E3B,#059669)">
+  <div class="ahdr" style="background:linear-gradient(135deg,#065F46,#059669)">
     <div class="atag">Atelier 5</div>
     <h2>🔬 Sciences & STEAM — 5 défis disciplinaires</h2>
     <div class="ameta">
@@ -1001,7 +1001,7 @@ function drawWheel(angle) {
     ctx.restore();
   }
   ctx.beginPath(); ctx.arc(cx, cy, 18, 0, 2 * Math.PI);
-  ctx.fillStyle = '#064E3B'; ctx.fill();
+  ctx.fillStyle = '#3B0764'; ctx.fill();
   ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.stroke();
 }
 
