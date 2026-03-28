@@ -160,6 +160,9 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .scene-analysis .tip{font-size:11.5px}
 @media(max-width:900px){.scene-imgs.duo img{width:100%}.scene-imgs.duo{flex-direction:column}}
 
+.pd-btn{display:flex;align-items:center;gap:6px;width:100%;text-align:left;background:#F5F3FF;border:1.5px dashed #C4B5FD;border-radius:7px;padding:8px 12px;font-size:12px;font-weight:600;color:#6D28D9;cursor:pointer;margin-top:8px;transition:background .12s}
+.pd-btn:hover{background:#EDE9FE}
+.pd-btn.open{background:#EDE9FE;border-style:solid}
 .toast{position:fixed;bottom:22px;right:22px;background:#1E293B;color:#fff;padding:9px 15px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:1000}
 .toast.show{opacity:1;transform:translateY(0)}
 
@@ -872,6 +875,14 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
         <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 6 — Jeu de mots mêlés interactif</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
         <div class="pbody" id="pa7f">Crée un jeu de mots mêlés interactif en HTML/CSS/JavaScript (un seul fichier) sur le thème [animaux / planètes / histoire]. Grille de 12×12 lettres. Mots à trouver : [liste de 8 mots en rapport avec le thème]. Les mots sont cachés horizontalement, verticalement et en diagonale. L'élève clique sur la première et la dernière lettre d'un mot pour le surligner. Un compteur indique combien de mots ont été trouvés. Message de victoire quand tous les mots sont découverts.</div>
       </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 7 — Application de calcul mental</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7g">Crée une application web de calcul mental en HTML/CSS/JavaScript (un seul fichier). Paramètres : additions et soustractions jusqu'à 100, 10 questions par série, 8 secondes par question (barre de temps visible), affichage du score final avec encouragement. L'élève saisit sa réponse au clavier et valide avec Entrée. Bouton "Nouvelle série" pour recommencer. Design coloré et motivant pour des enfants de 7-9 ans.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 8 — Générateur de quiz interactif</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7h">Crée une application web (HTML/CSS/JS, fichier unique) : un champ texte pour coller un texte ou décrire une notion, un sélecteur de type (vrai/faux ou QCM), un sélecteur de niveau (maternelle / CP-CE1 / CE2-CM2), un bouton "Générer le quiz". L'outil appelle l'API Gemini et génère 5 questions adaptées. Affiche d'abord les questions sans réponses. Un bouton "Voir la correction" révèle les bonnes réponses avec explications.</div>
+      </div>
     </div>
 
     <div class="tips-box" style="background:#F5F3FF;border-color:var(--c7)">
@@ -945,7 +956,33 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
         </div>
         <div class="pcrd">
           <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt H — Lancement de projet : l'accroche</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt I — Scénario de formation entre pairs</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8i">Conçois un scénario de formation pédagogique de [durée] sur le thème : [thème], pour [enseignants débutants / équipe école entière / formateurs]. Inclut : objectifs de formation (3 max), phases détaillées (accueil / activité brise-glace / apport / mise en pratique / bilan), pour chaque phase : description, durée, supports nécessaires, posture du formateur (facilitateur / apporteur / observateur), 3 questions de débriefing collectif pour la clôture.</div>
+        </div>
           <div class="pbody" id="pa8h">Rédige un texte de présentation orale de 2-3 minutes pour lancer un projet de classe avec des élèves de [niveau]. Projet : [description]. Le texte doit : commencer par une question ou une situation concrète qui accroche, présenter les enjeux sans tout dévoiler, donner envie de s'y engager, se terminer par une question ouverte pour recueillir les représentations initiales. Ton : enthousiaste, direct, adapté à l'âge.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">🗂️ Gestion de classe</div>
+      <div class="prompts">
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt J — Règles de vie en classe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8j">Tu es enseignant en maternelle. Génère 8 règles de vie pour une classe de [PS / MS / GS]. Chaque règle doit : être formulée positivement (on dit ce qu'on fait), tenir en 4-6 mots, commencer par "Je" ou "On", être compréhensible par un enfant de 3-5 ans. Présente sous forme de tableau avec 3 colonnes : la règle, son sens expliqué à l'enfant (1 phrase), description de l'illustration (ce qu'on dessinerait ou photographierait).</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt K — Tableau des responsabilités</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8k">Crée un tableau de responsabilités de classe pour un niveau [GS / CP / CE1]. Liste 10 responsabilités. Pour chacune : nom du rôle (2-3 mots max), mission expliquée en langage d'enfant (1 phrase commençant par "Tu…"), un emoji associé, fréquence (quotidien / hebdomadaire). Les rôles doivent être variés et couvrir : distribution, rangement, observation, communication, aide.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt L — Message aux parents</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8l">Rédige un message aux parents d'une classe de [niveau], concernant : [situation en 2-3 mots]. Le message doit : faire 8-10 lignes maximum, avoir un ton professionnel et chaleureux, être clair sans jargon pédagogique, se terminer par une formule de politesse simple. Commence par "Bonjour," et termine par "Cordialement, [Prénom] [Nom]".</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt M — Rituel du matin</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8m">Crée un planning de rituel du matin pour une semaine (lundi–vendredi), pour une classe de [PS / MS / GS]. Chaque jour : une question ouverte sur le jour/la date/la météo, une activité courte liée au calendrier ou au comptage, une chanson ou comptine associée (donnez le titre). Les questions doivent être progressives du lundi (simple) au vendredi (plus complexe). Vocabulaire adapté à l'âge.</div>
         </div>
       </div>
     </div>
@@ -976,6 +1013,26 @@ function go(id, btn) {
   if (btn) btn.classList.add('active');
   document.getElementById('mainContent').scrollTop = 0;
 }
+
+// ── PROMPT DE DÉPART TOGGLE ──
+function togglePD(id) {
+  const body = document.getElementById(id);
+  const btn = body.previousElementSibling;
+  const isHidden = body.style.display === 'none' || getComputedStyle(body).display === 'none';
+  body.style.display = isHidden ? 'block' : 'none';
+  btn.textContent = isHidden ? '🔼 Masquer le prompt' : '💡 Prompt de départ';
+  btn.classList.toggle('open', isHidden);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.pcrd .pbody').forEach(el => {
+    const btn = document.createElement('button');
+    btn.className = 'pd-btn';
+    btn.textContent = '💡 Prompt de départ';
+    btn.onclick = () => togglePD(el.id);
+    el.parentNode.insertBefore(btn, el);
+    el.style.display = 'none';
+  });
+});
 
 // ── COPY PROMPT ──
 function cp(btn) {
