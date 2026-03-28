@@ -144,6 +144,19 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .biais-prompt{font-size:11px;background:#F0E7FF;color:#7C3AED;padding:4px 10px;border-radius:20px;font-weight:600;display:inline-block;margin-bottom:8px}
 .biais-title{font-size:13.5px;font-weight:700;margin-bottom:5px}
 .biais-desc{font-size:12px;color:var(--text-sec);line-height:1.5}
+.scene-card{background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:16px}
+.scene-hdr{background:#7F1D1D;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.scene-hdr-title{font-size:14px;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px}
+.scene-obs-btn{font-size:12px;font-weight:600;background:rgba(255,255,255,.15);color:#fff;border:1.5px solid rgba(255,255,255,.4);padding:5px 13px;border-radius:20px;cursor:default;flex-shrink:0}
+.scene-imgs{display:flex;width:100%}
+.scene-imgs img{width:100%;height:260px;object-fit:cover;object-position:top;display:block}
+.scene-imgs.duo img{width:50%}
+.scene-footer{padding:10px 18px;background:#FEF2F2;border-top:2px solid #FECACA;font-size:12.5px;color:#7F1D1D;font-style:italic}
+.scene-footer strong{font-weight:700;font-style:normal}
+.scene-analysis{padding:14px 18px;border-top:1px solid var(--border)}
+.scene-analysis .biais-desc{font-size:12px}
+.scene-analysis .tip{font-size:11.5px}
+@media(max-width:900px){.scene-imgs.duo img{width:100%}.scene-imgs.duo{flex-direction:column}}
 
 .toast{position:fixed;bottom:22px;right:22px;background:#1E293B;color:#fff;padding:9px 15px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:1000}
 .toast.show{opacity:1;transform:translateY(0)}
@@ -460,39 +473,75 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div>
       <div class="sec-title">🖼️ Les 4 scènes à analyser</div>
       <div class="hint">Ces images ont été générées par Imagen 4.0 (Google) avec des prompts très simples. Observez. Qu'est-ce que vous voyez ? Qu'est-ce qui manque ?</div>
-      <div class="biais-grid">
-        <div class="biais-card" style="border-color:#C4B5FD">
-          <span class="biais-prompt">Prompt : "a doctor" / "a nurse"</span>
-          <div class="biais-title">🩺 Professions médicales</div>
-          <div class="biais-desc">L'IA génère systématiquement un médecin masculin (costume, stéthoscope, posture d'autorité) et une infirmière féminine (uniforme, posture d'aide). Ce n'est pas intentionnel — c'est le reflet statistique des données d'entraînement, dominées par les médias occidentaux.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
-          <div class="tip" style="font-size:12px">Que remarque-t-on sur le genre des personnages ?</div>
-          <div class="tip" style="font-size:12px">Est-ce que cela reflète la réalité des professions aujourd'hui ?</div>
-          <div class="tip" style="font-size:12px">Quel impact si des élèves utilisent ces images dans un exposé ?</div>
+      <!-- Scène 1 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">🩺 Scène 1 — Deux professions médicales</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
         </div>
-        <div class="biais-card" style="border-color:#C4B5FD">
-          <span class="biais-prompt">Prompt : "a scientist" / "a great thinker"</span>
-          <div class="biais-title">🔬 Science & Philosophie</div>
-          <div class="biais-desc">L'IA génère de façon quasi-systématique des scientifiques et penseurs masculins, blancs, matures, d'apparence européenne. Les femmes scientifiques et les penseurs non-occidentaux sont significativement sous-représentés — invisibles dans les données.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
-          <div class="tip" style="font-size:12px">Quels grands penseurs ou scientifiques n'apparaissent jamais ?</div>
-          <div class="tip" style="font-size:12px">Que dit cela de l'histoire des sciences telle qu'elle a été documentée ?</div>
+        <div class="scene-imgs duo">
+          <img src="https://remyvdm.com/ia-formation/images/reel-doctor.png" alt="a doctor">
+          <img src="https://remyvdm.com/ia-formation/images/reel-nurse.png" alt="a nurse">
         </div>
-        <div class="biais-card" style="border-color:#C4B5FD">
-          <span class="biais-prompt">Prompt : "a business executive"</span>
-          <div class="biais-title">💼 Leadership & Pouvoir</div>
-          <div class="biais-desc">Le "dirigeant d'entreprise" généré par l'IA est presque toujours un homme, en costume sombre, dans un bureau occidental moderne. Le succès s'associe à un profil très précis — reflet des représentations dominantes dans les médias et les données d'entraînement.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
-          <div class="tip" style="font-size:12px">Quel message cette image envoie-t-elle à nos élèves sur le pouvoir ?</div>
-          <div class="tip" style="font-size:12px">Comment cela influence-t-il leurs représentations de l'avenir ?</div>
+        <div class="scene-footer"><strong>Prompt de gauche :</strong> "a doctor" &nbsp;·&nbsp; <strong>Prompt de droite :</strong> "a nurse"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">L'IA génère systématiquement un médecin masculin (stéthoscope, posture d'autorité) et une infirmière féminine (uniforme, posture d'aide). Ce n'est pas intentionnel — c'est le reflet statistique des données d'entraînement.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Que remarque-t-on sur le genre des personnages ?</div>
+          <div class="tip" style="font-size:11.5px">Est-ce que cela reflète la réalité des professions aujourd'hui ?</div>
+          <div class="tip" style="font-size:11.5px">Quel impact si des élèves utilisent ces images dans un exposé ?</div>
         </div>
-        <div class="biais-card" style="border-color:#C4B5FD">
-          <span class="biais-prompt">Prompt : "a beautiful woman"</span>
-          <div class="biais-title">✨ Canons de beauté</div>
-          <div class="biais-desc">Les standards de beauté générés s'alignent quasi exclusivement sur les canons occidentaux : peau claire, traits européens, cheveux lisses. Cela reflète la domination des contenus anglophones et occidentaux dans les données — au détriment d'une représentation diverse et inclusive.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
-          <div class="tip" style="font-size:12px">Quels canons de beauté sont absents ? Pourquoi ?</div>
-          <div class="tip" style="font-size:12px">Quel impact sur l'estime de soi des élèves qui ne se voient jamais représentés ?</div>
+      </div>
+      <!-- Scène 2 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">🔬 Scène 2 — Le scientifique et le grand penseur</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs duo">
+          <img src="https://remyvdm.com/ia-formation/images/reel-scientist.png" alt="a scientist">
+          <img src="https://remyvdm.com/ia-formation/images/reel-great_thinker.png" alt="a great thinker">
+        </div>
+        <div class="scene-footer"><strong>Prompt de gauche :</strong> "a scientist" &nbsp;·&nbsp; <strong>Prompt de droite :</strong> "a great thinker"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">L'IA génère de façon quasi-systématique des scientifiques et penseurs masculins, blancs, matures, d'apparence européenne. Les femmes scientifiques et les penseurs non-occidentaux sont invisibles dans les données.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Quels grands penseurs ou scientifiques n'apparaissent jamais ?</div>
+          <div class="tip" style="font-size:11.5px">Que dit cela de l'histoire des sciences telle qu'elle a été documentée ?</div>
+        </div>
+      </div>
+      <!-- Scène 3 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">💼 Scène 3 — Le chef d'entreprise</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs">
+          <img src="https://remyvdm.com/ia-formation/images/reel-ceo.png" alt="a business executive">
+        </div>
+        <div class="scene-footer"><strong>Prompt :</strong> "a business executive"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">Le "dirigeant d'entreprise" généré par l'IA est presque toujours un homme, en costume sombre, dans un bureau occidental moderne. Le succès s'associe à un profil très précis.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Quel message cette image envoie-t-elle à nos élèves sur le pouvoir ?</div>
+          <div class="tip" style="font-size:11.5px">Comment cela influence-t-il leurs représentations de l'avenir ?</div>
+        </div>
+      </div>
+      <!-- Scène 4 -->
+      <div class="scene-card">
+        <div class="scene-hdr">
+          <div class="scene-hdr-title">💄 Scène 4 — La "belle femme"</div>
+          <span class="scene-obs-btn">🔍 À observer</span>
+        </div>
+        <div class="scene-imgs">
+          <img src="https://remyvdm.com/ia-formation/images/reel-beauty.png" alt="a beautiful woman">
+        </div>
+        <div class="scene-footer"><strong>Prompt :</strong> "a beautiful woman"</div>
+        <div class="scene-analysis">
+          <div class="biais-desc">Les standards de beauté générés s'alignent quasi exclusivement sur les canons occidentaux : peau claire, traits européens. Cela reflète la domination des contenus anglophones dans les données d'entraînement.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
+          <div class="tip" style="font-size:11.5px">Quels canons de beauté sont absents ? Pourquoi ?</div>
+          <div class="tip" style="font-size:11.5px">Quel impact sur l'estime de soi des élèves qui ne se voient jamais représentés ?</div>
         </div>
       </div>
     </div>
