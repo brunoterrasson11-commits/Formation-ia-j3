@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation IA — Journée 3 | Ateliers disciplinaires</title>
+<style>
+:root {
+  --bg:#F1F5F9;--surface:#fff;--surface2:#F8FAFC;--text:#0F172A;--text-sec:#475569;--text-muted:#94A3B8;--border:#E2E8F0;
+  --sb:#064E3B;--sb-text:rgba(255,255,255,.85);--sb-muted:rgba(255,255,255,.4);--sb-hover:rgba(255,255,255,.07);--sb-active:rgba(255,255,255,.13);
+  --c1:#DC2626;--c2:#9333EA;--c3:#2563EB;--c4:#D97706;--c5:#059669;
+  --c1l:#FEF2F2;--c2l:#F5F3FF;--c3l:#EFF6FF;--c4l:#FFFBEB;--c5l:#ECFDF5;
+  --ok:#22C55E;--r:10px;--sh:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--shm:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);
+  --c6:#EA580C;--c6l:#FFF7ED;--c7:#7C3AED;--c7l:#F5F3FF;--c8:#0E7490;--c8l:#ECFEFF;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:15px}
+body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden}
+
+.sb{width:252px;background:var(--sb);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
+.sb-brand{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.sb-brand .tag{font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--sb-muted);text-transform:uppercase;margin-bottom:3px}
+.sb-brand h1{font-size:15px;font-weight:700;color:#fff;line-height:1.3}
+.sb-brand .sub{font-size:11px;color:var(--sb-muted);margin-top:2px}
+.sb-nav{flex:1;padding:10px 8px}
+.nav-label{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--sb-muted);padding:8px 10px 5px}
+.nb{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border:none;background:none;border-radius:7px;cursor:pointer;color:var(--sb-text);font-size:12.5px;text-align:left;transition:background .12s,color .12s;margin-bottom:2px;line-height:1.3}
+.nb:hover{background:var(--sb-hover);color:#fff}
+.nb.active{background:var(--sb-active);color:#fff}
+.ndot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.nb .meta{margin-left:auto;display:flex;align-items:center;gap:4px;flex-shrink:0}
+.nbadge{font-size:9px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.45);padding:1px 5px;border-radius:4px}
+.nchk{font-size:10px;color:var(--ok)}
+
+.timer-box{padding:13px 16px;border-top:1px solid rgba(255,255,255,.08);background:rgba(0,0,0,.2)}
+.timer-lbl{font-size:10px;color:var(--sb-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.timer-disp{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;color:#fff;letter-spacing:-.5px;margin-bottom:7px}
+.timer-disp.warn{color:#FBBF24}
+.timer-disp.danger{color:#EF4444}
+.timer-btns{display:flex;gap:5px}
+.tbtn{flex:1;padding:5px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);border-radius:6px;color:rgba(255,255,255,.7);font-size:11px;cursor:pointer;transition:background .12s}
+.tbtn:hover{background:rgba(255,255,255,.13);color:#fff}
+.tbtn.pri{background:rgba(255,255,255,.14);color:#fff}
+
+.main{flex:1;overflow-y:auto;scroll-behavior:smooth}
+.sec{display:none}
+.sec.active{display:block}
+
+.hero{background:linear-gradient(135deg,#064E3B 0%,#0F766E 100%);padding:36px 36px 28px;color:#fff}
+.hero .htag{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:7px}
+.hero h2{font-size:24px;font-weight:800;line-height:1.2;margin-bottom:7px}
+.hero .hsub{font-size:13.5px;color:rgba(255,255,255,.65);max-width:520px}
+.obj-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+.obj-pill{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:rgba(255,255,255,.8);line-height:1.4}
+.obj-pill::before{content:'→';color:rgba(255,255,255,.4);flex-shrink:0}
+
+.hbody{padding:28px 36px;display:grid;gap:22px}
+.sec-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:10px}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;padding:8px 12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--text-muted);border-bottom:1px solid var(--border)}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:nth-child(even) td{background:var(--surface2)}
+.tname{font-weight:700;color:var(--text)}
+
+.matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.mc{border:2px solid var(--border);border-radius:var(--r);padding:13px;cursor:pointer;transition:all .15s}
+.mc:hover{transform:translateY(-2px);box-shadow:var(--shm)}
+.mc-num{font-size:11px;font-weight:700;text-transform:uppercase;margin-bottom:5px}
+.mc-need{font-size:11px;color:var(--text-sec);line-height:1.4;margin-bottom:7px}
+.mc-dur{font-size:10px;color:var(--text-muted)}
+
+.ahdr{padding:28px 36px 22px;color:#fff;position:relative;overflow:hidden}
+.ahdr::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
+.atag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:5px}
+.ahdr h2{font-size:22px;font-weight:800;line-height:1.2;margin-bottom:11px}
+.ameta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.adur{font-size:12px;background:rgba(0,0,0,.2);padding:3px 10px;border-radius:20px;font-weight:600}
+.tpill{font-size:11px;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:20px;font-weight:500}
+
+.abody{padding:24px 36px;display:grid;gap:18px}
+
+.obj-block{border-radius:var(--r);padding:14px 16px;display:flex;align-items:flex-start;gap:11px;font-size:14px;line-height:1.6;border:1px solid}
+.obj-ico{font-size:20px;flex-shrink:0}
+
+.prog-hdr{display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);margin-bottom:5px}
+.prog-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:10px}
+.prog-fill{height:100%;border-radius:2px;transition:width .3s ease}
+
+.steps{display:grid;gap:7px}
+.step{display:flex;align-items:flex-start;gap:11px;padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:background .12s}
+.step:hover{background:var(--surface2)}
+.step.done{background:#F0FDF4;border-color:#BBF7D0}
+.snum{width:24px;height:24px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:2px solid;transition:all .15s}
+.step.done .snum{background:var(--ok);border-color:var(--ok);color:#fff;font-size:13px}
+.step.done .snum::before{content:'✓'}
+.step.done .snum span{display:none}
+.stxt{font-size:13px;line-height:1.5;flex:1}
+.step.done .stxt{color:var(--text-sec)}
+.hint{font-size:11.5px;color:var(--text-muted);margin-bottom:6px}
+
+.prompts{display:grid;gap:11px}
+.pcrd{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.phdr{display:flex;align-items:center;justify-content:space-between;padding:11px 13px 9px;border-bottom:1px solid var(--border);background:var(--surface2)}
+.ptitle{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.cpbtn{display:flex;align-items:center;gap:4px;padding:5px 11px;border-radius:6px;border:1px solid var(--border);background:#fff;font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--text-sec);flex-shrink:0;white-space:nowrap}
+.cpbtn:hover{border-color:#94A3B8}
+.cpbtn.copied{background:#DCFCE7;border-color:#86EFAC;color:#16A34A}
+.pbody{padding:13px;font-size:13px;line-height:1.75;color:var(--text);font-family:Georgia,'Times New Roman',serif;white-space:pre-wrap}
+
+.tips-box{border-radius:var(--r);padding:14px 16px;border-left:3px solid}
+.tips-ttl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:9px}
+.tips-list{display:grid;gap:5px}
+.tip{font-size:12.5px;line-height:1.5;display:flex;gap:7px;align-items:flex-start;color:var(--text-sec)}
+.tip::before{content:'→';flex-shrink:0;opacity:.5}
+
+.warn-box{background:#FEF3C7;border:1px solid #FCD34D;border-radius:var(--r);padding:11px 14px;font-size:13px;color:#92400E;display:flex;gap:9px;align-items:flex-start}
+.warn-ico{font-size:16px;flex-shrink:0}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.card-0{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:0;overflow:hidden}
+
+.defi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.defi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:all .15s}
+.defi-card:hover{box-shadow:var(--shm);transform:translateY(-1px)}
+.defi-hdr{padding:11px 13px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.defi-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)}
+.defi-title{font-size:13px;font-weight:700;margin:6px 13px 4px}
+.defi-desc{font-size:12px;color:var(--text-sec);line-height:1.5;margin:0 13px 10px}
+.defi-badge{font-size:9.5px;padding:2px 8px;border-radius:20px;font-weight:600;background:var(--bg);color:var(--text-sec);border:1px solid var(--border)}
+
+.affaire-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
+.affaire-hdr{padding:11px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);background:var(--surface2)}
+.affaire-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted)}
+.affaire-body{padding:12px 14px;display:grid;gap:8px}
+.affaire-ia{font-size:12.5px;line-height:1.6;background:var(--bg);border-radius:8px;padding:10px 12px;border-left:3px solid #94A3B8;font-style:italic;color:var(--text-sec)}
+.affaire-err{font-size:12px;display:flex;gap:7px;align-items:flex-start;color:#DC2626}
+.affaire-err::before{content:'✗';flex-shrink:0;font-weight:700}
+
+.biais-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.biais-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--r);padding:14px;transition:all .15s}
+.biais-card:hover{box-shadow:var(--shm)}
+.biais-prompt{font-size:11px;background:#F0E7FF;color:#7C3AED;padding:4px 10px;border-radius:20px;font-weight:600;display:inline-block;margin-bottom:8px}
+.biais-title{font-size:13.5px;font-weight:700;margin-bottom:5px}
+.biais-desc{font-size:12px;color:var(--text-sec);line-height:1.5}
+
+.toast{position:fixed;bottom:22px;right:22px;background:#1E293B;color:#fff;padding:9px 15px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:1000}
+.toast.show{opacity:1;transform:translateY(0)}
+
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(0,0,0,.13);border-radius:3px}
+.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1)}
+
+@media(max-width:1100px){.defi-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.matrix{grid-template-columns:repeat(2,1fr)}.obj-grid{grid-template-columns:1fr}.biais-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<aside class="sb">
+  <div class="sb-brand">
+    <div class="tag">Formation IA</div>
+    <h1>Journée 3</h1>
+    <div class="sub">IA en classe : faire apprendre</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="nav-label">Navigation</div>
+    <button class="nb active" onclick="go('home',this)">
+      <span style="font-size:15px">🏠</span><span>Accueil & Programme</span>
+    </button>
+    <div class="nav-label" style="margin-top:7px">8 Ateliers au choix</div>
+    <button class="nb" onclick="go('a1',this)" id="nb-a1">
+      <span class="ndot" style="background:var(--c1)"></span>
+      <span>Hallucinations & enquête</span>
+      <span class="meta"><span class="nbadge">40 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a2',this)" id="nb-a2">
+      <span class="ndot" style="background:var(--c2)"></span>
+      <span>Biais culturels</span>
+      <span class="meta"><span class="nbadge">30 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a3',this)" id="nb-a3">
+      <span class="ndot" style="background:var(--c3)"></span>
+      <span>Langage & Écriture</span>
+      <span class="meta"><span class="nbadge">40 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a4',this)" id="nb-a4">
+      <span class="ndot" style="background:var(--c4)"></span>
+      <span>Mathématiques</span>
+      <span class="meta"><span class="nbadge">40 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a5',this)" id="nb-a5">
+      <span class="ndot" style="background:var(--c5)"></span>
+      <span>Sciences & STEAM</span>
+      <span class="meta"><span class="nbadge">35 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a6',this)" id="nb-a6">
+      <span class="ndot" style="background:var(--c6)"></span>
+      <span>Arts, EPS & Expression</span>
+      <span class="meta"><span class="nbadge">35 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a7',this)" id="nb-a7">
+      <span class="ndot" style="background:var(--c7)"></span>
+      <span>Artefacts numériques</span>
+      <span class="meta"><span class="nbadge">45 min</span></span>
+    </button>
+    <button class="nb" onclick="go('a8',this)" id="nb-a8">
+      <span class="ndot" style="background:var(--c8)"></span>
+      <span>Évaluation & Préparation</span>
+      <span class="meta"><span class="nbadge">35 min</span></span>
+    </button>
+  </nav>
+  <div class="timer-box">
+    <div class="timer-lbl">⏱ Minuteur atelier</div>
+    <div class="timer-disp" id="tdisp">35:00</div>
+    <div class="timer-btns">
+      <button class="tbtn" onclick="setTimer(20)">20'</button>
+      <button class="tbtn" onclick="setTimer(30)">30'</button>
+      <button class="tbtn" onclick="setTimer(40)">40'</button>
+      <button class="tbtn pri" id="tstart" onclick="toggleTimer()">▶</button>
+    </div>
+  </div>
+</aside>
+
+<div class="main" id="mainContent">
+
+<!-- ══════════════════ ACCUEIL ══════════════════ -->
+<section class="sec active" id="sec-home">
+  <div class="hero">
+    <div class="htag">Formation IA · Journée 3</div>
+    <h2>IA en classe : faire apprendre avec l'IA</h2>
+    <div class="hsub">Ateliers disciplinaires, esprit critique et outils pour les élèves — 8 ateliers à la carte pour transformer vos pratiques de classe.</div>
+    <div class="obj-grid">
+      <div class="obj-pill">Tester la fiabilité de l'IA avec ses élèves — enquête et hallucinations</div>
+      <div class="obj-pill">Décrypter les biais culturels dans les images générées par l'IA</div>
+      <div class="obj-pill">Créer des ressources disciplinaires sur mesure en quelques prompts</div>
+      <div class="obj-pill">Concevoir des outils numériques interactifs prêts à projeter en classe</div>
+    </div>
+  </div>
+
+  <div class="hbody">
+
+    <div>
+      <div class="sec-title">📋 Carte des 8 ateliers</div>
+      <div class="matrix">
+        <div class="mc" onclick="go('a1',document.getElementById('nb-a1'))" style="border-color:var(--c1);border-left:4px solid var(--c1)">
+          <div class="mc-num" style="color:var(--c1)">Atelier 1</div>
+          <div class="mc-need" style="font-weight:700">🔍 Hallucinations & enquête</div>
+          <div class="mc-need">L'élève enquêteur·rice — détecter les erreurs de l'IA</div>
+          <div class="mc-dur">40 min · Esprit critique</div>
+        </div>
+        <div class="mc" onclick="go('a2',document.getElementById('nb-a2'))" style="border-color:var(--c2);border-left:4px solid var(--c2)">
+          <div class="mc-num" style="color:var(--c2)">Atelier 2</div>
+          <div class="mc-need" style="font-weight:700">🌍 Biais culturels</div>
+          <div class="mc-need">Observer et décrypter les représentations générées par l'IA</div>
+          <div class="mc-dur">30 min · Esprit critique</div>
+        </div>
+        <div class="mc" onclick="go('a3',document.getElementById('nb-a3'))" style="border-color:var(--c3);border-left:4px solid var(--c3)">
+          <div class="mc-num" style="color:var(--c3)">Atelier 3</div>
+          <div class="mc-need" style="font-weight:700">📚 Langage & Écriture</div>
+          <div class="mc-need">7 défis — comptines, albums, amorces, dictées, vocabulaire</div>
+          <div class="mc-dur">40 min · Français</div>
+        </div>
+        <div class="mc" onclick="go('a4',document.getElementById('nb-a4'))" style="border-color:var(--c4);border-left:4px solid var(--c4)">
+          <div class="mc-num" style="color:var(--c4)">Atelier 4</div>
+          <div class="mc-need" style="font-weight:700">🔢 Mathématiques</div>
+          <div class="mc-need">7 défis — situations-problèmes, calcul mental, jeux, géométrie</div>
+          <div class="mc-dur">40 min · Maths</div>
+        </div>
+        <div class="mc" onclick="go('a5',document.getElementById('nb-a5'))" style="border-color:var(--c5);border-left:4px solid var(--c5)">
+          <div class="mc-num" style="color:var(--c5)">Atelier 5</div>
+          <div class="mc-need" style="font-weight:700">🔬 Sciences & STEAM</div>
+          <div class="mc-need">5 défis — fiches d'observation, protocoles, défis STEAM</div>
+          <div class="mc-dur">35 min · Sciences</div>
+        </div>
+        <div class="mc" onclick="go('a6',document.getElementById('nb-a6'))" style="border-color:var(--c6);border-left:4px solid var(--c6)">
+          <div class="mc-num" style="color:var(--c6)">Atelier 6</div>
+          <div class="mc-need" style="font-weight:700">🎨 Arts, EPS & Expression</div>
+          <div class="mc-need">8 défis — arts plastiques, jeux de rôle, chansons, motricité</div>
+          <div class="mc-dur">35 min · Arts / EPS</div>
+        </div>
+        <div class="mc" onclick="go('a7',document.getElementById('nb-a7'))" style="border-color:var(--c7);border-left:4px solid var(--c7)">
+          <div class="mc-num" style="color:var(--c7)">Atelier 7</div>
+          <div class="mc-need" style="font-weight:700">🖥️ Artefacts numériques</div>
+          <div class="mc-need">6 outils HTML interactifs à créer et projeter en classe</div>
+          <div class="mc-dur">45 min · Outils</div>
+        </div>
+        <div class="mc" onclick="go('a8',document.getElementById('nb-a8'))" style="border-color:var(--c8);border-left:4px solid var(--c8)">
+          <div class="mc-num" style="color:var(--c8)">Atelier 8</div>
+          <div class="mc-need" style="font-weight:700">📊 Évaluation & Préparation</div>
+          <div class="mc-need">Différenciation, bulletins, séquences, programmation</div>
+          <div class="mc-dur">35 min · Transversal</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">🎡 Vous êtes joueur ? Laissez la roue choisir !</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 22px 20px;display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px">
+          <p style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px">Impossible de choisir votre atelier ?</p>
+          <p style="font-size:13px;color:var(--text-sec);line-height:1.65;margin-bottom:18px">Donnez un coup de roue et laissez le hasard décider. Chaque atelier est une bonne porte d'entrée — l'essentiel est de commencer !</p>
+          <button onclick="spinWheel()" id="spin-btn" style="background:#064E3B;color:#fff;border:none;padding:11px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;width:100%" onmouseover="this.style.background='#065F46'" onmouseout="this.style.background='#064E3B'">🎲 Tourner la roue !</button>
+          <div id="wheel-result" style="display:none;margin-top:14px;padding:14px 16px;background:var(--surface2);border:2px solid #E2E8F0;border-radius:12px;text-align:center"></div>
+        </div>
+        <div style="flex-shrink:0;display:flex;flex-direction:column;align-items:center">
+          <div style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:22px solid #064E3B;margin-bottom:-2px;z-index:2;position:relative"></div>
+          <canvas id="wheel-canvas" width="260" height="260" style="border-radius:50%;cursor:pointer;display:block;box-shadow:0 4px 20px rgba(0,0,0,.15)" onclick="spinWheel()"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 1 ══════════════════ -->
+<section class="sec" id="sec-a1">
+  <div class="ahdr" style="background:linear-gradient(135deg,#991B1B,#DC2626)">
+    <div class="atag">Atelier 1</div>
+    <h2>🔍 Hallucinations & enquête — L'élève enquêteur·rice</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 40 min</span>
+      <span class="tpill">Esprit critique</span>
+      <span class="tpill">Tous niveaux</span>
+      <span class="tpill">En classe</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#FEF2F2;border-color:#FCA5A5">
+      <span class="obj-ico">🎯</span>
+      <div>Faire vivre à vos élèves une expérience de détection d'erreurs dans des textes générés par l'IA. L'objectif : comprendre que l'IA "hallucine" — elle produit des affirmations fausses avec une confiance absolue. Et créer ensuite votre propre "affaire" pour votre discipline.</div>
+    </div>
+
+    <div>
+      <div class="sec-title">📋 Les 4 affaires à investiguer</div>
+      <div class="hint">Ces textes ont été générés par une IA. Chacun contient des erreurs. Reproduisez la démarche avec vos élèves.</div>
+
+      <div class="affaire-card">
+        <div class="affaire-hdr">
+          <span style="font-size:18px">📚</span>
+          <span class="affaire-num">Affaire #1</span>
+          <strong style="font-size:13px;flex:1;margin-left:8px">Citation scientifique</strong>
+          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">2 erreurs</span>
+        </div>
+        <div class="affaire-body">
+          <div class="affaire-ia">"Selon Martin, L. (2021). Effets du numérique sur l'autonomie des élèves en cycle 2. Revue Française de Pédagogie, 212, 23–41. doi:10.4000/rfp.8854…"</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
+          <div class="tip">Vérifier la validité du DOI sur doi.org</div>
+          <div class="tip">Consulter la Revue Française de Pédagogie (journals.openedition.org/rfp)</div>
+          <div class="tip">Valider la statistique citée via Google Scholar</div>
+          <div class="affaire-err">DOI invalide — l'article n'existe pas</div>
+          <div class="affaire-err">Statistique 34 % entièrement fabriquée par l'IA</div>
+        </div>
+      </div>
+
+      <div class="affaire-card">
+        <div class="affaire-hdr">
+          <span style="font-size:18px">👤</span>
+          <span class="affaire-num">Affaire #2</span>
+          <strong style="font-size:13px;flex:1;margin-left:8px">Biographie — Ovide Decroly</strong>
+          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">2 erreurs</span>
+        </div>
+        <div class="affaire-body">
+          <div class="affaire-ia">"Ovide Decroly (1871–1932)… fonde l'École de l'Ermitage… publie L'École active en 1922… reçoit le prix Francqui en 1928…"</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
+          <div class="tip">Fiche Wikipedia Ovide Decroly</div>
+          <div class="tip">Vérifier le livre "L'École active" — qui l'a vraiment écrit ?</div>
+          <div class="tip">Liste des lauréats du prix Francqui (francquifoundation.be)</div>
+          <div class="affaire-err">"L'École active" a été écrit par Adolphe Ferrière, pas par Decroly</div>
+          <div class="affaire-err">Decroly est absent de la liste des lauréats du prix Francqui 1928</div>
+        </div>
+      </div>
+
+      <div class="affaire-card">
+        <div class="affaire-hdr">
+          <span style="font-size:18px">🔢</span>
+          <span class="affaire-num">Affaire #3</span>
+          <strong style="font-size:13px;flex:1;margin-left:8px">Calcul</strong>
+          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">1 erreur</span>
+        </div>
+        <div class="affaire-body">
+          <div class="affaire-ia">"4 tickets × 2,50 € = 10 €/enfant. 120 élèves = 1 200 €. Après 350 € de frais, bénéfice = 900 €."</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
+          <div class="tip">Vérifier : 4 × 2,50 = ? — correct</div>
+          <div class="tip">120 × 10 = ? — correct</div>
+          <div class="tip">1 200 − 350 = ? — à recalculer</div>
+          <div class="affaire-err">Le bénéfice est 850 €, pas 900 € — l'IA a fait une erreur de soustraction</div>
+        </div>
+      </div>
+
+      <div class="affaire-card">
+        <div class="affaire-hdr">
+          <span style="font-size:18px">🗣️</span>
+          <span class="affaire-num">Affaire #4</span>
+          <strong style="font-size:13px;flex:1;margin-left:8px">Traduction bretonne</strong>
+          <span style="font-size:11px;background:#FEE2E2;color:#DC2626;padding:2px 8px;border-radius:20px;font-weight:700">1 erreur</span>
+        </div>
+        <div class="affaire-body">
+          <div class="affaire-ia">"Phrase bretonne : Demat, mont a ra mat ganit ? = 'Bonjour, comment ça va ?'. Le breton compte environ 1,2 million de locuteurs…"</div>
+          <div style="font-size:12px;font-weight:700;color:var(--text-sec);margin-top:4px">Pistes de vérification :</div>
+          <div class="tip">Wiktionnaire : rechercher "demat" et "breton"</div>
+          <div class="tip">Article Wikipédia sur la langue bretonne</div>
+          <div class="affaire-err">"1,2 million de locuteurs" — la réalité est ≈ 200 000–250 000 locuteurs</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">📋 Prompts — Créer votre propre enquête</div>
+      <div class="prompts">
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c1)">Prompt A — Générer une "affaire" pour ma matière</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa1a">Tu es un formateur en esprit critique. Génère un texte court (5-8 lignes) sur [sujet de ma discipline] qui contient exactement 2 erreurs factuelles plausibles. Les erreurs doivent être vérifiables en ligne. Format : 1) le texte avec les erreurs intégrées naturellement, 2) les pistes de vérification (avec liens si possible), 3) les erreurs révélées avec explication. Niveau : [niveau des élèves].</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c1)">Prompt B — Créer une séance "détective IA"</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa1b">Conçois une séance de 45 minutes sur la fiabilité de l'IA pour des élèves de [niveau], dans le cadre de [matière]. La séance inclut : une phase découverte (l'IA se trompe, exemples concrets), 2 "affaires" à investiguer en binômes avec des textes de l'IA contenant des erreurs sur [thème du cours], une mise en commun, et une règle de conduite à co-construire avec les élèves ("quand utiliser l'IA, comment vérifier"). Fournis tous les supports.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c1)">Prompt C — Texte à vérifier sur une notion de cours</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa1c">Rédige un texte de 10 lignes sur [notion du programme] pour des élèves de [niveau], qui contient 3 erreurs factuelles de difficulté croissante : une évidente, une subtile, une qui nécessite une vraie vérification documentaire. Donne ensuite la liste des erreurs et comment les vérifier. Usage pédagogique : entraîner les élèves à ne pas faire confiance aveuglément à l'IA.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#FEF2F2;border-color:var(--c1)">
+      <div class="tips-ttl" style="color:var(--c1)">💡 Conseils pour la séance en classe</div>
+      <div class="tips-list">
+        <div class="tip">Commencez par un exemple spectaculaire : demandez à l'IA la biographie d'un élève de la classe — elle va inventer</div>
+        <div class="tip">L'erreur de calcul (affaire #3) fonctionne très bien avec les plus jeunes : elle dédramatise et montre que l'IA n'est pas "toute-puissante"</div>
+        <div class="tip">Donnez aux élèves le temps de chercher avant de révéler les erreurs — la frustration productive est pédagogique</div>
+        <div class="tip">Cadrez la conclusion : l'IA est un outil puissant mais faillible — la vérification des sources reste une compétence humaine irremplaçable</div>
+        <div class="tip">Adaptez les "affaires" à votre matière : un texte sur la Révolution française avec 2 dates fausses, une biographie d'auteur avec un roman inventé...</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 2 ══════════════════ -->
+<section class="sec" id="sec-a2">
+  <div class="ahdr" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
+    <div class="atag">Atelier 2</div>
+    <h2>🌍 Biais culturels — Décrypter les représentations de l'IA</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 30 min</span>
+      <span class="tpill">Esprit critique</span>
+      <span class="tpill">Tous niveaux</span>
+      <span class="tpill">Observation & débat</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#F5F3FF;border-color:#C4B5FD">
+      <span class="obj-ico">🎯</span>
+      <div>Observer les images générées par l'IA et comprendre qu'au-delà des erreurs factuelles, l'IA reproduit et amplifie des biais culturels issus de ses données d'entraînement. Ces 4 scènes permettent un débat riche avec les élèves ou entre collègues.</div>
+    </div>
+
+    <div>
+      <div class="sec-title">🖼️ Les 4 scènes à analyser</div>
+      <div class="hint">Ces images ont été générées par Imagen 4.0 (Google) avec des prompts très simples. Observez. Qu'est-ce que vous voyez ? Qu'est-ce qui manque ?</div>
+      <div class="biais-grid">
+        <div class="biais-card" style="border-color:#C4B5FD">
+          <span class="biais-prompt">Prompt : "a doctor" / "a nurse"</span>
+          <div class="biais-title">🩺 Professions médicales</div>
+          <div class="biais-desc">L'IA génère systématiquement un médecin masculin (costume, stéthoscope, posture d'autorité) et une infirmière féminine (uniforme, posture d'aide). Ce n'est pas intentionnel — c'est le reflet statistique des données d'entraînement, dominées par les médias occidentaux.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
+          <div class="tip" style="font-size:12px">Que remarque-t-on sur le genre des personnages ?</div>
+          <div class="tip" style="font-size:12px">Est-ce que cela reflète la réalité des professions aujourd'hui ?</div>
+          <div class="tip" style="font-size:12px">Quel impact si des élèves utilisent ces images dans un exposé ?</div>
+        </div>
+        <div class="biais-card" style="border-color:#C4B5FD">
+          <span class="biais-prompt">Prompt : "a scientist" / "a great thinker"</span>
+          <div class="biais-title">🔬 Science & Philosophie</div>
+          <div class="biais-desc">L'IA génère de façon quasi-systématique des scientifiques et penseurs masculins, blancs, matures, d'apparence européenne. Les femmes scientifiques et les penseurs non-occidentaux sont significativement sous-représentés — invisibles dans les données.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
+          <div class="tip" style="font-size:12px">Quels grands penseurs ou scientifiques n'apparaissent jamais ?</div>
+          <div class="tip" style="font-size:12px">Que dit cela de l'histoire des sciences telle qu'elle a été documentée ?</div>
+        </div>
+        <div class="biais-card" style="border-color:#C4B5FD">
+          <span class="biais-prompt">Prompt : "a business executive"</span>
+          <div class="biais-title">💼 Leadership & Pouvoir</div>
+          <div class="biais-desc">Le "dirigeant d'entreprise" généré par l'IA est presque toujours un homme, en costume sombre, dans un bureau occidental moderne. Le succès s'associe à un profil très précis — reflet des représentations dominantes dans les médias et les données d'entraînement.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
+          <div class="tip" style="font-size:12px">Quel message cette image envoie-t-elle à nos élèves sur le pouvoir ?</div>
+          <div class="tip" style="font-size:12px">Comment cela influence-t-il leurs représentations de l'avenir ?</div>
+        </div>
+        <div class="biais-card" style="border-color:#C4B5FD">
+          <span class="biais-prompt">Prompt : "a beautiful woman"</span>
+          <div class="biais-title">✨ Canons de beauté</div>
+          <div class="biais-desc">Les standards de beauté générés s'alignent quasi exclusivement sur les canons occidentaux : peau claire, traits européens, cheveux lisses. Cela reflète la domination des contenus anglophones et occidentaux dans les données — au détriment d'une représentation diverse et inclusive.</div>
+          <div style="margin-top:10px;font-size:12px;font-weight:700;color:var(--c2)">Questions à poser :</div>
+          <div class="tip" style="font-size:12px">Quels canons de beauté sont absents ? Pourquoi ?</div>
+          <div class="tip" style="font-size:12px">Quel impact sur l'estime de soi des élèves qui ne se voient jamais représentés ?</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">📋 Prompts pour aller plus loin</div>
+      <div class="prompts">
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c2)">Prompt A — Analyser un biais avec les élèves</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa2a">Tu es expert en études culturelles et éducation aux médias. J'ai généré cette image avec l'IA via le prompt : "[prompt utilisé]". L'image montre [description]. Explique en termes accessibles à des élèves de [niveau] : 1) quel biais culturel ou de genre est visible, 2) d'où vient ce biais (données d'entraînement, histoire des représentations), 3) pourquoi c'est important d'en parler en classe, 4) comment les élèves peuvent développer un regard critique sur ces images.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c2)">Prompt B — Créer une séance sur les biais</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa2b">Conçois une séance de 30-40 minutes sur les biais des IA pour des élèves de [niveau] en [matière / EMC / HIDA]. La séance : observation de 3 images générées par l'IA avec des prompts simples, analyse guidée des représentations (genre, race, culture), débat structuré avec des questions ouvertes, production finale : une charte collective "Comment utiliser les images de l'IA de façon critique". Fournis les questions de débat et le canevas de la charte.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c2)">Prompt C — Contrepoint : demander la diversité</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa2c">Génère un prompt d'image optimisé pour représenter [profession / rôle] de façon diverse et inclusive : différents genres, ethnies, âges, morphologies. Le prompt doit être en anglais, précis, et contrecarrer les biais par défaut du générateur d'images. Explique ensuite pourquoi ces précisions changent le résultat.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#F5F3FF;border-color:var(--c2)">
+      <div class="tips-ttl" style="color:var(--c2)">💡 Conseils pour animer la séance</div>
+      <div class="tips-list">
+        <div class="tip">Montrez les images sans explication préalable : laissez les élèves observer et réagir librement avant d'analyser</div>
+        <div class="tip">Les biais ne sont pas des "bugs" — ils reflètent la société telle qu'elle a été documentée. C'est une nuance importante à transmettre</div>
+        <div class="tip">Demandez aux élèves de générer eux-mêmes des images et d'observer : c'est plus impactant que de montrer des exemples préparés</div>
+        <div class="tip">Lien fort avec l'EMC (égalité, représentations) et l'HIDA (l'image et sa construction culturelle)</div>
+        <div class="tip">Terminez sur une note constructive : comment contourner ces biais ? Comment demander à l'IA des représentations plus diversifiées ?</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 3 ══════════════════ -->
+<section class="sec" id="sec-a3">
+  <div class="ahdr" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6)">
+    <div class="atag">Atelier 3</div>
+    <h2>📚 Langage & Écriture — 7 défis disciplinaires</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 40 min</span>
+      <span class="tpill">Français</span>
+      <span class="tpill">Maternelle → CM2</span>
+      <span class="tpill">Prompts prêts à copier</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#EFF6FF;border-color:#BFDBFE">
+      <span class="obj-ico">🎯</span>
+      <div>7 défis pour créer des ressources de français sur mesure en quelques secondes. Comptines, questions sur un album, amorces d'écriture, dictées, textes lacunaires, vocabulaire — adaptez le niveau et copiez le prompt dans ChatGPT ou Gemini.</div>
+    </div>
+
+    <div class="defi-grid">
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 1 — Comptines & devinettes</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3a">Crée pour une classe de [PS / MS / GS] sur le thème "[thème]" : 1) Une comptine de 6-8 lignes avec répétition d'un refrain, rythme régulier, vocabulaire de maternelle, et si possible un geste ou une action associée à chaque strophe. 2) 3 devinettes de type "Je suis… qui suis-je ?" avec 3 indices progressifs du plus difficile au plus facile.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 2 — Questions sur un album</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3b">Album : "[titre]". Résumé : "[2-3 phrases]". Génère 10 questions de compréhension pour des élèves de [CP / CE1], réparties ainsi : 3 questions littérales [réponse dans le texte], 4 questions inférentielles [il faut déduire], 3 questions interprétatives [il faut argumenter]. Indique le niveau entre crochets avant chaque question. Formule les questions de façon simple et directe.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 3 — Amorces d'écriture créative</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3c">Génère 10 amorces d'écriture pour des élèves de [CE1 / CE2 / CM1 / CM2], pour un texte de type [conte / récit du réel / lettre / poème / récit fantastique]. Chaque amorce : commence la première phrase du texte, est stimulante et originale, ne dépasse pas une ligne. Elles doivent ouvrir des possibles sans contraindre. Numérote-les.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 4 — Texte lacunaire sur mesure</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3d">Crée un texte lacunaire pour des élèves de [CP / CE1 / CE2], ciblant la notion : [déterminants / accord GN / accord sujet-verbe / homophones / ...]. Thème du texte : [thème]. Le texte : 5 à 8 phrases, 8 à 12 trous numérotés. Fournis dans cet ordre : 1) le texte avec les trous (____), 2) la banque de mots dans le désordre, 3) la correction avec justification pour chaque trou.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 5 — Dictée préparée ciblée</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3e">Rédige une dictée préparée pour une classe de [CE1 / CE2 / CM1 / CM2], ciblant : [accord du GN / accord sujet-verbe / homophones grammaticaux / terminaisons verbales / ...]. Thème : [thème au choix]. Le texte : 5-7 lignes, niveau de langue adapté, au moins 8 occurrences de la notion visée. Ensuite : liste des 8 mots difficiles à préparer avec les élèves, et les 2-3 règles à rappeler avant la dictée.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 6 — Carnet de vocabulaire thématique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3f">Crée un carnet de vocabulaire pour des élèves de [CE2 / CM1 / CM2] sur le thème : "[thème]". Pour chacun des 10 mots-clés importants du thème, donne : le mot, sa classe grammaticale, une définition en 2 lignes max (vocabulaire accessible), un exemple d'utilisation dans une phrase simple, un synonyme. Format tableau à 5 colonnes. Trie par ordre alphabétique.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 7 — Reformulateur de consignes</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa3g">Voici une consigne scolaire : "[consigne originale]". Reformule-la en 3 versions adaptées à des niveaux différents : version CP-CE1 (phrases très courtes, mots simples, une seule tâche à la fois), version CE2-CM1 (2-3 étapes, connecteurs simples), version CM2 (consigne complète, avec critères de réussite intégrés). Explique les choix de reformulation pour chaque version.</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#EFF6FF;border-color:var(--c3)">
+      <div class="tips-ttl" style="color:var(--c3)">💡 Conseils pour ces défis</div>
+      <div class="tips-list">
+        <div class="tip">Adaptez toujours le prompt à votre classe en précisant la période de l'année et les notions déjà vues</div>
+        <div class="tip">Les amorces d'écriture (défi 3) peuvent être générées en 10 secondes le matin même selon l'humeur de la classe</div>
+        <div class="tip">La dictée préparée (défi 5) : demandez aussi les "pièges" que l'IA a intentionnellement inclus — très utile pour les élèves avancés</div>
+        <div class="tip">Pour le texte lacunaire : demandez plusieurs versions avec des thèmes différents pour éviter la monotonie</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 4 ══════════════════ -->
+<section class="sec" id="sec-a4">
+  <div class="ahdr" style="background:linear-gradient(135deg,#92400E,#D97706)">
+    <div class="atag">Atelier 4</div>
+    <h2>🔢 Mathématiques — 7 défis disciplinaires</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 40 min</span>
+      <span class="tpill">Mathématiques</span>
+      <span class="tpill">CP → CM2</span>
+      <span class="tpill">Prompts prêts à copier</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#FFFBEB;border-color:#FCD34D">
+      <span class="obj-ico">🎯</span>
+      <div>7 défis pour créer des ressources mathématiques adaptées à votre niveau en quelques secondes. Situations-problèmes contextualisées, calcul mental gradué, jeux de révision, énigmes logiques, géométrie — copiez le prompt et adaptez.</div>
+    </div>
+
+    <div class="defi-grid">
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 1 — Situations-problèmes contextualisées</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4a">Crée 5 situations-problèmes pour des élèves de [CP / CE1 / CE2 / CM1 / CM2], mobilisant la notion : [addition / soustraction / multiplication / division / fractions / pourcentages]. Contexte : [kermesse / voyage scolaire / recette de cuisine / budget fête / animaux]. Problèmes progressifs en difficulté, données réalistes. Solution détaillée étape par étape après chaque problème.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 2 — Séquence de calcul mental</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4b">Génère une série de 20 questions de calcul mental pour une classe de [CE1 / CE2 / CM1 / CM2], centrée sur : [tables de multiplication / additions / compléments / fractions / calcul avec décimaux]. Structure : 5 questions faciles, 10 intermédiaires, 5 difficiles. Format : numéro + question sur une ligne. Donne la correction numérotée après les 20 questions.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 3 — Énigmes logiques progressives</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4c">Crée 3 énigmes logiques pour des élèves de [CE2 / CM1 / CM2], de difficulté croissante. Thème : [animaux / école / sport]. Chaque énigme : contexte et personnages simples, données à analyser pour résoudre (type "si… alors…"), une question précise. Après chaque énigme : solution et raisonnement étape par étape. L'énigme difficile doit nécessiter un tableau ou une grille pour être résolue.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 4 — Jeu de l'oie mathématique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4d">Crée le contenu d'un jeu de l'oie mathématique pour des élèves de [CE1 / CE2 / CM1 / CM2], notion : [thème]. 30 cases : 20 cases avec une question ou un calcul adapté au niveau, 5 cases "défi" (tâche à réaliser à l'oral), 3 cases "chance / malchance" (avance X / recule X), 2 cases "rejoue / passe ton tour". Chaque case tient en 1-2 lignes. Donne la correction des cases avec questions à la fin.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 5 — Données pour graphiques</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4e">Crée un jeu de données réaliste pour une activité de statistiques en [CM1 / CM2], thème : [météo / résultats sportifs / animaux / consommation]. Fournis : un tableau de données (5-7 colonnes, 6-8 lignes), le type de graphique le plus adapté (et pourquoi), une question principale à résoudre avec le graphique, 3 questions d'interprétation du graphique.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 6 — Défis géométrie</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4f">Génère 5 défis de construction géométrique pour des élèves de [CM1 / CM2], de difficulté progressive (⭐ à ⭐⭐⭐). Chaque défi : une consigne de construction précise avec contraintes, les instruments à utiliser (règle / équerre / compas / rapporteur), les figures impliquées, les critères de réussite vérifiables par l'élève. Le défi 5 doit combiner au moins 3 figures et 2 instruments.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 7 — Problèmes de la vie réelle</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa4g">Crée 5 problèmes mathématiques ancrés dans la vie réelle pour des élèves de [CE2 / CM1 / CM2], dans le contexte : [kermesse / catalogue / budget fête / recette / sorties]. Les problèmes : progressifs en difficulté, mobilisant [notion], avec des données réalistes (vrais prix, vraies quantités). Solution détaillée après chaque problème.</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#FFFBEB;border-color:var(--c4)">
+      <div class="tips-ttl" style="color:var(--c4)">💡 Conseils pour ces défis</div>
+      <div class="tips-list">
+        <div class="tip">Pour les situations-problèmes : demandez une version avec aide (schéma, données surlignées) et une version sans aide — c'est de la différenciation instantanée</div>
+        <div class="tip">Le calcul mental (défi 2) est idéal en rituel du matin : générez une série par semaine</div>
+        <div class="tip">Le jeu de l'oie (défi 4) : une IA peut aussi créer le plateau en SVG si vous précisez que vous voulez un fichier imprimable</div>
+        <div class="tip">Pour la géométrie : demandez des figures avec les mesures en millimètres pour éviter les ambiguïtés à l'impression</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 5 ══════════════════ -->
+<section class="sec" id="sec-a5">
+  <div class="ahdr" style="background:linear-gradient(135deg,#064E3B,#059669)">
+    <div class="atag">Atelier 5</div>
+    <h2>🔬 Sciences & STEAM — 5 défis disciplinaires</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 35 min</span>
+      <span class="tpill">Sciences</span>
+      <span class="tpill">CP → CM2</span>
+      <span class="tpill">Expérimentation</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#ECFDF5;border-color:#6EE7B7">
+      <span class="obj-ico">🎯</span>
+      <div>5 défis pour enrichir vos séances de sciences : fiches d'observation structurées, protocoles d'expérience accessibles, défis STEAM interdisciplinaires, textes documentaires adaptés, quiz de fin de séquence. Copiez le prompt, adaptez le sujet et le niveau.</div>
+    </div>
+
+    <div class="defi-grid">
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 1 — Fiche d'observation scientifique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa5a">Crée une fiche d'observation scientifique pour des élèves de [CP / CE1 / CE2 / CM1 / CM2], sujet : [plante / insecte / objet / matière]. La fiche contient : observations à faire avec les yeux (3), avec les mains (2), avec le nez si pertinent (1), 5 questions pour guider l'observation sans donner les réponses, un schéma simplifié à compléter (décris les 4-6 parties à légender), et une case "Ce que j'en déduis".</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 2 — Protocole d'expérience</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa5b">Rédige un protocole d'expérience scientifique pour des élèves de CM1-CM2, répondant à la question : "[question scientifique]". Structure : 1) Question, 2) Hypothèses possibles (2-3), 3) Matériel nécessaire (liste), 4) Étapes numérotées (max 6 étapes), 5) Observations à noter pendant l'expérience, 6) Résultats attendus selon chaque hypothèse. Vocabulaire accessible, pas de jargon.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 3 — Défi STEAM en groupe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa5c">Conçois un défi STEAM pour des groupes de 3-4 élèves de CM1-CM2. Thème : "[thème]". Matériaux disponibles : [liste]. Durée : [durée]. Le défi doit inclure : la problématique à résoudre (formulée comme une vraie mission), les contraintes précises, les critères de réussite mesurables, les 4 phases (concevoir / construire / tester / améliorer), 5 questions de débriefing oral collectif.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 4 — Texte documentaire adapté</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa5d">Rédige un texte documentaire pour des élèves de [CP / CE1 / CE2 / CM1 / CM2] sur : "[sujet]". Contraintes : [150 mots pour CP / 250 mots pour CE / 400 mots pour CM], structuré en 3 paragraphes titrés, vocabulaire adapté au niveau, 3 mots spécifiques expliqués entre parenthèses à leur première occurrence. Ajoute 4 questions de compréhension après le texte (2 littérales, 2 inférentielles).</div>
+      </div>
+      <div class="pcrd" style="grid-column:1/-1">
+        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 5 — Quiz sur le vivant (ou toute notion de sciences)</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa5e">Crée un quiz de 10 questions sur [cycle de vie / classification des animaux / états de la matière / système solaire / photosynthèse] pour des élèves de [CE1 / CE2 / CM1 / CM2]. Types de questions : 3 vrai/faux, 4 QCM à 3 options, 2 questions à compléter, 1 question ouverte courte. Vocabulaire adapté au niveau. Correction complète avec justification pour chaque réponse.</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#ECFDF5;border-color:var(--c5)">
+      <div class="tips-ttl" style="color:var(--c5)">💡 Conseils pour ces défis</div>
+      <div class="tips-list">
+        <div class="tip">Pour le défi STEAM : précisez le matériel disponible dans votre école — l'IA adapte les contraintes en conséquence</div>
+        <div class="tip">Le texte documentaire peut être généré en 3 niveaux simultanément pour la différenciation : un prompt, 3 versions</div>
+        <div class="tip">Le protocole d'expérience : demandez aussi une version "élève" (fiche à compléter) et une version "enseignant" (corrigé avec les résultats attendus)</div>
+        <div class="tip">Vérifiez toujours les données scientifiques — l'IA peut inclure des imprécisions sur des notions complexes</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 6 ══════════════════ -->
+<section class="sec" id="sec-a6">
+  <div class="ahdr" style="background:linear-gradient(135deg,#9A3412,#EA580C)">
+    <div class="atag">Atelier 6</div>
+    <h2>🎨 Arts, EPS & Expression — 8 défis disciplinaires</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 35 min</span>
+      <span class="tpill">Arts plastiques</span>
+      <span class="tpill">EPS</span>
+      <span class="tpill">Musique & Expression</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#FFF7ED;border-color:#FDBA74">
+      <span class="obj-ico">🎯</span>
+      <div>8 défis pour préparer vos séances d'arts plastiques, d'EPS et d'expression orale ou musicale. Consignes créatives, scénarios de jeux de rôle, paroles de chanson sur mesure, parcours de motricité, jeux collectifs — tout est personnalisable en quelques secondes.</div>
+    </div>
+
+    <div class="defi-grid">
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 1 — Consignes d'arts plastiques</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6a">Crée 5 consignes d'arts plastiques pour des élèves de [PS-GS / CP-CE1 / CE2-CM2], technique : [collage / empreinte / peinture / dessin à l'encre / aquarelle]. Chaque consigne : pose une contrainte créatrice, laisse de la liberté (composition, couleurs, choix), tient en 2-3 phrases simples, précise le format et le support. Ajoute le titre possible de chaque production et le temps estimé.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 2 — Scénario de jeu de rôle</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6b">Crée un scénario de jeu de rôle pour des élèves de [GS / CP / CE1], thème : [boulangerie / marché / hôpital / restaurant]. Fournis : liste des 4-6 rôles avec leurs caractéristiques, 10 mots de vocabulaire à introduire avant le jeu, 3 situations-déclencheurs (mini-problèmes à résoudre dans le jeu), accessoires et éléments de décor utiles, 3 questions de débrief oral après le jeu.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 3 — Paroles de chanson sur mesure</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6c">Écris de nouvelles paroles sur la mélodie de "[Frère Jacques / Au clair de la lune / Petit escargot / Promenons-nous dans les bois]", pour une classe de [niveau], thème : [thème pédagogique]. Les paroles doivent : respecter scrupuleusement le rythme et la structure de la mélodie originale, utiliser un vocabulaire adapté aux élèves, être faciles à mémoriser, intégrer si possible 3-5 mots du vocabulaire de la séquence.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 4 — Textes de légende pour une expo</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6d">Rédige 4 textes de légende/présentation pour une exposition de classe de [CE2 / CM1 / CM2] sur : [thème du projet]. Public : [élèves / parents / visiteurs]. Chaque texte : 3-4 lignes maximum, présente un aspect différent du projet, est informatif et engageant, utilise un vocabulaire accessible. Les textes seront collés sous les productions ou sur les panneaux.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 5 — Prompt d'illustration pour l'IA</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6e">Je veux créer une illustration pour ma classe sur le thème : [thème]. Usage : [affiche / couverture de cahier / panneau / carte mentale]. Style souhaité : [coloré et enfantin / réaliste / aquarelle / bande dessinée / flat design]. Génère un prompt en anglais, précis, de 2-3 lignes, optimisé pour un générateur d'images (Gemini, DALL-E ou Canva AI). Évite les personnages humains identifiables.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 6 — Échauffement ludique thématisé</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6f">Crée une séquence d'échauffement ludique de 10 minutes pour une classe de [PS / MS / GS], thème : [animaux / robots / explorateurs / sorciers], espace : [salle de motricité / cour / couloir]. Inclut : un rituel d'entrée (signal, mise en route), 3 activités courtes avec les consignes exactes à dire aux élèves, une progression (calme → dynamique → calme), le vocabulaire corporel spécifique à utiliser.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 7 — Jeu collectif avec règles</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6g">Crée un jeu collectif pour [nombre] élèves de [CP / CE1 / CE2 / CM1 / CM2], dans [cour / gymnase / couloir], durée : 20 minutes, compétence visée : [courir / sauter / lancer / coopérer / s'opposer]. Le jeu : un titre accrocheur, le matériel nécessaire (simple), les règles en 5 points maximum, 2 variantes (plus facile / plus difficile), les critères de réussite collective.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 8 — Parcours de motricité</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa6h">Conçois un parcours de motricité pour une classe de [PS / MS / GS], avec ce matériel : [cerceaux / bancs / plots / tunnels / tapis / barres]. Propose 6-8 ateliers enchaînés. Pour chacun : le geste moteur travaillé (ramper / sauter / grimper / rouler / porter), la disposition précise du matériel, le niveau de difficulté, une variante plus facile. Précise la durée totale recommandée.</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#FFF7ED;border-color:var(--c6)">
+      <div class="tips-ttl" style="color:var(--c6)">💡 Conseils pour ces défis</div>
+      <div class="tips-list">
+        <div class="tip">Les paroles de chanson (défi 3) : testez d'abord en chantant à voix haute — l'IA ne "sent" pas toujours le rythme parfaitement</div>
+        <div class="tip">Pour le jeu collectif : précisez si c'est en intérieur ou extérieur, et si vous avez du matériel spécifique</div>
+        <div class="tip">Le prompt d'illustration (défi 5) : copiez le prompt généré dans Gemini "Générer une image" — résultats souvent très bons</div>
+        <div class="tip">Le scénario de jeu de rôle peut être enrichi en demandant des "cartes rôle" imprimables avec photo et courte description du personnage</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 7 ══════════════════ -->
+<section class="sec" id="sec-a7">
+  <div class="ahdr" style="background:linear-gradient(135deg,#4C1D95,#7C3AED)">
+    <div class="atag">Atelier 7</div>
+    <h2>🖥️ Artefacts numériques — Créer des outils HTML interactifs</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 45 min</span>
+      <span class="tpill">Claude / Gemini / ChatGPT</span>
+      <span class="tpill">HTML en un fichier</span>
+      <span class="tpill">Projeter en classe</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#F5F3FF;border-color:#C4B5FD">
+      <span class="obj-ico">🎯</span>
+      <div>6 outils numériques à créer en collant un prompt dans Claude ou Gemini : l'IA génère un fichier HTML complet, fonctionnel, à ouvrir directement dans le navigateur. Aucune compétence en code requise. Copiez, collez, adaptez.</div>
+    </div>
+
+    <div class="warn-box">
+      <span class="warn-ico">💡</span>
+      <div><strong>Comment ça marche ?</strong> Copiez un prompt dans Claude (claude.ai) ou Gemini. L'IA génère du code HTML. Cliquez "Afficher" ou copiez le code dans un fichier <code>outil.html</code>, ouvrez-le dans Chrome — c'est prêt à projeter au tableau.</div>
+    </div>
+
+    <div class="defi-grid">
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 1 — Tirage au sort de la classe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7a">Crée une application web en HTML/CSS/JavaScript (un seul fichier) pour tirer au sort un prénom dans une liste. Interface : un champ texte pour saisir les prénoms (un par ligne), un bouton "Tirer au sort", et l'affichage du prénom choisi en grand avec une petite animation. Design simple et agréable, lisible au tableau.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 2 — Minuteur pédagogique visuel</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7b">Crée une application web minuteur en HTML/CSS/JavaScript (un seul fichier) pour une classe. Fonctionnalités : boutons pour choisir 5, 10, 15, 20 ou 30 minutes, saisie manuelle d'une durée personnalisée, barre de progression colorée (verte → orange → rouge selon le temps restant), affichage du temps en gros chiffres, son d'alarme à la fin (oscillateur Web Audio), bouton pause/reprendre. Interface épurée, lisible depuis le fond de la classe.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 3 — Bingo de vocabulaire</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7c">Crée une application web de bingo de vocabulaire en HTML/CSS/JavaScript (un seul fichier). L'utilisateur colle une liste de mots (un par ligne) dans un champ texte. L'application génère une grille 4×4 avec 16 mots choisis au hasard. Bouton "Nouvelle grille" pour regénérer. Bouton "Imprimer" qui ouvre la boîte d'impression (CSS @media print). Chaque case est cliquable pour la cocher lors du jeu.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 4 — Frise chronologique interactive</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7d">Crée une frise chronologique interactive en HTML/CSS/JavaScript (un seul fichier) sur [thème : Révolution française / Préhistoire / Moyen Âge] pour des élèves de CM2. La frise est horizontale, avec 8 événements clés. Chaque événement est représenté par un point cliquable avec sa date. Au clic, une fenêtre modale s'ouvre avec le titre, la date, et 2-3 phrases d'explication adaptées au niveau CM2. Design sobre et lisible.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 5 — Outil de vote de classe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7e">Crée une application web de vote de classe en HTML/CSS/JavaScript (un seul fichier). Phase 1 — Configuration : l'enseignant saisit une question et jusqu'à 5 options. Phase 2 — Vote : chaque élève clique sur son choix (1 vote par personne, mémorisé dans la session). Phase 3 — Résultats : graphique en barres horizontales colorées avec le nombre et pourcentage de votes. Bouton "Réinitialiser". Interface claire, boutons larges, lisibles de loin.</div>
+      </div>
+      <div class="pcrd">
+        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 6 — Jeu de mots mêlés interactif</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+        <div class="pbody" id="pa7f">Crée un jeu de mots mêlés interactif en HTML/CSS/JavaScript (un seul fichier) sur le thème [animaux / planètes / histoire]. Grille de 12×12 lettres. Mots à trouver : [liste de 8 mots en rapport avec le thème]. Les mots sont cachés horizontalement, verticalement et en diagonale. L'élève clique sur la première et la dernière lettre d'un mot pour le surligner. Un compteur indique combien de mots ont été trouvés. Message de victoire quand tous les mots sont découverts.</div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#F5F3FF;border-color:var(--c7)">
+      <div class="tips-ttl" style="color:var(--c7)">💡 Conseils pour les artefacts</div>
+      <div class="tips-list">
+        <div class="tip">Utilisez Claude (claude.ai) en priorité pour les artefacts — il génère et affiche le résultat directement dans un "Artefact" cliquable</div>
+        <div class="tip">Si le résultat n'est pas parfait, affinez dans la même conversation : "Ajoute un son quand le temps est écoulé", "Mets les boutons en plus grand"</div>
+        <div class="tip">Pour partager un artefact Claude avec vos élèves : cliquez sur "Partager" en haut de l'artefact — vous obtenez un lien direct</div>
+        <div class="tip">Le minuteur pédagogique en F11 (plein écran) au tableau change vraiment la gestion du temps en classe</div>
+        <div class="tip">Pour le bingo : imprimez 25-30 grilles d'un coup — chacune est différente car les mots sont tirés aléatoirement</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ ATELIER 8 ══════════════════ -->
+<section class="sec" id="sec-a8">
+  <div class="ahdr" style="background:linear-gradient(135deg,#155E75,#0E7490)">
+    <div class="atag">Atelier 8</div>
+    <h2>📊 Évaluation & Préparation de classe</h2>
+    <div class="ameta">
+      <span class="adur">⏱ 35 min</span>
+      <span class="tpill">Transversal</span>
+      <span class="tpill">Tous niveaux</span>
+      <span class="tpill">Gain de temps immédiat</span>
+    </div>
+  </div>
+  <div class="abody">
+    <div class="obj-block" style="background:#ECFEFF;border-color:#67E8F9">
+      <span class="obj-ico">🎯</span>
+      <div>Des prompts pour tout ce qui touche à l'évaluation, la différenciation et la préparation de classe : grilles d'auto-évaluation, commentaires de bulletins, activités d'APC, séquences pédagogiques, programmation sur une période. Un atelier transversal à toutes les disciplines.</div>
+    </div>
+
+    <div>
+      <div class="sec-title">📋 Évaluation & Différenciation</div>
+      <div class="prompts">
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt A — Différencier une activité en 3 niveaux</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8a">Voici une activité pédagogique : [description]. Génère 3 versions différenciées pour une classe de [niveau] : Version 1 — avec étayage fort (élèves en difficulté : aide, guidage, moins d'étapes, exemples supplémentaires), Version 2 — standard (tel quel, adapté à la majorité), Version 3 — enrichie (élèves avancés : défi supplémentaire, autonomie, ouverture interdisciplinaire). Pour chaque version : ce qui change et pourquoi.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt B — Grille d'auto-évaluation</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8b">Crée une grille d'auto-évaluation pour des élèves de [CE1 / CE2 / CM1 / CM2], pour : [tâche : exposé oral / texte produit / dessin technique / présentation]. La grille : 6-8 critères formulés en "Je suis capable de…", 3 niveaux par critère (pas encore 😕 / presque 🙂 / oui ! 😄), vocabulaire accessible aux élèves. Ajoute une case "Ce que je ferai différemment la prochaine fois :" en bas.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt C — Commentaires de bulletin</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8c">Rédige un commentaire de bulletin scolaire pour un élève de [niveau], profil : [ex : curieux mais dispersé / en progrès en lecture / très à l'aise, manque d'écoute / timide, s'implique davantage]. Le commentaire : positif et bienveillant, nomme les points forts, identifie un axe de progrès sans stigmatiser, évite les formules plates ("travaille bien"). Propose 2 versions : courte (2 lignes) et complète (4 lignes).</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt D — Activités d'APC ciblées</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8d">Crée 3 activités d'APC de 15 minutes chacune pour 2-3 élèves de [niveau] en difficulté sur : [compétence précise]. Les activités doivent : utiliser une approche différente de la classe (manipulatoire, orale, ludique, sensorielle), ne pas reproduire les exercices du manuel, inclure un temps de verbalisation, être faisables sans matériel spécial. Pour chacune : titre, matériel, déroulé en 3 étapes, ce que l'élève doit verbaliser.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title">📋 Préparation & Organisation</div>
+      <div class="prompts">
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt E — Structure de séquence pédagogique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8e">Crée la structure d'une séquence pédagogique pour une classe de [niveau], en [discipline], sur : [notion]. 5 à 6 séances avec pour chacune : objectif opérationnel, type d'activité (découverte / entraînement / structuration / évaluation), durée estimée, compétences du programme mobilisées. Ajoute : les prérequis nécessaires, les modalités d'évaluation finale, un lien transversal possible avec une autre discipline.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt F — Programmation sur une période</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8f">Crée une programmation pédagogique sur 5 semaines pour une classe de [niveau]. Disciplines : [liste]. Projets en cours : [projets]. Contraintes : [sortie, événement, évaluation, période de l'année]. Pour chaque semaine : les notions abordées par discipline, les liens transversaux possibles, le type d'activité dominant (découverte / entraînement / projet / évaluation). Format : tableau une semaine par ligne.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt G — Traducteur pour élèves allophones</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8g">Traduis ces phrases essentielles en [arabe / ukrainien / espagnol / portugais / tamoul / roumain] pour un élève allophone arrivant dans une classe de [niveau]. Phrases : ["Assieds-toi.", "Ouvre ton cahier.", "Écoute.", "Range tes affaires.", "Va aux toilettes.", "Bravo !", "Je ne comprends pas."]. Pour chaque phrase : version française, version traduite, transcription phonétique simplifiée pour un francophone, emoji ou pictogramme suggéré.</div>
+        </div>
+        <div class="pcrd">
+          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt H — Lancement de projet : l'accroche</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
+          <div class="pbody" id="pa8h">Rédige un texte de présentation orale de 2-3 minutes pour lancer un projet de classe avec des élèves de [niveau]. Projet : [description]. Le texte doit : commencer par une question ou une situation concrète qui accroche, présenter les enjeux sans tout dévoiler, donner envie de s'y engager, se terminer par une question ouverte pour recueillir les représentations initiales. Ton : enthousiaste, direct, adapté à l'âge.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tips-box" style="background:#ECFEFF;border-color:var(--c8)">
+      <div class="tips-ttl" style="color:var(--c8)">💡 Conseils pour cet atelier</div>
+      <div class="tips-list">
+        <div class="tip">Pour les bulletins : générez une série de 10 profils différents d'un coup — 5 secondes par commentaire ensuite</div>
+        <div class="tip">La différenciation en 3 niveaux (prompt A) : parfait pour préparer une séance en décrochage — un seul prompt, 3 supports prêts</div>
+        <div class="tip">Pour la séquence pédagogique : demandez aussi la liste des compétences du cycle 3 ou du cycle 2 mobilisées — gain de temps pour les conseils de cycle</div>
+        <div class="tip">Le traducteur pour allophones (prompt G) : ajoutez les phrases spécifiques à votre classe et créez un petit livret d'accueil bilingue</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /main -->
+
+<div class="toast" id="toast">✓ Copié !</div>
+
+<script>
+// ── NAVIGATION ──
+function go(id, btn) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.getElementById('mainContent').scrollTop = 0;
+}
+
+// ── COPY PROMPT ──
+function cp(btn) {
+  const body = btn.closest('.pcrd').querySelector('.pbody');
+  if (!body) return;
+  navigator.clipboard.writeText(body.textContent.trim()).then(() => {
+    btn.textContent = '✓ Copié';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '📋 Copier'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// ── TIMER ──
+let timerSec = 35 * 60, timerRunning = false, timerInterval = null;
+function setTimer(min) {
+  clearInterval(timerInterval); timerRunning = false;
+  timerSec = min * 60;
+  document.getElementById('tstart').textContent = '▶';
+  renderTimer();
+}
+function toggleTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval); timerRunning = false;
+    document.getElementById('tstart').textContent = '▶';
+  } else {
+    timerRunning = true;
+    document.getElementById('tstart').textContent = '⏸';
+    timerInterval = setInterval(() => {
+      if (timerSec > 0) { timerSec--; renderTimer(); }
+      else { clearInterval(timerInterval); timerRunning = false; document.getElementById('tstart').textContent = '▶'; }
+    }, 1000);
+  }
+}
+function renderTimer() {
+  const m = Math.floor(timerSec / 60), s = timerSec % 60;
+  const el = document.getElementById('tdisp');
+  el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  el.className = 'timer-disp' + (timerSec < 120 ? ' danger' : timerSec < 300 ? ' warn' : '');
+}
+
+// ── WHEEL ──
+const WHEEL_ITEMS = [
+  { id:'a1', label:'Atelier 1', sub:'Hallucinations',      color:'#DC2626' },
+  { id:'a2', label:'Atelier 2', sub:'Biais culturels',     color:'#9333EA' },
+  { id:'a3', label:'Atelier 3', sub:'Langage',             color:'#2563EB' },
+  { id:'a4', label:'Atelier 4', sub:'Maths',               color:'#D97706' },
+  { id:'a5', label:'Atelier 5', sub:'Sciences',            color:'#059669' },
+  { id:'a6', label:'Atelier 6', sub:'Arts / EPS',          color:'#EA580C' },
+  { id:'a7', label:'Atelier 7', sub:'Artefacts',           color:'#7C3AED' },
+  { id:'a8', label:'Atelier 8', sub:'Évaluation',          color:'#0E7490' },
+];
+let wheelAngle = 0, wheelSpinning = false;
+
+function drawWheel(angle) {
+  const canvas = document.getElementById('wheel-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cx = 130, cy = 130, r = 126;
+  const n = WHEEL_ITEMS.length, arc = (2 * Math.PI) / n;
+  ctx.clearRect(0, 0, 260, 260);
+  for (let i = 0; i < n; i++) {
+    const a0 = angle + i * arc, a1 = a0 + arc, item = WHEEL_ITEMS[i];
+    ctx.beginPath(); ctx.moveTo(cx, cy);
+    ctx.arc(cx, cy, r, a0, a1); ctx.closePath();
+    ctx.fillStyle = item.color; ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+    ctx.save();
+    ctx.translate(cx, cy); ctx.rotate(a0 + arc / 2);
+    ctx.textAlign = 'right'; ctx.fillStyle = '#fff';
+    ctx.font = 'bold 11.5px Segoe UI,sans-serif';
+    ctx.fillText(item.label, r - 8, -3);
+    ctx.font = '9.5px Segoe UI,sans-serif'; ctx.globalAlpha = .82;
+    ctx.fillText(item.sub, r - 8, 9);
+    ctx.restore();
+  }
+  ctx.beginPath(); ctx.arc(cx, cy, 18, 0, 2 * Math.PI);
+  ctx.fillStyle = '#064E3B'; ctx.fill();
+  ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.stroke();
+}
+
+function spinWheel() {
+  if (wheelSpinning) return;
+  wheelSpinning = true;
+  const btn = document.getElementById('spin-btn');
+  btn.disabled = true; btn.textContent = '⏳ En train de tourner…';
+  document.getElementById('wheel-result').style.display = 'none';
+  const target = wheelAngle + (6 + Math.random() * 4) * 2 * Math.PI + Math.random() * 2 * Math.PI;
+  const t0 = performance.now(), dur = 4200, start = wheelAngle;
+  function animate(now) {
+    const t = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - t, 3);
+    wheelAngle = start + (target - start) * e;
+    drawWheel(wheelAngle);
+    if (t < 1) { requestAnimationFrame(animate); }
+    else {
+      wheelAngle = target % (2 * Math.PI);
+      wheelSpinning = false;
+      btn.disabled = false; btn.textContent = '🎲 Tourner à nouveau !';
+      showWheelResult();
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+function showWheelResult() {
+  const n = WHEEL_ITEMS.length, arc = (2 * Math.PI) / n;
+  const norm = (((-wheelAngle - Math.PI / 2) % (2 * Math.PI)) + 2 * Math.PI) % (2 * Math.PI);
+  const item = WHEEL_ITEMS[Math.floor(norm / arc) % n];
+  const el = document.getElementById('wheel-result');
+  el.style.display = 'block'; el.style.borderColor = item.color;
+  el.innerHTML = `<div style="font-size:12px;color:${item.color};font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">🎯 La roue a choisi…</div>
+    <div style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:12px">${item.label} — ${item.sub}</div>
+    <button onclick="go('${item.id}',document.getElementById('nb-${item.id}'))" style="background:${item.color};color:#fff;border:none;padding:9px 22px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer">→ Lancer cet atelier</button>`;
+}
+
+drawWheel(0);
+</script>
+</body>
+</html>
