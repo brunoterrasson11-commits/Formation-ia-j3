@@ -160,6 +160,37 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 .scene-analysis .tip{font-size:11.5px}
 @media(max-width:900px){.scene-imgs.duo img{width:100%}.scene-imgs.duo{flex-direction:column}}
 
+/* ── DCARD (design defis.html) ── */
+.dcard{background:var(--surface);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);margin-bottom:16px}
+.dcard-hdr{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.dcard-hdr-left{display:flex;align-items:center;gap:8px;min-width:0}
+.dcard-num{background:rgba(255,255,255,.25);color:#fff;border-radius:6px;padding:2px 7px;font-size:11px;font-weight:800;font-family:monospace;flex-shrink:0}
+.dcard-hdr h3{font-size:14px;font-weight:700;color:#fff;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dcard-badges{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end;flex-shrink:0}
+.dbadge-level{background:rgba(255,255,255,.2);color:#fff;border-radius:20px;padding:3px 9px;font-size:11px;font-weight:700}
+.dbadge-school{border-radius:20px;padding:3px 9px;font-size:11px;font-weight:700}
+.dbadge-school.mat{background:#FEF9C3;color:#92400E}
+.dbadge-school.c2{background:#DBEAFE;color:#1D4ED8}
+.dbadge-school.c3{background:#DCFCE7;color:#15803D}
+.dbadge-school.tous{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.dcard-body{padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.dctx{font-size:13px;color:var(--text-sec);line-height:1.6;background:var(--surface2);border-radius:8px;padding:10px 14px}
+.dmission{border:2px dashed #FCD34D;border-radius:10px;padding:12px 16px;background:#FFFBEB}
+.dmission-ttl{font-size:10.5px;font-weight:800;color:#D97706;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+.dmission p{font-size:13px;font-weight:700;color:#1E293B;line-height:1.5;margin:0}
+.dbtn-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ddemo-btn{background:#1E3A5F;color:#fff;border:none;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;cursor:pointer;transition:background .12s}
+.ddemo-btn:hover{background:#2c5f8a}
+.dhide-btn{background:transparent;border:1.5px dashed #C4B5FD;border-radius:20px;padding:7px 16px;font-size:12px;font-weight:700;color:#6D28D9;cursor:pointer;transition:background .12s}
+.dhide-btn:hover,.dhide-btn.open{background:#EDE9FE;border-style:solid}
+.dprompt-zone{background:#F5F3FF;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.dprompt-intro{font-size:12px;font-weight:700;color:#5B21B6;margin:0}
+.dprompt-code{display:block;background:#fff;border-radius:6px;padding:10px 12px;font-family:monospace;font-size:12px;line-height:1.65;border:1px solid #E2E8F0;white-space:pre-wrap;color:#2c3e50;margin:0}
+.dprompt-tip{font-size:11px;color:#94A3B8;font-style:italic;margin:0}
+.dprompt-copy{align-self:flex-end;background:#6D28D9;color:#fff;border:none;border-radius:6px;padding:6px 14px;font-size:11.5px;font-weight:700;cursor:pointer;transition:background .12s}
+.dprompt-copy:hover{background:#5B21B6}
+.defi-grid{display:flex;flex-direction:column;gap:0}
+/* legacy pcrd (ateliers 1 & 2) */
 .pd-btn{display:flex;align-items:center;gap:6px;width:100%;text-align:left;background:#F5F3FF;border:1.5px dashed #C4B5FD;border-radius:7px;padding:8px 12px;font-size:12px;font-weight:600;color:#6D28D9;cursor:pointer;margin-top:8px;transition:background .12s}
 .pd-btn:hover{background:#EDE9FE}
 .pd-btn.open{background:#EDE9FE;border-style:solid}
@@ -428,208 +459,118 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div>
       <div class="sec-title">📋 Prompts — Créer votre propre enquête</div>
       <div class="prompts">
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c1)">Prompt A — Générer une "affaire" pour ma matière</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa1a">Tu es un formateur en esprit critique. Génère un texte court (5-8 lignes) sur [sujet de ma discipline] qui contient exactement 2 erreurs factuelles plausibles. Les erreurs doivent être vérifiables en ligne. Format : 1) le texte avec les erreurs intégrées naturellement, 2) les pistes de vérification (avec liens si possible), 3) les erreurs révélées avec explication. Niveau : [niveau des élèves].</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c1)">Prompt B — Créer une séance "détective IA"</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa1b">Conçois une séance de 45 minutes sur la fiabilité de l'IA pour des élèves de [niveau], dans le cadre de [matière]. La séance inclut : une phase découverte (l'IA se trompe, exemples concrets), 2 "affaires" à investiguer en binômes avec des textes de l'IA contenant des erreurs sur [thème du cours], une mise en commun, et une règle de conduite à co-construire avec les élèves ("quand utiliser l'IA, comment vérifier"). Fournis tous les supports.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c1)">Prompt C — Texte à vérifier sur une notion de cours</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa1c">Rédige un texte de 10 lignes sur [notion du programme] pour des élèves de [niveau], qui contient 3 erreurs factuelles de difficulté croissante : une évidente, une subtile, une qui nécessite une vraie vérification documentaire. Donne ensuite la liste des erreurs et comment les vérifier. Usage pédagogique : entraîner les élèves à ne pas faire confiance aveuglément à l'IA.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tips-box" style="background:#FEF2F2;border-color:var(--c1)">
-      <div class="tips-ttl" style="color:var(--c1)">💡 Conseils pour la séance en classe</div>
-      <div class="tips-list">
-        <div class="tip">Commencez par un exemple spectaculaire : demandez à l'IA la biographie d'un élève de la classe — elle va inventer</div>
-        <div class="tip">L'erreur de calcul (affaire #3) fonctionne très bien avec les plus jeunes : elle dédramatise et montre que l'IA n'est pas "toute-puissante"</div>
-        <div class="tip">Donnez aux élèves le temps de chercher avant de révéler les erreurs — la frustration productive est pédagogique</div>
-        <div class="tip">Cadrez la conclusion : l'IA est un outil puissant mais faillible — la vérification des sources reste une compétence humaine irremplaçable</div>
-        <div class="tip">Adaptez les "affaires" à votre matière : un texte sur la Révolution française avec 2 dates fausses, une biographie d'auteur avec un roman inventé...</div>
-      </div>
-    </div>
-
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#07</span><h3>🎵 Comptines et devinettes</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span></div>
   </div>
-</section>
-
-<!-- ══════════════════ ATELIER 2 ══════════════════ -->
-<section class="sec" id="sec-a2">
-  <div class="ahdr" style="background:linear-gradient(135deg,#6B21A8,#9333EA)">
-    <div class="atag">Atelier 2</div>
-    <h2>🌍 Biais culturels — Décrypter les représentations de l'IA</h2>
-    <div class="ameta">
-      <span class="adur">⏱ 30 min</span>
-      <span class="tpill">Esprit critique</span>
-      <span class="tpill">Tous niveaux</span>
-      <span class="tpill">Observation & débat</span>
+  <div class="dcard-body">
+    <div class="dctx">Les comptines et devinettes rythment la vie de la classe maternelle. En créer sur le thème du projet en cours — les saisons, les animaux, les couleurs — est un vrai gain de temps.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez une comptine et 3 devinettes sur le thème de votre projet, adaptées à l'âge de vos élèves, avec rythme et répétition.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa3a" onclick="togglePD('pa3a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée pour une classe de [PS / MS / GS] sur le thème &quot;[thème]&quot; : 1) Une comptine de 6-8 lignes avec répétition d&#x27;un refrain, rythme régulier, vocabulaire de maternelle, et si possible un geste ou une action associée à chaque strophe. 2) 3 devinettes de type &quot;Je suis… qui suis-je ?&quot; avec 3 indices progressifs du plus difficile au plus facile.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3a')">📋 Copier le prompt</button>
     </div>
   </div>
-  <div class="abody">
-    <div class="obj-block" style="background:#F5F3FF;border-color:#C4B5FD">
-      <span class="obj-ico">🎯</span>
-      <div>Observer les images générées par l'IA et comprendre qu'au-delà des erreurs factuelles, l'IA reproduit et amplifie des biais culturels issus de ses données d'entraînement. Ces 4 scènes permettent un débat riche avec les élèves ou entre collègues.</div>
-    </div>
-
-    <div>
-      <div class="sec-title">🖼️ Les 4 scènes à analyser</div>
-      <div class="hint">Ces images ont été générées par Imagen 4.0 (Google) avec des prompts très simples. Observez. Qu'est-ce que vous voyez ? Qu'est-ce qui manque ?</div>
-      <!-- Scène 1 -->
-      <div class="scene-card">
-        <div class="scene-hdr">
-          <div class="scene-hdr-title">🩺 Scène 1 — Deux professions médicales</div>
-          <span class="scene-obs-btn">🔍 À observer</span>
-        </div>
-        <div class="scene-imgs duo">
-          <img src="images/reel-doctor.png" alt="a doctor">
-          <img src="images/reel-nurse.png" alt="a nurse">
-        </div>
-        <div class="scene-footer"><strong>Prompt de gauche :</strong> "a doctor" &nbsp;·&nbsp; <strong>Prompt de droite :</strong> "a nurse"</div>
-        <div class="scene-analysis">
-          <div class="biais-desc">L'IA génère systématiquement un médecin masculin (stéthoscope, posture d'autorité) et une infirmière féminine (uniforme, posture d'aide). Ce n'est pas intentionnel — c'est le reflet statistique des données d'entraînement.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
-          <div class="tip" style="font-size:11.5px">Que remarque-t-on sur le genre des personnages ?</div>
-          <div class="tip" style="font-size:11.5px">Est-ce que cela reflète la réalité des professions aujourd'hui ?</div>
-          <div class="tip" style="font-size:11.5px">Quel impact si des élèves utilisent ces images dans un exposé ?</div>
-        </div>
-      </div>
-      <!-- Scène 2 -->
-      <div class="scene-card">
-        <div class="scene-hdr">
-          <div class="scene-hdr-title">🔬 Scène 2 — Le scientifique et le grand penseur</div>
-          <span class="scene-obs-btn">🔍 À observer</span>
-        </div>
-        <div class="scene-imgs duo">
-          <img src="images/reel-scientist.png" alt="a scientist">
-          <img src="images/reel-great_thinker.png" alt="a great thinker">
-        </div>
-        <div class="scene-footer"><strong>Prompt de gauche :</strong> "a scientist" &nbsp;·&nbsp; <strong>Prompt de droite :</strong> "a great thinker"</div>
-        <div class="scene-analysis">
-          <div class="biais-desc">L'IA génère de façon quasi-systématique des scientifiques et penseurs masculins, blancs, matures, d'apparence européenne. Les femmes scientifiques et les penseurs non-occidentaux sont invisibles dans les données.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
-          <div class="tip" style="font-size:11.5px">Quels grands penseurs ou scientifiques n'apparaissent jamais ?</div>
-          <div class="tip" style="font-size:11.5px">Que dit cela de l'histoire des sciences telle qu'elle a été documentée ?</div>
-        </div>
-      </div>
-      <!-- Scène 3 -->
-      <div class="scene-card">
-        <div class="scene-hdr">
-          <div class="scene-hdr-title">💼 Scène 3 — Le chef d'entreprise</div>
-          <span class="scene-obs-btn">🔍 À observer</span>
-        </div>
-        <div class="scene-imgs">
-          <img src="images/reel-ceo.png" alt="a business executive">
-        </div>
-        <div class="scene-footer"><strong>Prompt :</strong> "a business executive"</div>
-        <div class="scene-analysis">
-          <div class="biais-desc">Le "dirigeant d'entreprise" généré par l'IA est presque toujours un homme, en costume sombre, dans un bureau occidental moderne. Le succès s'associe à un profil très précis.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
-          <div class="tip" style="font-size:11.5px">Quel message cette image envoie-t-elle à nos élèves sur le pouvoir ?</div>
-          <div class="tip" style="font-size:11.5px">Comment cela influence-t-il leurs représentations de l'avenir ?</div>
-        </div>
-      </div>
-      <!-- Scène 4 -->
-      <div class="scene-card">
-        <div class="scene-hdr">
-          <div class="scene-hdr-title">💄 Scène 4 — La "belle femme"</div>
-          <span class="scene-obs-btn">🔍 À observer</span>
-        </div>
-        <div class="scene-imgs">
-          <img src="images/reel-beauty.png" alt="a beautiful woman">
-        </div>
-        <div class="scene-footer"><strong>Prompt :</strong> "a beautiful woman"</div>
-        <div class="scene-analysis">
-          <div class="biais-desc">Les standards de beauté générés s'alignent quasi exclusivement sur les canons occidentaux : peau claire, traits européens. Cela reflète la domination des contenus anglophones dans les données d'entraînement.</div>
-          <div style="margin-top:10px;font-size:12px;font-weight:700;color:#7F1D1D">Questions à poser :</div>
-          <div class="tip" style="font-size:11.5px">Quels canons de beauté sont absents ? Pourquoi ?</div>
-          <div class="tip" style="font-size:11.5px">Quel impact sur l'estime de soi des élèves qui ne se voient jamais représentés ?</div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="sec-title">📋 Prompts pour aller plus loin</div>
-      <div class="prompts">
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c2)">Prompt A — Analyser un biais avec les élèves</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa2a">Tu es expert en études culturelles et éducation aux médias. J'ai généré cette image avec l'IA via le prompt : "[prompt utilisé]". L'image montre [description]. Explique en termes accessibles à des élèves de [niveau] : 1) quel biais culturel ou de genre est visible, 2) d'où vient ce biais (données d'entraînement, histoire des représentations), 3) pourquoi c'est important d'en parler en classe, 4) comment les élèves peuvent développer un regard critique sur ces images.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c2)">Prompt B — Créer une séance sur les biais</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa2b">Conçois une séance de 30-40 minutes sur les biais des IA pour des élèves de [niveau] en [matière / EMC / HIDA]. La séance : observation de 3 images générées par l'IA avec des prompts simples, analyse guidée des représentations (genre, race, culture), débat structuré avec des questions ouvertes, production finale : une charte collective "Comment utiliser les images de l'IA de façon critique". Fournis les questions de débat et le canevas de la charte.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c2)">Prompt C — Contrepoint : demander la diversité</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa2c">Génère un prompt d'image optimisé pour représenter [profession / rôle] de façon diverse et inclusive : différents genres, ethnies, âges, morphologies. Le prompt doit être en anglais, précis, et contrecarrer les biais par défaut du générateur d'images. Explique ensuite pourquoi ces précisions changent le résultat.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tips-box" style="background:#F5F3FF;border-color:var(--c2)">
-      <div class="tips-ttl" style="color:var(--c2)">💡 Conseils pour animer la séance</div>
-      <div class="tips-list">
-        <div class="tip">Montrez les images sans explication préalable : laissez les élèves observer et réagir librement avant d'analyser</div>
-        <div class="tip">Les biais ne sont pas des "bugs" — ils reflètent la société telle qu'elle a été documentée. C'est une nuance importante à transmettre</div>
-        <div class="tip">Demandez aux élèves de générer eux-mêmes des images et d'observer : c'est plus impactant que de montrer des exemples préparés</div>
-        <div class="tip">Lien fort avec l'EMC (égalité, représentations) et l'HIDA (l'image et sa construction culturelle)</div>
-        <div class="tip">Terminez sur une note constructive : comment contourner ces biais ? Comment demander à l'IA des représentations plus diversifiées ?</div>
-      </div>
-    </div>
-
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#08</span><h3>📖 Questions sur un album</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CP–CE1</span></div>
   </div>
-</section>
-
-<!-- ══════════════════ ATELIER 3 ══════════════════ -->
-<section class="sec" id="sec-a3">
-  <div class="ahdr" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6)">
-    <div class="atag">Atelier 3</div>
-    <h2>📚 Langage & Écriture — 7 défis disciplinaires</h2>
-    <div class="ameta">
-      <span class="adur">⏱ 40 min</span>
-      <span class="tpill">Français</span>
-      <span class="tpill">Maternelle → CM2</span>
-      <span class="tpill">Prompts prêts à copier</span>
+  <div class="dcard-body">
+    <div class="dctx">Préparer 10 questions de compréhension finement graduées sur un album — littérales, inférentielles, interprétatives — prend du temps. L'IA le fait en quelques secondes à partir d'un résumé.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Donnez le titre et un bref résumé d'un album. Obtenez 10 questions réparties sur 3 niveaux de compréhension, prêtes à photocopier.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa3b" onclick="togglePD('pa3b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Album : &quot;[titre]&quot;. Résumé : &quot;[2-3 phrases]&quot;. Génère 10 questions de compréhension pour des élèves de [CP / CE1], réparties ainsi : 3 questions littérales [réponse dans le texte], 4 questions inférentielles [il faut déduire], 3 questions interprétatives [il faut argumenter]. Indique le niveau entre crochets avant chaque question. Formule les questions de façon simple et directe.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3b')">📋 Copier le prompt</button>
     </div>
   </div>
-  <div class="abody">
-    <div class="obj-block" style="background:#EFF6FF;border-color:#BFDBFE">
-      <span class="obj-ico">🎯</span>
-      <div>7 défis pour créer des ressources de français sur mesure en quelques secondes. Comptines, questions sur un album, amorces d'écriture, dictées, textes lacunaires, vocabulaire — adaptez le niveau et copiez le prompt dans ChatGPT ou Gemini.</div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#09</span><h3>✍️ Amorces d'écriture créative</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CE1</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Débloquer l'écriture passe souvent par une première phrase qui ouvre des possibles. L'IA peut générer 10 amorces stimulantes adaptées à un genre et un niveau en quelques secondes.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Choisissez un genre (conte, récit, lettre, poème...) et un niveau. Obtenez 10 amorces d'écriture originales à proposer à vos élèves.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa3c" onclick="togglePD('pa3c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Génère 10 amorces d&#x27;écriture pour des élèves de [CE1 / CE2 / CM1 / CM2], pour un texte de type [conte / récit du réel / lettre / poème / récit fantastique]. Chaque amorce : commence la première phrase du texte, est stimulante et originale, ne dépasse pas une ligne. Elles doivent ouvrir des possibles sans contraindre. Numérote-les.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3c')">📋 Copier le prompt</button>
     </div>
-
-    <div class="defi-grid">
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 1 — Comptines & devinettes</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3a">Crée pour une classe de [PS / MS / GS] sur le thème "[thème]" : 1) Une comptine de 6-8 lignes avec répétition d'un refrain, rythme régulier, vocabulaire de maternelle, et si possible un geste ou une action associée à chaque strophe. 2) 3 devinettes de type "Je suis… qui suis-je ?" avec 3 indices progressifs du plus difficile au plus facile.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 2 — Questions sur un album</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3b">Album : "[titre]". Résumé : "[2-3 phrases]". Génère 10 questions de compréhension pour des élèves de [CP / CE1], réparties ainsi : 3 questions littérales [réponse dans le texte], 4 questions inférentielles [il faut déduire], 3 questions interprétatives [il faut argumenter]. Indique le niveau entre crochets avant chaque question. Formule les questions de façon simple et directe.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 3 — Amorces d'écriture créative</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3c">Génère 10 amorces d'écriture pour des élèves de [CE1 / CE2 / CM1 / CM2], pour un texte de type [conte / récit du réel / lettre / poème / récit fantastique]. Chaque amorce : commence la première phrase du texte, est stimulante et originale, ne dépasse pas une ligne. Elles doivent ouvrir des possibles sans contraindre. Numérote-les.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 4 — Texte lacunaire sur mesure</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3d">Crée un texte lacunaire pour des élèves de [CP / CE1 / CE2], ciblant la notion : [déterminants / accord GN / accord sujet-verbe / homophones / ...]. Thème du texte : [thème]. Le texte : 5 à 8 phrases, 8 à 12 trous numérotés. Fournis dans cet ordre : 1) le texte avec les trous (____), 2) la banque de mots dans le désordre, 3) la correction avec justification pour chaque trou.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 5 — Dictée préparée ciblée</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3e">Rédige une dictée préparée pour une classe de [CE1 / CE2 / CM1 / CM2], ciblant : [accord du GN / accord sujet-verbe / homophones grammaticaux / terminaisons verbales / ...]. Thème : [thème au choix]. Le texte : 5-7 lignes, niveau de langue adapté, au moins 8 occurrences de la notion visée. Ensuite : liste des 8 mots difficiles à préparer avec les élèves, et les 2-3 règles à rappeler avant la dictée.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 6 — Carnet de vocabulaire thématique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3f">Crée un carnet de vocabulaire pour des élèves de [CE2 / CM1 / CM2] sur le thème : "[thème]". Pour chacun des 10 mots-clés importants du thème, donne : le mot, sa classe grammaticale, une définition en 2 lignes max (vocabulaire accessible), un exemple d'utilisation dans une phrase simple, un synonyme. Format tableau à 5 colonnes. Trie par ordre alphabétique.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c3)">Défi 7 — Reformulateur de consignes</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa3g">Voici une consigne scolaire : "[consigne originale]". Reformule-la en 3 versions adaptées à des niveaux différents : version CP-CE1 (phrases très courtes, mots simples, une seule tâche à la fois), version CE2-CM1 (2-3 étapes, connecteurs simples), version CM2 (consigne complète, avec critères de réussite intégrés). Explique les choix de reformulation pour chaque version.</div>
-      </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#10</span><h3>📝 Texte lacunaire sur mesure</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c2">🔵 CP–CE2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un texte à trous bien construit cible exactement la notion visée — les déterminants, les accords, les temps. L'IA peut en générer un sur mesure, avec banque de mots et correction.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez la notion et le niveau. Obtenez un texte lacunaire contextualisé, avec la banque de mots mélangés et la correction.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa3d" onclick="togglePD('pa3d')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3d" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un texte lacunaire pour des élèves de [CP / CE1 / CE2], ciblant la notion : [déterminants / accord GN / accord sujet-verbe / homophones / ...]. Thème du texte : [thème]. Le texte : 5 à 8 phrases, 8 à 12 trous numérotés. Fournis dans cet ordre : 1) le texte avec les trous (____), 2) la banque de mots dans le désordre, 3) la correction avec justification pour chaque trou.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3d')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#11</span><h3>📣 Dictée préparée ciblée</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CE1–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une dictée préparée ou négociée s'appuie sur un texte court, cohérent, qui cible des accords précis. L'IA peut en rédiger une sur mesure en 10 secondes.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le niveau et la notion grammaticale visée. Obtenez un texte de dictée de 5-7 lignes avec la liste des mots à préparer et les règles associées.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa3e" onclick="togglePD('pa3e')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3e" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige une dictée préparée pour une classe de [CE1 / CE2 / CM1 / CM2], ciblant : [accord du GN / accord sujet-verbe / homophones grammaticaux / terminaisons verbales / ...]. Thème : [thème au choix]. Le texte : 5-7 lignes, niveau de langue adapté, au moins 8 occurrences de la notion visée. Ensuite : liste des 8 mots difficiles à préparer avec élèves, et les 2-3 règles à rappeler avant la dictée.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3e')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#12</span><h3>📗 Carnet de vocabulaire thématique</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c3">🟢 CE2–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Introduire un champ lexical avec définitions, exemples et synonymes accélère l'acquisition et enrichit la production d'écrits. L'IA peut générer un carnet de vocabulaire complet pour n'importe quel thème.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Donnez le thème de votre séquence en cours. Obtenez 10 mots-clés avec définition accessible, exemple en phrase et synonyme.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa3f" onclick="togglePD('pa3f')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3f" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un carnet de vocabulaire pour des élèves de [CE2 / CM1 / CM2] sur le thème : &quot;[thème]&quot;. Pour chacun des 10 mots-clés importants du thème, donne : le mot, sa classe grammaticale, une définition en 2 lignes max (vocabulaire accessible), un exemple d&#x27;utilisation dans une phrase simple, un synonyme. Format tableau à 5 colonnes. Trie par ordre alphabétique.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3f')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#06</span><h3>✏️ Reformulateur de consignes</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 C2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une consigne trop complexe bloque les élèves avant même qu'ils commencent. Reformuler instantanément pour différents niveaux est un outil quotidien précieux.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez un outil qui prend une consigne et la reformule en version CP-CE1, CE2-CM1 et CM2, avec les bons mots et la bonne longueur pour chaque niveau.</p></div>
+    <div class="dbtn-row"><button class="ddemo-btn" onclick="alert('Exemple disponible sur remyvdm.com/ia-formation/defis.html')">👁 Voir un exemple</button><button class="dhide-btn" id="btn-pa3g" onclick="togglePD('pa3g')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa3g" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web (HTML/CSS/JS, fichier unique) avec un champ texte pour saisir une consigne scolaire, 3 boutons de niveau (CP-CE1 / CE2-CM1 / CM2), et un bouton &quot;Reformuler&quot; qui appelle l&#x27;API Gemini pour reformuler la consigne au niveau choisi. Affiche le résultat sous les boutons. Design simple et épuré.</code>
+      <button class="dprompt-copy" onclick="cpById('pa3g')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
     </div>
 
     <div class="tips-box" style="background:#EFF6FF;border-color:var(--c3)">
@@ -664,34 +605,118 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     </div>
 
     <div class="defi-grid">
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 1 — Situations-problèmes contextualisées</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4a">Crée 5 situations-problèmes pour des élèves de [CP / CE1 / CE2 / CM1 / CM2], mobilisant la notion : [addition / soustraction / multiplication / division / fractions / pourcentages]. Contexte : [kermesse / voyage scolaire / recette de cuisine / budget fête / animaux]. Problèmes progressifs en difficulté, données réalistes. Solution détaillée étape par étape après chaque problème.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 2 — Séquence de calcul mental</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4b">Génère une série de 20 questions de calcul mental pour une classe de [CE1 / CE2 / CM1 / CM2], centrée sur : [tables de multiplication / additions / compléments / fractions / calcul avec décimaux]. Structure : 5 questions faciles, 10 intermédiaires, 5 difficiles. Format : numéro + question sur une ligne. Donne la correction numérotée après les 20 questions.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 3 — Énigmes logiques progressives</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4c">Crée 3 énigmes logiques pour des élèves de [CE2 / CM1 / CM2], de difficulté croissante. Thème : [animaux / école / sport]. Chaque énigme : contexte et personnages simples, données à analyser pour résoudre (type "si… alors…"), une question précise. Après chaque énigme : solution et raisonnement étape par étape. L'énigme difficile doit nécessiter un tableau ou une grille pour être résolue.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 4 — Jeu de l'oie mathématique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4d">Crée le contenu d'un jeu de l'oie mathématique pour des élèves de [CE1 / CE2 / CM1 / CM2], notion : [thème]. 30 cases : 20 cases avec une question ou un calcul adapté au niveau, 5 cases "défi" (tâche à réaliser à l'oral), 3 cases "chance / malchance" (avance X / recule X), 2 cases "rejoue / passe ton tour". Chaque case tient en 1-2 lignes. Donne la correction des cases avec questions à la fin.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 5 — Données pour graphiques</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4e">Crée un jeu de données réaliste pour une activité de statistiques en [CM1 / CM2], thème : [météo / résultats sportifs / animaux / consommation]. Fournis : un tableau de données (5-7 colonnes, 6-8 lignes), le type de graphique le plus adapté (et pourquoi), une question principale à résoudre avec le graphique, 3 questions d'interprétation du graphique.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 6 — Défis géométrie</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4f">Génère 5 défis de construction géométrique pour des élèves de [CM1 / CM2], de difficulté progressive (⭐ à ⭐⭐⭐). Chaque défi : une consigne de construction précise avec contraintes, les instruments à utiliser (règle / équerre / compas / rapporteur), les figures impliquées, les critères de réussite vérifiables par l'élève. Le défi 5 doit combiner au moins 3 figures et 2 instruments.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c4)">Défi 7 — Problèmes de la vie réelle</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa4g">Crée 5 problèmes mathématiques ancrés dans la vie réelle pour des élèves de [CE2 / CM1 / CM2], dans le contexte : [kermesse / catalogue / budget fête / recette / sorties]. Les problèmes : progressifs en difficulté, mobilisant [notion], avec des données réalistes (vrais prix, vraies quantités). Solution détaillée après chaque problème.</div>
-      </div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#13</span><h3>🔢 Générateur de situations-problèmes</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c2">🔵 CP–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Créer une situation-problème contextualisée et numérisée pour le bon niveau prend du temps. Un outil dédié le fait à la demande : niveau + notion + contexte → problème rédigé.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez un générateur de situations-problèmes : 3 champs (niveau, notion, contexte), un bouton, et l'IA rédige le problème avec les données numériques adaptées.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4a" onclick="togglePD('pa4a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web (HTML/CSS/JS, fichier unique) avec 3 champs : niveau de classe (CP/CE1/CE2/CM1/CM2), notion mathématique (addition, soustraction, multiplication, division, fractions…), contexte libre (ex : la cantine, les animaux, la kermesse). Un bouton &quot;Générer&quot; appelle l&#x27;API Gemini et affiche une situation-problème adaptée au niveau, avec les données numériques et une question claire. Ajoute un bouton &quot;Voir la correction&quot; qui révèle la solution.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#14</span><h3>🧮 Séquence de calcul mental</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CE1–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une série de 20 opérations de calcul mental graduées prend du temps à préparer. L'IA peut en générer une sur n'importe quelle notion, avec correction, en 10 secondes.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le niveau et la notion. Obtenez 20 questions de calcul mental numérotées, progressives, avec correction.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4b" onclick="togglePD('pa4b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Génère une série de 20 questions de calcul mental pour une classe de [CE1 / CE2 / CM1 / CM2], centrée sur : [tables de multiplication / additions / compléments / fractions / calcul avec décimaux / ...]. Structure : 5 questions faciles, 10 intermédiaires, 5 difficiles. Format : numéro + question sur une ligne. Donne la correction numérotée après les 20 questions.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#15</span><h3>🧩 Énigmes logiques</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c3">🟢 CE2–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les énigmes de type "qui est qui ?", déductions à partir de contraintes, ou problèmes combinatoires développent le raisonnement logique. L'IA peut en générer à la demande, sur n'importe quel thème.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Obtenez 3 énigmes logiques de difficulté croissante, sur un thème donné, avec le raisonnement détaillé pour chaque solution.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4c" onclick="togglePD('pa4c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée 3 énigmes logiques pour des élèves de [CE2 / CM1 / CM2], de difficulté croissante. Thème : [animaux / école / sport / ...]. Chaque énigme : contexte et personnages simples, données à analyser pour résoudre (type &quot;si… alors…&quot;), une question précise. Après chaque énigme, fournis la solution et le raisonnement étape par étape. L&#x27;énigme difficile doit nécessiter un tableau ou une grille pour être résolue.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#16</span><h3>🎲 Jeu de l'oie mathématique</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c2">🔵 CE1–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un jeu de l'oie dont les cases proposent des calculs ou des questions sur une notion est un support de révision engageant. L'IA peut rédiger le contenu des 30 cases en une minute.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Obtenez le contenu complet de 30 cases pour un jeu de l'oie de révision, avec cases-questions, cases-défis et cases spéciales.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4d" onclick="togglePD('pa4d')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4d" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée le contenu d&#x27;un jeu de l&#x27;oie mathématique pour des élèves de [CE1 / CE2 / CM1 / CM2], notion : [thème]. 30 cases : 20 cases avec une question ou un calcul (adapté au niveau), 5 cases &quot;défi&quot; (tâche à réaliser à l&#x27;oral), 3 cases &quot;chance / malchance&quot; (avance X / recule X), 2 cases &quot;rejoue / passe ton tour&quot;. Chaque case tient en 1-2 lignes. Donne la correction des cases avec questions à la fin.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4d')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#17</span><h3>📊 Données pour graphiques</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c3">🟢 CM1–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Travailler la lecture et la construction de graphiques nécessite des données contextualisées et plausibles. L'IA peut en inventer sur n'importe quel thème, avec les questions qui vont avec.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Demandez un jeu de données réaliste sur un thème de classe, prêt à utiliser pour construire un histogramme, un diagramme ou une courbe.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4e" onclick="togglePD('pa4e')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4e" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un jeu de données réaliste pour une activité de statistiques en [CM1 / CM2], thème : [météo / résultats sportifs / animaux / consommation / ...]. Fournis : un tableau de données (5-7 colonnes, 6-8 lignes), le type de graphique le plus adapté (et pourquoi), une question principale à résoudre avec le graphique, 3 questions d&#x27;interprétation du graphique.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4e')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#18</span><h3>🔺 Défis géométrie</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c3">🟢 CM1–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Des défis de construction géométrique avec contraintes travaillent le raisonnement spatial et le maniement des instruments. L'IA peut en générer des séries progressives.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Obtenez 5 défis de construction géométrique progressifs, avec les instruments nécessaires, les contraintes et les critères de réussite.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4f" onclick="togglePD('pa4f')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4f" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Génère 5 défis de construction géométrique pour des élèves de [CM1 / CM2], de difficulté progressive (⭐ à ⭐⭐⭐). Chaque défi : une consigne de construction précise avec contraintes, les instruments à utiliser (règle / équerre / compas / rapporteur), les figures impliquées, les critères de réussite vérifiables par l&#x27;élève. Le défi 5 doit combiner au moins 3 figures et 2 instruments.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4f')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#92400e,#d97706)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#19</span><h3>💡 Problèmes de la vie réelle</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c3">🟢 CE2–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les problèmes ancrés dans la vie quotidienne — argent, recettes, trajets, budget — donnent du sens aux mathématiques et motivent même les élèves les plus réticents.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez un contexte de la vie réelle. Obtenez 5 problèmes progressifs avec de vraies données chiffrées et la solution détaillée.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa4g" onclick="togglePD('pa4g')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa4g" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée 5 problèmes mathématiques ancrés dans la vie réelle pour des élèves de [CE2 / CM1 / CM2], dans le contexte : [kermesse / voyage scolaire / recette de cuisine / budget fête / catalogue de jouets / ...]. Les problèmes : progressifs en difficulté, mobilisant [notion : multiplication / fractions / pourcentages / proportionnalité...], avec des données réalistes (vrais prix, vraies quantités). Solution détaillée après chaque problème.</code>
+      <button class="dprompt-copy" onclick="cpById('pa4g')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
     </div>
 
     <div class="tips-box" style="background:#FFFBEB;border-color:var(--c4)">
@@ -726,26 +751,86 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     </div>
 
     <div class="defi-grid">
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 1 — Fiche d'observation scientifique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa5a">Crée une fiche d'observation scientifique pour des élèves de [CP / CE1 / CE2 / CM1 / CM2], sujet : [plante / insecte / objet / matière]. La fiche contient : observations à faire avec les yeux (3), avec les mains (2), avec le nez si pertinent (1), 5 questions pour guider l'observation sans donner les réponses, un schéma simplifié à compléter (décris les 4-6 parties à légender), et une case "Ce que j'en déduis".</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 2 — Protocole d'expérience</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa5b">Rédige un protocole d'expérience scientifique pour des élèves de CM1-CM2, répondant à la question : "[question scientifique]". Structure : 1) Question, 2) Hypothèses possibles (2-3), 3) Matériel nécessaire (liste), 4) Étapes numérotées (max 6 étapes), 5) Observations à noter pendant l'expérience, 6) Résultats attendus selon chaque hypothèse. Vocabulaire accessible, pas de jargon.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 3 — Défi STEAM en groupe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa5c">Conçois un défi STEAM pour des groupes de 3-4 élèves de CM1-CM2. Thème : "[thème]". Matériaux disponibles : [liste]. Durée : [durée]. Le défi doit inclure : la problématique à résoudre (formulée comme une vraie mission), les contraintes précises, les critères de réussite mesurables, les 4 phases (concevoir / construire / tester / améliorer), 5 questions de débriefing oral collectif.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 4 — Texte documentaire adapté</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa5d">Rédige un texte documentaire pour des élèves de [CP / CE1 / CE2 / CM1 / CM2] sur : "[sujet]". Contraintes : [150 mots pour CP / 250 mots pour CE / 400 mots pour CM], structuré en 3 paragraphes titrés, vocabulaire adapté au niveau, 3 mots spécifiques expliqués entre parenthèses à leur première occurrence. Ajoute 4 questions de compréhension après le texte (2 littérales, 2 inférentielles).</div>
-      </div>
-      <div class="pcrd" style="grid-column:1/-1">
-        <div class="phdr"><span class="ptitle" style="color:var(--c5)">Défi 5 — Quiz sur le vivant (ou toute notion de sciences)</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa5e">Crée un quiz de 10 questions sur [cycle de vie / classification des animaux / états de la matière / système solaire / photosynthèse] pour des élèves de [CE1 / CE2 / CM1 / CM2]. Types de questions : 3 vrai/faux, 4 QCM à 3 options, 2 questions à compléter, 1 question ouverte courte. Vocabulaire adapté au niveau. Correction complète avec justification pour chaque réponse.</div>
-      </div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#065f46,#059669)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#20</span><h3>🔍 Fiche d'observation scientifique</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CP–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Avant d'expliquer, il faut observer. Une bonne fiche d'observation guide les élèves sans donner les réponses — elle structure la perception et la trace. L'IA peut en créer une en quelques secondes.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez l'objet d'étude et le niveau. Obtenez une fiche d'observation complète : sens mobilisés, questions ouvertes, schéma à légender.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa5a" onclick="togglePD('pa5a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa5a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une fiche d&#x27;observation scientifique pour des élèves de [CP / CE1 / CE2 / CM1 / CM2], sujet : [plante / insecte / objet / matière / ...]. La fiche contient : observations à faire avec les yeux (3), avec les mains (2), avec le nez si pertinent (1), 5 questions pour guider l&#x27;observation sans donner les réponses, un schéma simplifié à compléter (décris les 4-6 parties à légender), et une case &quot;Ce que j&#x27;en déduis&quot;.</code>
+      <button class="dprompt-copy" onclick="cpById('pa5a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#065f46,#059669)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#21</span><h3>🧪 Protocole d'expérience</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c3">🟢 CM1–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Rédiger un protocole expérimental accessible pour des CM — clair, rigoureux, avec les hypothèses et les résultats attendus — est un exercice difficile. L'IA en génère un premier jet solide.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Formulez une question scientifique. Obtenez un protocole complet : hypothèses, matériel, étapes, observations à noter, résultats attendus.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa5b" onclick="togglePD('pa5b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa5b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige un protocole d&#x27;expérience scientifique pour des élèves de CM1-CM2, répondant à la question : &quot;[question scientifique]&quot;. Structure : 1) Question, 2) Hypothèses possibles (2-3), 3) Matériel nécessaire (liste), 4) Étapes numérotées (max 6 étapes), 5) Observations à noter pendant l&#x27;expérience, 6) Résultats attendus selon chaque hypothèse. Vocabulaire accessible, pas de jargon.</code>
+      <button class="dprompt-copy" onclick="cpById('pa5b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#065f46,#059669)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#22</span><h3>⚡ Défi STEAM en groupe</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐⭐ Avancé</span><span class="dbadge-school c3">🟢 CM1–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un défi STEAM mobilise Sciences, Technologie, Arts et Maths dans une problématique concrète. L'IA peut en concevoir un adapté à vos contraintes de matériel et de durée.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le thème, le matériel disponible et la durée. Obtenez un défi STEAM complet avec les phases de travail, les critères de réussite et les questions de débriefing.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa5c" onclick="togglePD('pa5c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa5c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Conçois un défi STEAM pour des groupes de 3-4 élèves de CM1-CM2. Thème : &quot;[thème]&quot;. Matériaux disponibles : [liste]. Durée : [durée]. Le défi doit inclure : la problématique à résoudre (formulée comme une vraie mission), les contraintes précises, les critères de réussite mesurables, les 4 phases (concevoir / construire / tester / améliorer), 5 questions de débriefing oral collectif.</code>
+      <button class="dprompt-copy" onclick="cpById('pa5c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#065f46,#059669)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#23</span><h3>📰 Texte documentaire adapté</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CP–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Adapter un texte documentaire au niveau exact d'une classe — vocabulaire, longueur, structure — est fastidieux. L'IA peut rédiger un texte informatif sur mesure sur n'importe quel sujet.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le sujet et le niveau. Obtenez un texte documentaire adapté avec des mots de vocabulaire expliqués et des questions de compréhension.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa5d" onclick="togglePD('pa5d')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa5d" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige un texte documentaire pour des élèves de [CP / CE1 / CE2 / CM1 / CM2] sur : &quot;[sujet]&quot;. Contraintes : [150 mots pour CP / 250 mots pour CE / 400 mots pour CM], structuré en 3 paragraphes titrés, vocabulaire adapté au niveau, 3 mots spécifiques expliqués entre parenthèses à leur première occurrence. Ajoute 4 questions de compréhension après le texte (2 littérales, 2 inférentielles).</code>
+      <button class="dprompt-copy" onclick="cpById('pa5d')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#065f46,#059669)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#24</span><h3>🌿 Quiz sur le vivant</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c2">🔵 CE1–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un quiz de fin de séquence varié — vrai/faux, QCM, questions à compléter — permet une évaluation formative rapide. L'IA peut en générer un sur n'importe quelle notion de sciences.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez la notion et le niveau. Obtenez un quiz de 10 questions variées (vrai/faux, QCM, texte à compléter) avec correction complète.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa5e" onclick="togglePD('pa5e')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa5e" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un quiz de 10 questions sur [cycle de vie / classification des animaux / les états de la matière / le système solaire / ...] pour des élèves de [CE1 / CE2 / CM1 / CM2]. Types de questions : 3 vrai/faux, 4 QCM à 3 options, 2 questions à compléter, 1 question ouverte courte. Vocabulaire adapté au niveau. Correction complète avec justification pour chaque réponse.</code>
+      <button class="dprompt-copy" onclick="cpById('pa5e')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
     </div>
 
     <div class="tips-box" style="background:#ECFDF5;border-color:var(--c5)">
@@ -780,38 +865,134 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     </div>
 
     <div class="defi-grid">
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 1 — Consignes d'arts plastiques</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6a">Crée 5 consignes d'arts plastiques pour des élèves de [PS-GS / CP-CE1 / CE2-CM2], technique : [collage / empreinte / peinture / dessin à l'encre / aquarelle]. Chaque consigne : pose une contrainte créatrice, laisse de la liberté (composition, couleurs, choix), tient en 2-3 phrases simples, précise le format et le support. Ajoute le titre possible de chaque production et le temps estimé.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 2 — Scénario de jeu de rôle</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6b">Crée un scénario de jeu de rôle pour des élèves de [GS / CP / CE1], thème : [boulangerie / marché / hôpital / restaurant]. Fournis : liste des 4-6 rôles avec leurs caractéristiques, 10 mots de vocabulaire à introduire avant le jeu, 3 situations-déclencheurs (mini-problèmes à résoudre dans le jeu), accessoires et éléments de décor utiles, 3 questions de débrief oral après le jeu.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 3 — Paroles de chanson sur mesure</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6c">Écris de nouvelles paroles sur la mélodie de "[Frère Jacques / Au clair de la lune / Petit escargot / Promenons-nous dans les bois]", pour une classe de [niveau], thème : [thème pédagogique]. Les paroles doivent : respecter scrupuleusement le rythme et la structure de la mélodie originale, utiliser un vocabulaire adapté aux élèves, être faciles à mémoriser, intégrer si possible 3-5 mots du vocabulaire de la séquence.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 4 — Textes de légende pour une expo</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6d">Rédige 4 textes de légende/présentation pour une exposition de classe de [CE2 / CM1 / CM2] sur : [thème du projet]. Public : [élèves / parents / visiteurs]. Chaque texte : 3-4 lignes maximum, présente un aspect différent du projet, est informatif et engageant, utilise un vocabulaire accessible. Les textes seront collés sous les productions ou sur les panneaux.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 5 — Prompt d'illustration pour l'IA</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6e">Je veux créer une illustration pour ma classe sur le thème : [thème]. Usage : [affiche / couverture de cahier / panneau / carte mentale]. Style souhaité : [coloré et enfantin / réaliste / aquarelle / bande dessinée / flat design]. Génère un prompt en anglais, précis, de 2-3 lignes, optimisé pour un générateur d'images (Gemini, DALL-E ou Canva AI). Évite les personnages humains identifiables.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 6 — Échauffement ludique thématisé</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6f">Crée une séquence d'échauffement ludique de 10 minutes pour une classe de [PS / MS / GS], thème : [animaux / robots / explorateurs / sorciers], espace : [salle de motricité / cour / couloir]. Inclut : un rituel d'entrée (signal, mise en route), 3 activités courtes avec les consignes exactes à dire aux élèves, une progression (calme → dynamique → calme), le vocabulaire corporel spécifique à utiliser.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 7 — Jeu collectif avec règles</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6g">Crée un jeu collectif pour [nombre] élèves de [CP / CE1 / CE2 / CM1 / CM2], dans [cour / gymnase / couloir], durée : 20 minutes, compétence visée : [courir / sauter / lancer / coopérer / s'opposer]. Le jeu : un titre accrocheur, le matériel nécessaire (simple), les règles en 5 points maximum, 2 variantes (plus facile / plus difficile), les critères de réussite collective.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c6)">Défi 8 — Parcours de motricité</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa6h">Conçois un parcours de motricité pour une classe de [PS / MS / GS], avec ce matériel : [cerceaux / bancs / plots / tunnels / tapis / barres]. Propose 6-8 ateliers enchaînés. Pour chacun : le geste moteur travaillé (ramper / sauter / grimper / rouler / porter), la disposition précise du matériel, le niveau de difficulté, une variante plus facile. Précise la durée totale recommandée.</div>
-      </div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#25</span><h3>🎨 Consignes d'arts plastiques</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une bonne consigne d'arts plastiques pose une contrainte créatrice tout en laissant de la liberté. L'IA peut en générer plusieurs variantes progressives autour d'une technique ou d'un thème.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Spécifiez la technique, le niveau et le thème. Obtenez 5 consignes progressives qui laissent de la place à l'interprétation de chaque élève.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6a" onclick="togglePD('pa6a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée 5 consignes d&#x27;arts plastiques pour des élèves de [PS-GS / CP-CE1 / CE2-CM2], technique : [collage / empreinte / peinture au doigt / dessin à l&#x27;encre / aquarelle / ...]. Chaque consigne : pose une contrainte créatrice, laisse de la liberté (composition, couleurs, choix), tient en 2-3 phrases simples, précise le format et le support. Ajoute le titre possible de chaque production et le temps estimé.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#26</span><h3>🎭 Scénario de jeu de rôle</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 GS</span><span class="dbadge-school c2">🔵 CP–CE1</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les jeux de rôle structurés développent le langage oral et la pensée narrative. L'IA peut créer des scénarios avec rôles, vocabulaire, situations-déclencheurs et questions de débrief.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le thème (la boulangerie, le marché, l'hôpital...) et le niveau. Obtenez un scénario complet prêt à utiliser.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6b" onclick="togglePD('pa6b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un scénario de jeu de rôle pour des élèves de [GS / CP / CE1], thème : [thème]. Fournis : liste des 4-6 rôles avec leurs caractéristiques, 10 mots de vocabulaire à introduire avant le jeu, 3 situations-déclencheurs (mini-problèmes à résoudre dans le jeu), accessoires et éléments de décor utiles, 3 questions de débrief oral après le jeu.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#27</span><h3>🎵 Paroles de chanson sur mesure</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Adapter des paroles à un thème pédagogique — les saisons, les nombres, les planètes, les droits — sur une mélodie connue des élèves, c'est engageant et mémorable.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Choisissez une mélodie connue, un thème et un niveau. Obtenez de nouvelles paroles qui respectent le rythme de la mélodie et intègrent du vocabulaire de la séquence.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6c" onclick="togglePD('pa6c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Écris de nouvelles paroles sur la mélodie de &quot;[Frère Jacques / Au clair de la lune / Petit escargot / Promenons-nous dans les bois / ...]&quot;, pour une classe de [niveau], thème : [thème pédagogique]. Les paroles doivent : respecter scrupuleusement le rythme et la structure de la mélodie originale, utiliser un vocabulaire adapté aux élèves, être faciles à mémoriser, intégrer si possible 3-5 mots du vocabulaire de la séquence.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#28</span><h3>🖼️ Textes de légende pour une exposition</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c3">🟢 CE2–CM2</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Lors d'une exposition ou d'un affichage, les textes d'accompagnement doivent être accessibles, bien formulés et donner envie de lire. L'IA peut les rédiger pour différents publics.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez votre projet ou exposition. Obtenez 4 textes courts de légende adaptés à votre public (élèves, parents, visiteurs).</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6d" onclick="togglePD('pa6d')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6d" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige 4 textes de légende/présentation pour une exposition de classe de [CE2 / CM1 / CM2] sur : [thème du projet]. Public : [élèves / parents / visiteurs extérieurs]. Chaque texte : 3-4 lignes maximum, présente un aspect différent du projet, est informatif et engageant, utilise un vocabulaire accessible. Les textes seront collés sous les productions ou sur les panneaux.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6d')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#29</span><h3>🤖 Prompt d'illustration pour l'IA</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Générer une illustration pour un panneau, une affiche ou un document de classe est possible avec l'IA — à condition de savoir formuler un bon prompt en anglais.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez ce que vous voulez illustrer. Demandez à l'IA de générer un prompt optimisé pour Gemini, DALL-E ou Canva AI. Puis utilisez-le.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6e" onclick="togglePD('pa6e')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6e" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Je veux créer une illustration pour ma classe sur le thème : [thème]. Usage : [affiche / couverture de cahier / panneau d&#x27;exposition / carte mentale / ...]. Style souhaité : [coloré et enfantin / réaliste / aquarelle / bande dessinée / flat design]. Génère un prompt en anglais, précis, de 2-3 lignes, optimisé pour un générateur d&#x27;images (Gemini, DALL-E ou Canva AI). Évite les personnages humains identifiables.</code>
+      <p class="dprompt-tip">Collez ensuite le prompt dans Gemini ou dans Canva → Générer une image.</p><button class="dprompt-copy" onclick="cpById('pa6e')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#30</span><h3>🏃 Échauffement ludique thématisé</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">L'échauffement en EPS maternelle doit être court, ludique et ritualisé. Un thème narratif (les animaux, les robots, les explorateurs) engage les élèves et donne du sens aux mouvements.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le thème et l'espace. Obtenez une séquence d'échauffement de 10 minutes avec les consignes exactes à donner aux élèves.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6f" onclick="togglePD('pa6f')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6f" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une séquence d&#x27;échauffement ludique de 10 minutes pour une classe de [PS / MS / GS], thème : [animaux / robots / explorateurs / sorciers / ...], espace : [salle de motricité / cour / couloir]. Inclut : un rituel d&#x27;entrée (signal, mise en route), 3 activités courtes avec les consignes exactes à dire aux élèves, une progression (calme → dynamique → calme), le vocabulaire corporel spécifique à utiliser.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6f')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#31</span><h3>🎮 Jeu collectif avec règles</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CP–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Concevoir un jeu collectif adapté, avec des règles claires et des variantes, prend du temps. L'IA peut en créer ou adapter des existants selon vos contraintes d'espace et de groupe.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le nombre d'élèves, l'espace, la durée et la compétence visée. Obtenez un jeu original avec toutes ses règles et ses variantes.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6g" onclick="togglePD('pa6g')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6g" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un jeu collectif pour [nombre] élèves de [CP / CE1 / CE2 / CM1 / CM2], dans [cour / gymnase / couloir], durée : 20 minutes, compétence visée : [courir / sauter / lancer / coopérer / s&#x27;opposer]. Le jeu : un titre accrocheur, le matériel nécessaire (simple), les règles en 5 points maximum, 2 variantes (plus facile / plus difficile), les critères de réussite collective.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6g')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#9a3412,#ea580c)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#32</span><h3>🤸 Parcours de motricité</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un parcours de motricité bien pensé alterne les modes de déplacement et s'adapte au matériel disponible. L'IA peut en concevoir un à partir de votre inventaire de matériel.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Listez le matériel disponible. Obtenez un parcours de 6-8 ateliers enchaînés avec le geste moteur ciblé et la disposition du matériel.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa6h" onclick="togglePD('pa6h')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa6h" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Conçois un parcours de motricité pour une classe de [PS / MS / GS], avec ce matériel : [cerceaux / bancs / plots / tunnels / tapis / barres / ...]. Propose 6-8 ateliers enchaînés. Pour chacun : le geste moteur travaillé (ramper / sauter / grimper / rouler / porter / ...), la disposition précise du matériel, le niveau de difficulté, une variante plus facile. Précise la durée totale recommandée.</code>
+      <button class="dprompt-copy" onclick="cpById('pa6h')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
     </div>
 
     <div class="tips-box" style="background:#FFF7ED;border-color:var(--c6)">
@@ -851,38 +1032,134 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     </div>
 
     <div class="defi-grid">
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 1 — Tirage au sort de la classe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7a">Crée une application web en HTML/CSS/JavaScript (un seul fichier) pour tirer au sort un prénom dans une liste. Interface : un champ texte pour saisir les prénoms (un par ligne), un bouton "Tirer au sort", et l'affichage du prénom choisi en grand avec une petite animation. Design simple et agréable, lisible au tableau.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 2 — Minuteur pédagogique visuel</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7b">Crée une application web minuteur en HTML/CSS/JavaScript (un seul fichier) pour une classe. Fonctionnalités : boutons pour choisir 5, 10, 15, 20 ou 30 minutes, saisie manuelle d'une durée personnalisée, barre de progression colorée (verte → orange → rouge selon le temps restant), affichage du temps en gros chiffres, son d'alarme à la fin (oscillateur Web Audio), bouton pause/reprendre. Interface épurée, lisible depuis le fond de la classe.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 3 — Bingo de vocabulaire</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7c">Crée une application web de bingo de vocabulaire en HTML/CSS/JavaScript (un seul fichier). L'utilisateur colle une liste de mots (un par ligne) dans un champ texte. L'application génère une grille 4×4 avec 16 mots choisis au hasard. Bouton "Nouvelle grille" pour regénérer. Bouton "Imprimer" qui ouvre la boîte d'impression (CSS @media print). Chaque case est cliquable pour la cocher lors du jeu.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 4 — Frise chronologique interactive</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7d">Crée une frise chronologique interactive en HTML/CSS/JavaScript (un seul fichier) sur [thème : Révolution française / Préhistoire / Moyen Âge] pour des élèves de CM2. La frise est horizontale, avec 8 événements clés. Chaque événement est représenté par un point cliquable avec sa date. Au clic, une fenêtre modale s'ouvre avec le titre, la date, et 2-3 phrases d'explication adaptées au niveau CM2. Design sobre et lisible.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 5 — Outil de vote de classe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7e">Crée une application web de vote de classe en HTML/CSS/JavaScript (un seul fichier). Phase 1 — Configuration : l'enseignant saisit une question et jusqu'à 5 options. Phase 2 — Vote : chaque élève clique sur son choix (1 vote par personne, mémorisé dans la session). Phase 3 — Résultats : graphique en barres horizontales colorées avec le nombre et pourcentage de votes. Bouton "Réinitialiser". Interface claire, boutons larges, lisibles de loin.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 6 — Jeu de mots mêlés interactif</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7f">Crée un jeu de mots mêlés interactif en HTML/CSS/JavaScript (un seul fichier) sur le thème [animaux / planètes / histoire]. Grille de 12×12 lettres. Mots à trouver : [liste de 8 mots en rapport avec le thème]. Les mots sont cachés horizontalement, verticalement et en diagonale. L'élève clique sur la première et la dernière lettre d'un mot pour le surligner. Un compteur indique combien de mots ont été trouvés. Message de victoire quand tous les mots sont découverts.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 7 — Application de calcul mental</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7g">Crée une application web de calcul mental en HTML/CSS/JavaScript (un seul fichier). Paramètres : additions et soustractions jusqu'à 100, 10 questions par série, 8 secondes par question (barre de temps visible), affichage du score final avec encouragement. L'élève saisit sa réponse au clavier et valide avec Entrée. Bouton "Nouvelle série" pour recommencer. Design coloré et motivant pour des enfants de 7-9 ans.</div>
-      </div>
-      <div class="pcrd">
-        <div class="phdr"><span class="ptitle" style="color:var(--c7)">Artefact 8 — Générateur de quiz interactif</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pbody" id="pa7h">Crée une application web (HTML/CSS/JS, fichier unique) : un champ texte pour coller un texte ou décrire une notion, un sélecteur de type (vrai/faux ou QCM), un sélecteur de niveau (maternelle / CP-CE1 / CE2-CM2), un bouton "Générer le quiz". L'outil appelle l'API Gemini et génère 5 questions adaptées. Affiche d'abord les questions sans réponses. Un bouton "Voir la correction" révèle les bonnes réponses avec explications.</div>
-      </div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#01</span><h3>🎰 Tirage au sort</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Désigner un élève au hasard, c'est un besoin quotidien. Une petite application web le fait en 2 clics, avec les prénoms de votre classe.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Demandez à une IA de créer une application de tirage au sort : on entre les prénoms de la classe, on clique, un prénom s'affiche avec une petite animation.</p></div>
+    <div class="dbtn-row"><button class="ddemo-btn" onclick="alert('Exemple disponible sur remyvdm.com/ia-formation/defis.html')">👁 Voir un exemple</button><button class="dhide-btn" id="btn-pa7a" onclick="togglePD('pa7a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web en HTML/CSS/JavaScript (un seul fichier) pour tirer au sort un prénom dans une liste. Interface : un champ texte pour saisir les prénoms (un par ligne), un bouton &quot;Tirer au sort&quot;, et l&#x27;affichage du prénom choisi en grand avec une petite animation. Design simple et agréable.</code>
+      <p class="dprompt-tip">Copiez le code généré dans un fichier .html, ouvrez-le dans votre navigateur. Ça marche sans connexion.</p><button class="dprompt-copy" onclick="cpById('pa7a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#43</span><h3>⏱️ Minuteur pédagogique</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Gérer le temps en classe — ateliers, travail en autonomie, transitions — c'est un enjeu quotidien. Un minuteur visuel affiché au tableau change tout : les élèves s'auto-régulent.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Demandez à une IA de créer une application minuteur : plusieurs durées prédéfinies (5, 10, 20 min), une barre de progression visuelle, une alarme sonore à la fin, et un affichage en grand sur vidéoprojecteur.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa7b" onclick="togglePD('pa7b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web minuteur en HTML/CSS/JavaScript (un seul fichier) pour une classe. Fonctionnalités : boutons pour choisir 5, 10, 15, 20 ou 30 minutes, saisie manuelle d&#x27;une durée personnalisée, barre de progression colorée (verte → orange → rouge selon le temps restant), affichage du temps en gros chiffres, son d&#x27;alarme à la fin (oscillateur Web Audio), bouton pause/reprendre. Interface épurée, lisible depuis le fond de la classe.</code>
+      <p class="dprompt-tip">Ouvrez le fichier .html généré et passez en plein écran (F11) lors de la projection.</p><button class="dprompt-copy" onclick="cpById('pa7b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#46</span><h3>🎲 Bingo de vocabulaire</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 Cycle 2–3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Le bingo est une activité de révision que les élèves adorent. Générer 30 grilles personnalisées à la main est impossible — une IA peut créer une application qui génère et imprime autant de grilles uniques qu'on veut.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez une application qui génère des grilles de bingo uniques avec votre liste de mots de vocabulaire — imprimables directement depuis le navigateur.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa7c" onclick="togglePD('pa7c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web de bingo de vocabulaire en HTML/CSS/JavaScript (un seul fichier). L&#x27;utilisateur colle une liste de mots (un par ligne) dans un champ texte. L&#x27;application génère une grille 4×4 avec 16 mots choisis au hasard parmi la liste. Bouton &quot;Nouvelle grille&quot; pour regénérer. Bouton &quot;Imprimer&quot; qui ouvre la boîte d&#x27;impression du navigateur en n&#x27;affichant que la grille (CSS @media print). Chaque case est cliquable pour la cocher lors du jeu.</code>
+      <p class="dprompt-tip">Imprimez 25-30 grilles d'un coup : chacune est différente car les mots sont tirés aléatoirement.</p><button class="dprompt-copy" onclick="cpById('pa7c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#45</span><h3>📅 Frise chronologique cliquable</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c3">🟢 Cycle 3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les frises chronologiques papier ne permettent pas l'interactivité. Une frise HTML projetée au tableau où on clique sur chaque événement pour voir la description et une image est bien plus engageante.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Faites générer par une IA une frise chronologique interactive sur un thème de votre séquence d'histoire : chaque événement clé s'ouvre au clic avec sa description.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa7d" onclick="togglePD('pa7d')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7d" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une frise chronologique interactive en HTML/CSS/JavaScript (un seul fichier) sur la Révolution française pour des élèves de CM2. La frise est horizontale, avec 8 événements clés entre 1789 et 1799. Chaque événement est représenté par un point cliquable avec sa date. Au clic, une fenêtre modale s&#x27;ouvre avec le titre, la date, et 2-3 phrases d&#x27;explication adaptées au niveau CM2. Design sobre et lisible, couleurs tricolores discrètes.</code>
+      <p class="dprompt-tip">Remplacez "Révolution française" par n'importe quel thème de votre progression : Préhistoire, Moyen Âge, etc.</p><button class="dprompt-copy" onclick="cpById('pa7d')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#48</span><h3>🗳️ Outil de vote de classe</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Choisir un thème de projet, élire un délégué, voter pour les règles de vie… les petits votes de classe reviennent souvent. Une application simple évite les bouts de papier et rend le résultat visible immédiatement.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez une application de vote à projeter au tableau : l'enseignant saisit la question et les options, les élèves votent à tour de rôle, les résultats s'affichent sous forme de graphique.</p></div>
+    <div class="dbtn-row"><button class="ddemo-btn" onclick="alert('Exemple disponible sur remyvdm.com/ia-formation/defis.html')">👁 Voir un exemple</button><button class="dhide-btn" id="btn-pa7e" onclick="togglePD('pa7e')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7e" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web de vote de classe en HTML/CSS/JavaScript (un seul fichier). Phase 1 — Configuration : l&#x27;enseignant saisit une question et jusqu&#x27;à 5 options de réponse. Phase 2 — Vote : chaque élève clique sur son choix (1 vote par personne, mémorisé dans la session). Phase 3 — Résultats : graphique en barres horizontales colorées avec le nombre et pourcentage de votes. Bouton &quot;Réinitialiser&quot; pour recommencer. Interface claire, boutons larges, lisibles de loin.</code>
+      <p class="dprompt-tip">Utilisez-le aussi lors d'un conseil d'élèves pour rendre les décisions collectives plus visuelles.</p><button class="dprompt-copy" onclick="cpById('pa7e')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#47</span><h3>🔤 Jeu de mots mêlés</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c2">🔵 Cycle 2–3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les mots mêlés sont une activité classique de début de séance ou de fin de cours. Avec une IA, vous pouvez en générer un sur n'importe quel thème en 2 minutes, imprimable ou interactif.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Faites générer une grille de mots mêlés interactive sur un thème de votre choix : les mots s'affichent à trouver, et on les surligne en cliquant sur les lettres.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa7f" onclick="togglePD('pa7f')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7f" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un jeu de mots mêlés interactif en HTML/CSS/JavaScript (un seul fichier) sur le thème des animaux de la ferme. Grille de 12×12 lettres. Mots à trouver : VACHE, MOUTON, COCHON, POULE, LAPIN, CHEVAL, CANARD, CHEVRE. Les mots sont cachés horizontalement, verticalement et en diagonale. L&#x27;élève clique sur la première et la dernière lettre d&#x27;un mot pour le surligner. Un compteur indique combien de mots ont été trouvés. Message de victoire quand tous les mots sont découverts.</code>
+      <p class="dprompt-tip">Changez le thème et la liste de mots selon votre séquence. Fonctionne aussi bien projeté que sur tablettes.</p><button class="dprompt-copy" onclick="cpById('pa7f')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#4c1d95,#7c3aed)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#44</span><h3>🧮 Application de calcul mental</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school c2">🔵 Cycle 2–3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Le calcul mental quotidien prend du temps à préparer. Une petite application qui pose des opérations aléatoires, minutée, avec score, peut devenir un rituel de classe en autonomie.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez une application de calcul mental HTML adaptée à votre niveau de classe : l'élève répond à une série d'opérations, le score s'affiche à la fin, et on peut rejouer.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa7g" onclick="togglePD('pa7g')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7g" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web de calcul mental en HTML/CSS/JavaScript (un seul fichier). Paramètres : additions et soustractions jusqu&#x27;à 100, 10 questions par série, 8 secondes par question (barre de temps visible), affichage du score final avec encouragement. L&#x27;élève saisit sa réponse au clavier et valide avec Entrée. Bouton &quot;Nouvelle série&quot; pour recommencer. Design coloré et motivant pour des enfants de 7-9 ans.</code>
+      <p class="dprompt-tip">Adaptez les types d'opérations et les limites numériques selon votre niveau en modifiant le prompt.</p><button class="dprompt-copy" onclick="cpById('pa7g')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+      <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#155e75,#0e7490)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#34</span><h3>🧠 Générateur de quiz interactif</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐⭐ Avancé</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Un quiz de 5 questions vrai/faux ou QCM sur n'importe quelle notion, généré en 10 secondes à partir d'un texte ou d'un thème. Utile pour l'entrée en matière, la clôture ou l'évaluation formative.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez une appli : on colle un texte ou une notion, l'IA génère 5 questions avec mode "élève" (sans réponses) et mode "correction".</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa7h" onclick="togglePD('pa7h')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa7h" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web (HTML/CSS/JS, fichier unique) : un champ texte pour coller un texte ou décrire une notion, un sélecteur de type (vrai/faux ou QCM), un sélecteur de niveau (maternelle / CP-CE1 / CE2-CM2), un bouton &quot;Générer le quiz&quot;. L&#x27;outil appelle l&#x27;API Gemini et génère 5 questions adaptées. Affiche d&#x27;abord les questions sans réponses. Un bouton &quot;Voir la correction&quot; révèle les bonnes réponses avec explications.</code>
+      <button class="dprompt-copy" onclick="cpById('pa7h')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
     </div>
 
     <div class="tips-box" style="background:#F5F3FF;border-color:var(--c7)">
@@ -920,70 +1197,226 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
     <div>
       <div class="sec-title">📋 Évaluation & Différenciation</div>
       <div class="prompts">
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt A — Différencier une activité en 3 niveaux</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8a">Voici une activité pédagogique : [description]. Génère 3 versions différenciées pour une classe de [niveau] : Version 1 — avec étayage fort (élèves en difficulté : aide, guidage, moins d'étapes, exemples supplémentaires), Version 2 — standard (tel quel, adapté à la majorité), Version 3 — enrichie (élèves avancés : défi supplémentaire, autonomie, ouverture interdisciplinaire). Pour chaque version : ce qui change et pourquoi.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt B — Grille d'auto-évaluation</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8b">Crée une grille d'auto-évaluation pour des élèves de [CE1 / CE2 / CM1 / CM2], pour : [tâche : exposé oral / texte produit / dessin technique / présentation]. La grille : 6-8 critères formulés en "Je suis capable de…", 3 niveaux par critère (pas encore 😕 / presque 🙂 / oui ! 😄), vocabulaire accessible aux élèves. Ajoute une case "Ce que je ferai différemment la prochaine fois :" en bas.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt C — Commentaires de bulletin</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8c">Rédige un commentaire de bulletin scolaire pour un élève de [niveau], profil : [ex : curieux mais dispersé / en progrès en lecture / très à l'aise, manque d'écoute / timide, s'implique davantage]. Le commentaire : positif et bienveillant, nomme les points forts, identifie un axe de progrès sans stigmatiser, évite les formules plates ("travaille bien"). Propose 2 versions : courte (2 lignes) et complète (4 lignes).</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt D — Activités d'APC ciblées</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8d">Crée 3 activités d'APC de 15 minutes chacune pour 2-3 élèves de [niveau] en difficulté sur : [compétence précise]. Les activités doivent : utiliser une approche différente de la classe (manipulatoire, orale, ludique, sensorielle), ne pas reproduire les exercices du manuel, inclure un temps de verbalisation, être faisables sans matériel spécial. Pour chacune : titre, matériel, déroulé en 3 étapes, ce que l'élève doit verbaliser.</div>
-        </div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#155e75,#0e7490)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#33</span><h3>🎯 Différenciateur d'activités</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Différencier, c'est adapter la même tâche à différents profils. L'IA peut générer en quelques secondes 3 versions d'un exercice : avec étayage fort, standard, et enrichi.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez un outil : on décrit une activité, l'IA génère 3 versions différenciées — avec aide, sans aide, avec dépassement.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8a" onclick="togglePD('pa8a')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8a" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une application web (HTML/CSS/JS, fichier unique) avec un champ texte pour décrire une activité pédagogique et un bouton &quot;Différencier&quot;. L&#x27;outil appelle l&#x27;API Gemini et génère 3 versions : version avec étayage fort (élèves en difficulté : aide, guidage, moins d&#x27;étapes), version standard, version enrichie (élèves avancés : défi supplémentaire, autonomie). Affiche les 3 versions côte à côte avec des couleurs distinctes.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8a')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#155e75,#0e7490)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#35</span><h3>✅ Grille d'auto-évaluation</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school c2">🔵 CE1–CE2</span><span class="dbadge-school c3">🟢 C3</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Une grille d'auto-évaluation bien construite aide l'élève à porter un regard actif sur son travail. Elle doit être lisible, formulée à la première personne, et permettre un vrai retour réflexif.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez la tâche ou la production à évaluer. Obtenez une grille en 6-8 critères, formulée en "Je suis capable de…", avec 3 niveaux par critère.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8b" onclick="togglePD('pa8b')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8b" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une grille d&#x27;auto-évaluation pour des élèves de [CE1 / CE2 / CM1 / CM2], pour : [tâche : exposé oral / texte produit / dessin technique / présentation / ...]. La grille : 6-8 critères formulés en &quot;Je suis capable de…&quot;, 3 niveaux par critère (pas encore 😕 / presque 🙂 / oui ! 😄), vocabulaire accessible aux élèves. Ajoute une case &quot;Ce que je ferai différemment la prochaine fois :&quot; en bas.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8b')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#155e75,#0e7490)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#36</span><h3>📝 Commentaires de bulletin</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Rédiger 25 commentaires de bulletins nuancés, personnalisés, bienveillants et sans formules plates prend des heures. L'IA peut en générer une première version solide à partir d'un profil en 3 mots.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez le profil d'un élève en 3-4 mots. Obtenez un commentaire professionnel et bienveillant en version courte (2 lignes) et longue (4 lignes).</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8c" onclick="togglePD('pa8c')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8c" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige un commentaire de bulletin scolaire pour un élève de [niveau], profil : [ex : curieux mais dispersé / en progrès en lecture, difficultés en calcul / très à l&#x27;aise, manque d&#x27;écoute / timide, s&#x27;implique davantage]. Le commentaire : positif et bienveillant, nomme les points forts, identifie un axe de progrès sans stigmatiser, évite les formules plates (&quot;travaille bien&quot;, &quot;bon élève&quot;). Propose 2 versions : courte (2 lignes) et complète (4 lignes).</code>
+      <p class="dprompt-tip">Répétez 25 fois avec des profils différents. Chaque commentaire ne prend que 5 secondes.</p><button class="dprompt-copy" onclick="cpById('pa8c')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#155e75,#0e7490)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#37</span><h3>🏫 Activités d'APC ciblées</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">L'aide pédagogique complémentaire (APC) demande des activités courtes, différentes de ce qui a été fait en classe — plus manipulatoires, plus orales, plus ludiques. L'IA peut en proposer rapidement.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez la difficulté identifiée et le niveau. Obtenez 3 activités d'APC de 15 minutes chacune, avec une approche différente de la classe.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8d" onclick="togglePD('pa8d')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8d" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée 3 activités d&#x27;APC de 15 minutes chacune pour 2-3 élèves de [niveau] en difficulté sur : [compétence précise]. Les activités doivent : utiliser une approche différente de la classe (manipulatoire, orale, ludique, sensorielle…), ne pas reproduire les exercices du manuel, inclure un temps de verbalisation, être faisables sans matériel spécial. Pour chacune : titre, matériel, déroulé en 3 étapes, ce que l&#x27;élève doit verbaliser.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8d')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
       </div>
     </div>
 
     <div>
       <div class="sec-title">📋 Préparation & Organisation</div>
       <div class="prompts">
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt E — Structure de séquence pédagogique</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8e">Crée la structure d'une séquence pédagogique pour une classe de [niveau], en [discipline], sur : [notion]. 5 à 6 séances avec pour chacune : objectif opérationnel, type d'activité (découverte / entraînement / structuration / évaluation), durée estimée, compétences du programme mobilisées. Ajoute : les prérequis nécessaires, les modalités d'évaluation finale, un lien transversal possible avec une autre discipline.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt F — Programmation sur une période</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8f">Crée une programmation pédagogique sur 5 semaines pour une classe de [niveau]. Disciplines : [liste]. Projets en cours : [projets]. Contraintes : [sortie, événement, évaluation, période de l'année]. Pour chaque semaine : les notions abordées par discipline, les liens transversaux possibles, le type d'activité dominant (découverte / entraînement / projet / évaluation). Format : tableau une semaine par ligne.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt G — Traducteur pour élèves allophones</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8g">Traduis ces phrases essentielles en [arabe / ukrainien / espagnol / portugais / tamoul / roumain] pour un élève allophone arrivant dans une classe de [niveau]. Phrases : ["Assieds-toi.", "Ouvre ton cahier.", "Écoute.", "Range tes affaires.", "Va aux toilettes.", "Bravo !", "Je ne comprends pas."]. Pour chaque phrase : version française, version traduite, transcription phonétique simplifiée pour un francophone, emoji ou pictogramme suggéré.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt H — Lancement de projet : l'accroche</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt I — Scénario de formation entre pairs</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8i">Conçois un scénario de formation pédagogique de [durée] sur le thème : [thème], pour [enseignants débutants / équipe école entière / formateurs]. Inclut : objectifs de formation (3 max), phases détaillées (accueil / activité brise-glace / apport / mise en pratique / bilan), pour chaque phase : description, durée, supports nécessaires, posture du formateur (facilitateur / apporteur / observateur), 3 questions de débriefing collectif pour la clôture.</div>
-        </div>
-          <div class="pbody" id="pa8h">Rédige un texte de présentation orale de 2-3 minutes pour lancer un projet de classe avec des élèves de [niveau]. Projet : [description]. Le texte doit : commencer par une question ou une situation concrète qui accroche, présenter les enjeux sans tout dévoiler, donner envie de s'y engager, se terminer par une question ouverte pour recueillir les représentations initiales. Ton : enthousiaste, direct, adapté à l'âge.</div>
-        </div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#374151,#6b7280)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#38</span><h3>📋 Structure de séquence pédagogique</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Structurer une séquence pédagogique cohérente — objectifs, séances, évaluation — est un travail de fond. L'IA peut en générer la trame à partir d'une notion et d'un niveau, à affiner ensuite.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez la discipline, la notion et le niveau. Obtenez une structure de 5-6 séances avec les objectifs, types d'activités et compétences mobilisées.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8e" onclick="togglePD('pa8e')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8e" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée la structure d&#x27;une séquence pédagogique pour une classe de [niveau], en [discipline], sur : [notion]. 5 à 6 séances avec pour chacune : objectif opérationnel, type d&#x27;activité (découverte / entraînement / structuration / évaluation), durée estimée, compétences du programme mobilisées. Ajoute : les prérequis nécessaires, les modalités d&#x27;évaluation finale, un lien transversal possible avec une autre discipline.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8e')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#374151,#6b7280)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#41</span><h3>📅 Programmation sur une période</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Planifier les apprentissages sur 5 semaines en articulant les disciplines, les projets et les contraintes de l'agenda scolaire demande de la rigueur. L'IA peut en faire une première version structurée.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez les disciplines, les projets en cours et les contraintes. Obtenez une programmation hebdomadaire sur 5 semaines avec les liens transversaux.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8f" onclick="togglePD('pa8f')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8f" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée une programmation pédagogique sur 5 semaines pour une classe de [niveau]. Disciplines : [liste]. Projets en cours : [projets]. Contraintes : [sortie, événement, évaluation, période de l&#x27;année]. Pour chaque semaine : les notions abordées par discipline, les liens transversaux possibles entre disciplines, le type d&#x27;activité dominant (découverte / entraînement / projet / évaluation). Format : tableau une semaine par ligne.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8f')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#374151,#6b7280)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#39</span><h3>🌐 Traducteur pour élèves allophones</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐ Intermédiaire</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Accueillir un élève allophone nécessite de communiquer des consignes essentielles dans sa langue. L'IA peut traduire, simplifier et ajouter une phonétique accessible pour chaque phrase clé.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Listez les consignes ou messages de base à communiquer. Obtenez une version bilingue avec transcription phonétique et pictogramme suggéré.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8g" onclick="togglePD('pa8g')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8g" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Traduis ces phrases essentielles en [arabe / ukrainien / espagnol / portugais / tamoul / roumain / ...] pour un élève allophone arrivant dans une classe de [niveau]. Phrases : [&quot;Assieds-toi.&quot;, &quot;Ouvre ton cahier.&quot;, &quot;Écoute.&quot;, &quot;Range tes affaires.&quot;, &quot;Va aux toilettes.&quot;, &quot;Bravo !&quot;, &quot;Je ne comprends pas.&quot;]. Pour chaque phrase : version française, version traduite, transcription phonétique simplifiée pour un francophone, emoji ou pictogramme suggéré.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8g')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#374151,#6b7280)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#40</span><h3>🚀 Lancement de projet : l'accroche</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">La façon dont on lance un projet détermine en grande partie l'engagement des élèves. Une accroche bien construite pose le problème, suscite la curiosité, et recueille les représentations initiales.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez votre projet. Obtenez un texte de présentation orale de 2-3 minutes, calibré pour déclencher la curiosité et l'envie des élèves.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8h" onclick="togglePD('pa8h')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8h" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige un texte de présentation orale de 2-3 minutes pour lancer un projet de classe avec des élèves de [niveau]. Projet : [description]. Le texte doit : commencer par une question ou une situation concrète qui accroche, présenter les enjeux sans tout dévoiler, donner envie de s&#x27;y engager, se terminer par une question ouverte pour recueillir les représentations initiales des élèves. Ton : enthousiaste, direct, adapté à l&#x27;âge.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8h')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
       </div>
     </div>
 
     <div>
       <div class="sec-title">🗂️ Gestion de classe</div>
       <div class="prompts">
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt J — Règles de vie en classe</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8j">Tu es enseignant en maternelle. Génère 8 règles de vie pour une classe de [PS / MS / GS]. Chaque règle doit : être formulée positivement (on dit ce qu'on fait), tenir en 4-6 mots, commencer par "Je" ou "On", être compréhensible par un enfant de 3-5 ans. Présente sous forme de tableau avec 3 colonnes : la règle, son sens expliqué à l'enfant (1 phrase), description de l'illustration (ce qu'on dessinerait ou photographierait).</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt K — Tableau des responsabilités</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8k">Crée un tableau de responsabilités de classe pour un niveau [GS / CP / CE1]. Liste 10 responsabilités. Pour chacune : nom du rôle (2-3 mots max), mission expliquée en langage d'enfant (1 phrase commençant par "Tu…"), un emoji associé, fréquence (quotidien / hebdomadaire). Les rôles doivent être variés et couvrir : distribution, rangement, observation, communication, aide.</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt L — Message aux parents</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8l">Rédige un message aux parents d'une classe de [niveau], concernant : [situation en 2-3 mots]. Le message doit : faire 8-10 lignes maximum, avoir un ton professionnel et chaleureux, être clair sans jargon pédagogique, se terminer par une formule de politesse simple. Commence par "Bonjour," et termine par "Cordialement, [Prénom] [Nom]".</div>
-        </div>
-        <div class="pcrd">
-          <div class="phdr"><span class="ptitle" style="color:var(--c8)">Prompt M — Rituel du matin</span><button class="cpbtn" onclick="cp(this)">📋 Copier</button></div>
-          <div class="pbody" id="pa8m">Crée un planning de rituel du matin pour une semaine (lundi–vendredi), pour une classe de [PS / MS / GS]. Chaque jour : une question ouverte sur le jour/la date/la météo, une activité courte liée au calendrier ou au comptage, une chanson ou comptine associée (donnez le titre). Les questions doivent être progressives du lundi (simple) au vendredi (plus complexe). Vocabulaire adapté à l'âge.</div>
-        </div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#02</span><h3>📋 Règles de vie en classe</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les règles de vie en maternelle doivent être courtes, positives, et illustrables. L'IA peut en générer un jeu complet adapté à l'âge, avec des descriptions pour les illustrations.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Obtenez 8 règles de vie pour votre classe de PS-GS, formulées positivement, avec pour chacune une description de l'illustration associée.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8j" onclick="togglePD('pa8j')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8j" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Tu es enseignant en maternelle. Génère 8 règles de vie pour une classe de [PS / MS / GS]. Chaque règle doit : être formulée positivement (on dit ce qu&#x27;on fait), tenir en 4-6 mots, commencer par &quot;Je&quot; ou &quot;On&quot;, être compréhensible par un enfant de 3-5 ans. Présente sous forme de tableau avec 3 colonnes : la règle, son sens expliqué à l&#x27;enfant (1 phrase), description de l&#x27;illustration (ce qu&#x27;on dessinerait ou photographierait).</code>
+      <button class="dprompt-copy" onclick="cpById('pa8j')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+<div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#374151,#6b7280)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#42</span><h3>🧑‍🏫 Scénario de formation entre pairs</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐⭐⭐ Avancé</span><span class="dbadge-school tous">Formateurs</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Animer une formation entre pairs ou préparer une réunion pédagogique nécessite un scénario précis. L'IA peut en générer un à partir d'un thème et d'une durée, avec les activités et les postures du formateur.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Indiquez le thème, la durée et le profil des participants. Obtenez un scénario complet avec activités, transitions, supports et questions de débriefing.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8i" onclick="togglePD('pa8i')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8i" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Conçois un scénario de formation pédagogique de [durée] sur le thème : [thème], pour [enseignants débutants / équipe école entière / formateurs]. Inclut : objectifs de formation (3 max), phases détaillées (accueil / activité brise-glace / apport / mise en pratique / bilan), pour chaque phase : description, durée, supports nécessaires, posture du formateur (facilitateur / apporteur / observateur), 3 questions de débriefing collectif pour la clôture.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8i')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#03</span><h3>🧹 Tableau des responsabilités</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span><span class="dbadge-school c2">🔵 CP</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Les responsabilités de classe donnent du sens et de l'autonomie aux élèves. L'IA peut en générer une liste complète avec les formulations adaptées à l'âge.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Créez un tableau de 10 responsabilités de classe avec le nom du rôle, la mission expliquée en langage d'enfant, un emoji, et la fréquence.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8k" onclick="togglePD('pa8k')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8k" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un tableau de responsabilités de classe pour un niveau [GS / CP / CE1]. Liste 10 responsabilités. Pour chacune : nom du rôle (2-3 mots max), mission expliquée en langage d&#x27;enfant (1 phrase commençant par &quot;Tu…&quot;), un emoji associé, fréquence (quotidien / hebdomadaire). Les rôles doivent être variés et couvrir : distribution, rangement, observation, communication, aide.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8k')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#04</span><h3>✉️ Message aux parents</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school tous">Tous niveaux</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Rédiger un message aux familles clair, bienveillant et sans jargon pédagogique prend du temps. L'IA peut en rédiger une première version à partir de quelques mots-clés.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Décrivez en 3-4 mots la situation (sortie, projet, incident, info...) et obtenez un message professionnel et chaleureux, prêt à envoyer.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8l" onclick="togglePD('pa8l')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8l" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Rédige un message aux parents d&#x27;une classe de [niveau], concernant : [situation en 2-3 mots]. Le message doit : faire 8-10 lignes maximum, avoir un ton professionnel et chaleureux, être clair sans jargon pédagogique, se terminer par une formule de politesse simple. Commence par &quot;Bonjour,&quot; et termine par &quot;Cordialement, [Prénom] [Nom]&quot;.</code>
+      <p class="dprompt-tip">Relisez, ajustez les détails factuels, puis copiez dans votre outil de messagerie habituel.</p><button class="dprompt-copy" onclick="cpById('pa8l')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
+        <div class="dcard">
+  <div class="dcard-hdr" style="background:linear-gradient(135deg,#1e3a5f,#2c5f8a)">
+    <div class="dcard-hdr-left"><span class="dcard-num">#05</span><h3>📅 Rituel du matin</h3></div>
+    <div class="dcard-badges"><span class="dbadge-level">⭐ Débutant</span><span class="dbadge-school mat">🟡 PS–GS</span></div>
+  </div>
+  <div class="dcard-body">
+    <div class="dctx">Le rituel du matin structure la journée et l'entrée dans les apprentissages. L'IA peut générer des variantes pour renouveler la météo, le calendrier, le comptage des présents.</div>
+    <div class="dmission"><div class="dmission-ttl">🎯 Votre mission</div><p>Obtenez un script de rituel du matin pour une semaine entière, avec une variante par jour et les questions à poser aux élèves selon leur niveau.</p></div>
+    <div class="dbtn-row"><button class="dhide-btn" id="btn-pa8m" onclick="togglePD('pa8m')">💡 Prompt de départ</button></div>
+    <div class="dprompt-zone" id="pa8m" style="display:none">
+      <p class="dprompt-intro">Copiez ce prompt dans ChatGPT ou Gemini :</p>
+      <code class="dprompt-code">Crée un planning de rituel du matin pour une semaine (lundi–vendredi), pour une classe de [PS / MS / GS]. Chaque jour : une question ouverte sur le jour/la date/la météo, une activité courte liée au calendrier ou au comptage, une chanson ou comptine associée (donnez le titre). Les questions doivent être progressives du lundi (simple) au vendredi (plus complexe). Vocabulaire adapté à l&#x27;âge.</code>
+      <button class="dprompt-copy" onclick="cpById('pa8m')">📋 Copier le prompt</button>
+    </div>
+  </div>
+</div>
       </div>
     </div>
 
@@ -1016,12 +1449,22 @@ function go(id, btn) {
 
 // ── PROMPT DE DÉPART TOGGLE ──
 function togglePD(id) {
-  const body = document.getElementById(id);
-  const btn = body.previousElementSibling;
-  const isHidden = body.style.display === 'none' || getComputedStyle(body).display === 'none';
-  body.style.display = isHidden ? 'block' : 'none';
-  btn.textContent = isHidden ? '🔼 Masquer le prompt' : '💡 Prompt de départ';
-  btn.classList.toggle('open', isHidden);
+  const zone = document.getElementById(id);
+  const btn = document.getElementById('btn-' + id);
+  const isHidden = zone.style.display === 'none';
+  zone.style.display = isHidden ? 'flex' : 'none';
+  if (btn) {
+    btn.textContent = isHidden ? '🙈 Masquer le prompt' : '💡 Prompt de départ';
+    btn.classList.toggle('open', isHidden);
+  }
+}
+function cpById(id) {
+  const code = document.querySelector('#' + id + ' .dprompt-code');
+  if (!code) return;
+  const btn = document.querySelector('#' + id + ' .dprompt-copy');
+  navigator.clipboard.writeText(code.textContent.trim()).then(() => {
+    if (btn) { btn.textContent = '✓ Copié !'; setTimeout(() => btn.textContent = '📋 Copier le prompt', 2000); }
+  });
 }
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.pcrd .pbody').forEach(el => {
