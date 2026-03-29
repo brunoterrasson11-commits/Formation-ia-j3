@@ -343,6 +343,48 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
 </head>
 <body>
 
+<!-- LOCK SCREEN -->
+<div id="lockscreen" style="display:none;position:fixed;inset:0;z-index:9999;background:linear-gradient(135deg,#1E1B4B 0%,#0F172A 100%);align-items:center;justify-content:center;flex-direction:column;gap:0">
+  <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:44px 48px 40px;width:100%;max-width:400px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.4)">
+    <div style="font-size:40px;margin-bottom:16px">🔒</div>
+    <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:6px">Formation IA</div>
+    <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">Journée 3</div>
+    <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:32px">Saisissez le code fourni par le formateur</div>
+    <input id="lock-input" type="password" placeholder="Code d'accès…" autocomplete="off"
+      style="width:100%;padding:13px 16px;border-radius:10px;border:2px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:16px;text-align:center;outline:none;letter-spacing:.15em;transition:border-color .2s"
+      onfocus="this.style.borderColor='rgba(255,255,255,.4)'" onblur="this.style.borderColor='rgba(255,255,255,.15)'"
+      onkeydown="if(event.key==='Enter')checkLock()">
+    <div id="lock-err" style="display:none;margin-top:10px;font-size:12px;color:#F87171;font-weight:600">Code incorrect — réessayez</div>
+    <button onclick="checkLock()" style="margin-top:16px;width:100%;padding:13px;border-radius:10px;border:none;background:linear-gradient(135deg,#6D28D9,#9333EA);color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s" onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+      → Accéder à la formation
+    </button>
+  </div>
+  <div style="margin-top:24px;font-size:11px;color:rgba(255,255,255,.2)">Sophiae · Formation IA</div>
+</div>
+<script>
+(function(){
+  if(sessionStorage.getItem('j3-unlocked')==='1'){return;}
+  var ls=document.getElementById('lockscreen');
+  ls.style.display='flex';
+  document.body.style.overflow='hidden';
+})();
+function checkLock(){
+  var v=document.getElementById('lock-input').value.trim().toLowerCase();
+  if(v==='joker'){
+    sessionStorage.setItem('j3-unlocked','1');
+    document.getElementById('lockscreen').style.display='none';
+    document.body.style.overflow='';
+  } else {
+    var e=document.getElementById('lock-err');
+    e.style.display='block';
+    var inp=document.getElementById('lock-input');
+    inp.value=''; inp.focus();
+    inp.style.borderColor='#F87171';
+    setTimeout(function(){inp.style.borderColor='rgba(255,255,255,.15)';},1200);
+  }
+}
+</script>
+
 <aside class="sb">
   <div class="sb-brand">
     <div class="tag">Formation IA</div>
