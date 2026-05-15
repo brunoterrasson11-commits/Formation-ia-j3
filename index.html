@@ -339,6 +339,25 @@ body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Ar
   .cert-wrap{max-height:none!important;box-shadow:none!important;border-radius:0!important}
   .cert-paper{padding:30px 40px!important}
 }
+.notes-panel{position:fixed;top:0;right:0;bottom:0;width:340px;background:#1e2d25;border-left:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;z-index:900;transform:translateX(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);box-shadow:-6px 0 24px rgba(0,0,0,.35)}
+.notes-panel.open{transform:translateX(0)}
+.notes-panel-head{display:flex;align-items:center;padding:14px 14px 10px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0}
+.notes-panel-head h3{font-size:12.5px;font-weight:700;color:#fff;flex:1;letter-spacing:.01em}
+.notes-close-btn{background:none;border:none;color:rgba(255,255,255,.45);cursor:pointer;font-size:18px;padding:2px 4px;border-radius:5px;line-height:1;transition:color .12s}
+.notes-close-btn:hover{color:#fff}
+.notes-hint{font-size:10.5px;color:rgba(255,255,255,.35);padding:6px 14px 8px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.notes-textarea{flex:1;resize:none;background:rgba(0,0,0,.2);border:none;outline:none;color:rgba(255,255,255,.88);font-family:'Courier New',Courier,monospace;font-size:12.5px;line-height:1.65;padding:12px 14px;min-height:0}
+.notes-textarea::placeholder{color:rgba(255,255,255,.2)}
+.notes-actions{display:flex;gap:7px;padding:10px 12px;border-top:1px solid rgba(255,255,255,.08);flex-shrink:0}
+.notes-btn{flex:1;padding:7px 8px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);border-radius:6px;color:rgba(255,255,255,.7);font-size:11px;cursor:pointer;transition:background .12s;white-space:nowrap}
+.notes-btn:hover{background:rgba(255,255,255,.13);color:#fff}
+.notes-btn.pri{background:rgba(5,150,105,.7);border-color:rgba(5,150,105,.8);color:#fff}
+.notes-btn.pri:hover{background:rgba(5,150,105,.9)}
+.notes-count{font-size:10px;color:rgba(255,255,255,.25);text-align:right;padding:0 14px 6px;flex-shrink:0}
+.notes-toggle-btn{display:flex;align-items:center;gap:7px;width:100%;padding:8px 10px;border:none;background:none;border-radius:7px;cursor:pointer;color:rgba(255,255,255,.55);font-size:11.5px;text-align:left;transition:background .12s;margin-bottom:2px}
+.notes-toggle-btn:hover{background:var(--sb-hover);color:rgba(255,255,255,.8)}
+.notes-toggle-btn.has-notes{color:rgba(255,255,255,.8)}
+.notes-toggle-btn .notes-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;opacity:0;transition:opacity .2s;flex-shrink:0;margin-left:auto}
 </style>
 </head>
 <body>
@@ -442,6 +461,11 @@ function checkLock(){
       <span>Évaluation & Préparation</span>
       <span class="meta"><span class="nbadge">35 min</span></span>
     </button>
+    <div style="border-top:1px solid rgba(255,255,255,.08);margin-top:8px;padding-top:8px">
+      <button class="notes-toggle-btn" id="notes-toggle" onclick="toggleNotesPanel()">
+        📝 Notes rapides<span class="notes-dot" id="notes-dot"></span>
+      </button>
+    </div>
   </nav>
   <div class="timer-box">
     <div class="timer-lbl">⏱ Minuteur atelier</div>
@@ -2359,6 +2383,35 @@ updateCRCNBadges();
       </div>
     </div>
     <div class="cert-paper" id="cert-paper"></div>
+  </div>
+</div>
+
+<script>
+// ── NOTES RAPIDES ──────────────────────────────────────────────
+const NOTES_KEY = 'j3_notes';
+const FORMATION_TITLE = 'Formation IA — Journée 3';
+let _notesPanelOpen = false;
+function toggleNotesPanel(){_notesPanelOpen?closeNotesPanel():openNotesPanel();}
+function openNotesPanel(){const p=document.getElementById('notes-panel');p.classList.add('open');_notesPanelOpen=true;document.getElementById('notes-ta').focus();}
+function closeNotesPanel(){document.getElementById('notes-panel').classList.remove('open');_notesPanelOpen=false;}
+function notesInput(){const v=document.getElementById('notes-ta').value;localStorage.setItem(NOTES_KEY,v);const c=v.length;document.getElementById('notes-count').textContent=c>0?c+' caractères':'';document.getElementById('notes-dot').style.opacity=v.trim().length>0?'1':'0';document.getElementById('notes-toggle').classList.toggle('has-notes',v.trim().length>0);}
+function insertRepere(){const ta=document.getElementById('notes-ta');const now=new Date();const hm=now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});const btn=document.querySelector('.nb.active');const lbl=btn?btn.querySelector('span:not(.ndot):not(.meta):not(.nbadge):not(.nchk)'):null;const sec=lbl?lbl.textContent.trim():'Formation';const r='\n\n---\n## 🕐 '+hm+' — '+sec+'\n\n';const pos=ta.selectionStart;ta.value=ta.value.substring(0,pos)+r+ta.value.substring(pos);ta.selectionStart=ta.selectionEnd=pos+r.length;ta.focus();notesInput();}
+function exportNotesMd(){const c=document.getElementById('notes-ta').value.trim();if(!c){alert('Aucune note à exporter.');return;}const now=new Date();const d=now.toLocaleDateString('fr-FR',{day:'2-digit',month:'long',year:'numeric'});const h='# 📝 Notes de formation — '+FORMATION_TITLE+'\n**Date :** '+d+'\n\n---\n\n';const blob=new Blob([h+c],{type:'text/markdown;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='notes-formation-j3-'+now.toISOString().slice(0,10)+'.md';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);}
+(function initNotes(){const s=localStorage.getItem(NOTES_KEY)||'';const ta=document.getElementById('notes-ta');if(ta){ta.value=s;if(s.trim().length>0){document.getElementById('notes-dot').style.opacity='1';document.getElementById('notes-toggle').classList.add('has-notes');document.getElementById('notes-count').textContent=s.length+' caractères';}}document.addEventListener('keydown',function(e){if(e.key==='Escape'&&_notesPanelOpen)closeNotesPanel();});})();
+</script>
+
+<!-- PANNEAU NOTES RAPIDES -->
+<div id="notes-panel" class="notes-panel" role="complementary" aria-label="Notes rapides">
+  <div class="notes-panel-head">
+    <h3>📝 Notes rapides</h3>
+    <button class="notes-close-btn" onclick="closeNotesPanel()" title="Fermer (Échap)">✕</button>
+  </div>
+  <div class="notes-hint">Auto-sauvegardé · Syntaxe markdown acceptée</div>
+  <textarea id="notes-ta" class="notes-textarea" placeholder="Écrivez vos notes ici…&#10;&#10;Ex : ## Atelier 3&#10;- Point intéressant&#10;- À tester en classe" oninput="notesInput()" spellcheck="true"></textarea>
+  <div class="notes-count" id="notes-count"></div>
+  <div class="notes-actions">
+    <button class="notes-btn" onclick="insertRepere()" title="Insère l'heure et l'atelier en cours">📍 Repère</button>
+    <button class="notes-btn pri" onclick="exportNotesMd()">⬇️ Télécharger .md</button>
   </div>
 </div>
 
